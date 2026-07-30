@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Contact MVMNT CULTR Performance Chiropractic in Arcadia, California."
+    />
+    <title>Contact | MVMNT CULTR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Main navigation">
+      <a class="brand" href="/" aria-label="MVMNT CULTR home">
+        <img src="../assets/images/mark.png" alt="" />
+        <span>MVMNT CULTR</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a aria-current="page" href="/contact/">Contact</a>
+      </nav>
+      <a class="book-button" href="https://movementprescribed.janeapp.com/">Book Now</a>
+      <details class="mobile-menu">
+        <summary class="menu-toggle" aria-label="Open menu">
+          <span class="sr-only">Menu</span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+        <nav class="mobile-drawer" aria-label="Mobile navigation">
+          <a href="/">Home</a>
+          <a href="/about/">About</a>
+          <a aria-current="page" href="/contact/">Contact</a>
+          <a class="mobile-book" href="https://movementprescribed.janeapp.com/">Book Now</a>
+        </nav>
+      </details>
+    </header>
+
+    <main class="contact-page-main">
+      <section class="contact-intake-section" aria-labelledby="contact-page-title">
+        <div class="contact-intro">
+          <p class="eyebrow">Contact MVMNT CULTR</p>
+          <h1 id="contact-page-title">Tell us what you are working through.</h1>
+          <p>
+            Use the form for general questions, service details, partnerships, or
+            consulting inquiries. For appointments, booking through Jane is the
+            fastest path.
+          </p>
+          <div class="quick-contact" aria-label="Clinic contact information">
+            <a href="tel:+13232481211">323.248.1211</a>
+            <a href="mailto:info@mvmntcultr.com">info@mvmntcultr.com</a>
+            <span>26 La Porte St, Suite A, Arcadia, CA 91006</span>
+          </div>
+        </div>
+
+        <form class="contact-form" action="mailto:info@mvmntcultr.com" method="post" enctype="text/plain">
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label>
+            Phone
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+          <label>
+            Reason for reaching out
+            <select name="reason" required>
+              <option value="">Select one</option>
+              <option>Chiropractic care</option>
+              <option>Athletic rehab</option>
+              <option>Movement assessment</option>
+              <option>Performance planning</option>
+              <option>Consulting or partnership</option>
+            </select>
+          </label>
+          <label class="form-message">
+            Message
+            <textarea name="message" rows="6" placeholder="Share what you are dealing with, your goals, and any timeline we should know about."></textarea>
+          </label>
+          <button type="submit">Submit inquiry</button>
+          <p class="form-note">
+            Please do not include sensitive medical records in this form. Appointment
+            scheduling and clinical documentation are handled through Jane.
+          </p>
+        </form>
+      </section>
+
+      <section class="contact-support-section" aria-label="Visit and booking details">
+        <div>
+          <p class="eyebrow">Appointments</p>
+          <h2>Book directly through Jane.</h2>
+          <p>
+            Existing and new clients can use Kyle's booking system for appointment
+            availability, intake, and documentation.
+          </p>
+          <a class="primary-link" href="https://movementprescribed.janeapp.com/">Book Now</a>
+        </div>
+        <div class="contact-hours">
+          <p class="eyebrow">Clinic hours</p>
+          <dl>
+            <div><dt>Mon-Fri</dt><dd>09:00 am - 07:00 pm</dd></div>
+            <div><dt>Saturday</dt><dd>By appointment</dd></div>
+            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>MVMNT CULTR Performance Chiropractic</span>
+      <span>26 La Porte St, Arcadia, Suite A</span>
+      <a href="mailto:info@mvmntcultr.com">info@mvmntcultr.com</a>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+</html>
