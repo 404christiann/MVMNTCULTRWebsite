@@ -579,30 +579,10 @@ h3 {
   padding: 8px 0;
 }
 
-.logo-item {
-  transition: transform var(--dur) var(--ease);
-}
-
-.logo-item:hover {
-  transform: translateY(-3px);
-}
-
-/* Thirteen club logos in unrelated palettes read as clutter at full
-   saturation. Muted at rest, true colour on hover. */
 .logo-item img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  opacity: 0.62;
-  filter: grayscale(1);
-  transition:
-    opacity var(--dur) var(--ease),
-    filter var(--dur) var(--ease);
-}
-
-.logo-item:hover img {
-  opacity: 1;
-  filter: grayscale(0);
 }
 
 .home-hours-section {
@@ -675,8 +655,7 @@ h3 {
   .about-social-links a,
   .book-button,
   .primary-link,
-  .secondary-link,
-  .logo-item {
+  .secondary-link {
     transition-property: background-color, border-color, box-shadow, color;
   }
 
@@ -684,8 +663,7 @@ h3 {
   .services-list article:hover,
   .book-button:hover,
   .primary-link:hover,
-  .secondary-link:hover,
-  .logo-item:hover {
+  .secondary-link:hover {
     transform: none;
   }
 }
@@ -1201,26 +1179,58 @@ h3 {
   width: max-content;
 }
 
+/* Two columns: name/email, then phone/reason. Message, button, status and
+   note run full width. Five stacked fields read as a long form; paired
+   fields read as a short one. */
 .contact-form {
+  position: relative;
   display: grid;
-  gap: 16px;
-  border: 1px solid rgba(248, 247, 242, 0.14);
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.06);
-  padding: clamp(22px, 3.5vw, 36px);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24);
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px 20px;
+  overflow: hidden;
+  border: 1px solid rgba(248, 247, 242, 0.16);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.028));
+  padding: clamp(26px, 4vw, 46px);
+  box-shadow: var(--shadow-lg);
   backdrop-filter: blur(18px);
+}
+
+/* Gold hairline across the top edge, fading out. Signals where the eye
+   should start without adding another element to the page. */
+.contact-form::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, var(--gold), rgba(255, 191, 0, 0.05) 62%, transparent);
+}
+
+.contact-form > .form-message,
+.contact-form > button,
+.contact-form > .form-status,
+.contact-form > .form-note {
+  grid-column: 1 / -1;
 }
 
 .contact-form label {
   display: grid;
-  gap: 8px;
-  color: rgba(248, 247, 242, 0.78);
+  gap: 10px;
+  align-content: start;
+  color: rgba(248, 247, 242, 0.62);
   font-family: var(--font-utility);
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 900;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.contact-form label:focus-within {
+  color: var(--gold);
 }
 
 .contact-form input,
@@ -1230,12 +1240,14 @@ h3 {
   border: 1px solid rgba(248, 247, 242, 0.18);
   border-radius: var(--radius-sm);
   background: rgba(0, 0, 0, 0.28);
+  min-height: 54px;
   color: var(--paper);
   font: inherit;
   font-family: var(--font-body);
-  font-size: 0.98rem;
+  font-size: 1rem;
+  font-weight: 600;
   letter-spacing: 0;
-  padding: 15px 16px;
+  padding: 15px 18px;
   text-transform: none;
   transition:
     border-color var(--dur-fast) var(--ease),
@@ -1250,14 +1262,33 @@ h3 {
 }
 
 .contact-form textarea {
+  min-height: 168px;
   resize: vertical;
+  line-height: 1.6;
+}
+
+.contact-form textarea::placeholder {
+  color: rgba(248, 247, 242, 0.34);
+  font-weight: 500;
+}
+
+/* The native select arrow is the one element on this form that still
+   looks like a browser default. */
+.contact-form select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23FFBF00' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 12px 8px;
+  padding-right: 46px;
 }
 
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
   border-color: var(--gold);
-  background: rgba(0, 0, 0, 0.42);
+  background-color: rgba(0, 0, 0, 0.42);
   outline: none;
   box-shadow: 0 0 0 3px rgba(255, 191, 0, 0.16);
 }
@@ -1268,17 +1299,32 @@ h3 {
 }
 
 .contact-form button {
-  min-height: 52px;
+  min-height: 60px;
+  margin-top: 6px;
   cursor: pointer;
   border: 0;
   border-radius: var(--radius-sm);
   background: var(--gold);
   color: var(--ink);
   font-family: var(--font-utility);
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   font-weight: 950;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  transition:
+    transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    filter var(--dur-fast) var(--ease);
+}
+
+.contact-form button:hover:not([disabled]) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+  filter: brightness(1.06);
+}
+
+.contact-form button:active:not([disabled]) {
+  transform: translateY(0);
 }
 
 .contact-form .form-botcheck {
@@ -1829,7 +1875,23 @@ footer {
   }
 
   .contact-form {
-    padding: 20px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 22px;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    min-height: 50px;
+  }
+
+  .contact-form textarea {
+    min-height: 140px;
+  }
+
+  .contact-form button {
+    min-height: 54px;
   }
 
   .contact-hours div {
