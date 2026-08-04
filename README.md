@@ -55,7 +55,11 @@ The core positioning is credibility first, booking second. Booking is always ava
 - White mobile menu open state to avoid gray/translucent header mismatch.
 - Mobile-only slide hints for horizontal card sections.
 - Responsive sections tuned for desktop and mobile.
-- Assets organized under `assets/images` and `assets/team-logos`.
+- Assets organized under `assets/images` and `assets/team-logos`, all WebP.
+- Only images actually referenced by a page are kept in the repo. Six unused files
+  (`dr-simi.png`, `force-plate.jpg`, `info-post.png`, `logo-lockup.png`, `training-rack.jpg`,
+  `waiting-room.jpg`) were removed in commit `249b1e1`'s successor and remain recoverable from git
+  history: `git checkout <commit>^ -- assets/images/<file>`.
 - `.gitignore` excludes `.DS_Store`, `.vercel`, `node_modules`, and `.env*`.
 
 ## Contact Form
