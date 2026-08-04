@@ -126,7 +126,8 @@ off GoDaddy and drops the Google Workspace MX records, breaking clinic email.
 
 ## Known Placeholders
 
-- Social links currently use `#` placeholders until Kyle provides exact URLs or handles.
+- Yelp and X icons were removed for launch; Kyle had no profiles to link. The Instagram, TikTok, and
+  Facebook icons carry real URLs.
 - The form still sends from `onboarding@resend.dev` to a test inbox. See "Switching to the real
   domain" above.
 - ID Forest Medicine Consulting copy is a placeholder area for Kyle's new consulting work.
