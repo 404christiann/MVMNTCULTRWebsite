@@ -95,12 +95,34 @@ site never reads it.
 | `CONTACT_TO` | no | Defaults to `info@mvmntcultr.com`. |
 | `CONTACT_FROM` | no | Defaults to `MVMNT CULTR Website <onboarding@resend.dev>`. |
 
+### Sender domain — cross-project dependency
+
+Mail is sent from `noreply@auth.onziofutbol.com`. That domain is verified in a Resend account whose
+free plan allows only one domain, and the slot belongs to the Onzio platform. This was a deliberate
+call: it works today with no DNS changes, and because these emails only travel inbound to the
+clinic, no patient ever sees the sending address.
+
+The cost is a dependency between two unrelated projects. **If `auth.onziofutbol.com` is ever
+removed or unverified in Resend, this contact form stops delivering, and it will fail quietly.**
+The clean fix is a separate Resend account owned by the clinic, with `send.mvmntcultr.com`
+verified; then only `CONTACT_FROM` and `RESEND_API_KEY` change.
+
 ### Switching to the real domain
 
-`onboarding@resend.dev` is a testing sender: Resend will only deliver to the email address on the
-Resend account. To send to `info@mvmntcultr.com`, add `mvmntcultr.com` in Resend, add the generated
-SPF/DKIM/MX records at GoDaddy, then set `CONTACT_FROM` to an address on the verified domain and
-`CONTACT_TO` to `info@mvmntcultr.com`. No code change is needed.
+`mvmntcultr.com` is registered at GoDaddy, which also hosts its DNS. Two things live there that must
+not be disturbed:
+
+- **Google Workspace MX records** (`aspmx.l.google.com` and friends). `info@mvmntcultr.com` is a real
+  mailbox and depends on them.
+- **An existing SPF record**, `v=spf1 include:dc-aa8e722993._spfm.mvmntcultr.com ~all`. A domain may
+  have only one SPF record, so any future email-sending setup belongs on a subdomain such as
+  `send.mvmntcultr.com`, never the root.
+
+To point the site at Vercel, change the apex `A` record at GoDaddy to `76.76.21.21` and delete the
+second apex `A` record. `www` is a CNAME to the apex and follows automatically.
+
+Do **not** accept Vercel's offer to switch the nameservers to `ns1.vercel-dns.com`. That moves DNS
+off GoDaddy and drops the Google Workspace MX records, breaking clinic email.
 
 ## Known Placeholders
 
