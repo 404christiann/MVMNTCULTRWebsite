@@ -10,6 +10,22 @@
   --line: rgba(248, 247, 242, 0.16);
   --dark-line: rgba(8, 8, 8, 0.12);
   --max: 1180px;
+
+  /* Softer geometry. The original 6-8px reads utilitarian next to the
+     premium health brands this is positioned against. */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+
+  /* Layered shadows read as depth; a single large blur reads as haze. */
+  --shadow-sm: 0 1px 2px rgba(8, 8, 8, 0.14), 0 6px 16px rgba(8, 8, 8, 0.08);
+  --shadow-md: 0 2px 6px rgba(8, 8, 8, 0.16), 0 16px 44px rgba(8, 8, 8, 0.14);
+  --shadow-lg: 0 4px 14px rgba(0, 0, 0, 0.22), 0 30px 80px rgba(0, 0, 0, 0.3);
+  --shadow-gold: 0 8px 30px rgba(255, 191, 0, 0.22);
+
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur: 380ms;
+  --dur-fast: 200ms;
   --font-display: "Oswald", "Montserrat", "Arial Narrow", sans-serif;
   --font-body: "Montserrat", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-utility: "Montserrat", ui-sans-serif, system-ui, sans-serif;
@@ -168,14 +184,36 @@ footer {
 .primary-link,
 .secondary-link {
   display: inline-flex;
-  min-height: 42px;
+  min-height: 46px;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   font-family: var(--font-utility);
   font-size: 1rem;
   font-weight: 900;
   text-transform: uppercase;
+  transition:
+    transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.book-button:hover,
+.primary-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.secondary-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+.book-button:active,
+.primary-link:active,
+.secondary-link:active {
+  transform: translateY(0);
 }
 
 .book-button {
@@ -329,9 +367,20 @@ h3 {
 .care-grid article {
   min-height: 270px;
   border: 1px solid var(--dark-line);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   background: #ffffff;
-  padding: 28px;
+  padding: 32px;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.care-grid article:hover {
+  transform: translateY(-4px);
+  border-color: rgba(8, 8, 8, 0.2);
+  box-shadow: var(--shadow-md);
 }
 
 .slide-hint {
@@ -453,11 +502,21 @@ h3 {
   gap: 28px;
   align-items: start;
   border: 1px solid rgba(248, 247, 242, 0.16);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   background: rgba(8, 8, 8, 0.44);
-  padding: clamp(20px, 2.3vw, 28px);
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.24);
+  padding: clamp(24px, 2.6vw, 32px);
+  box-shadow: var(--shadow-lg);
   backdrop-filter: blur(12px);
+  transition:
+    transform var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
+}
+
+.services-list article:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 191, 0, 0.42);
+  background: rgba(8, 8, 8, 0.6);
 }
 
 .services-list span {
@@ -589,6 +648,24 @@ h3 {
   .logo-track {
     animation: none;
   }
+
+  /* Colour and shadow still respond to hover; movement does not. */
+  .care-grid article,
+  .services-list article,
+  .about-social-links a,
+  .book-button,
+  .primary-link,
+  .secondary-link {
+    transition-property: background-color, border-color, box-shadow, color;
+  }
+
+  .care-grid article:hover,
+  .services-list article:hover,
+  .book-button:hover,
+  .primary-link:hover,
+  .secondary-link:hover {
+    transform: none;
+  }
 }
 
 .bio-section {
@@ -603,7 +680,7 @@ h3 {
 .bio-logo {
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: #000;
 }
 
@@ -704,7 +781,7 @@ h3 {
   align-self: stretch;
   overflow: hidden;
   margin: 0;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background:
     radial-gradient(circle at 50% 20%, rgba(255, 191, 0, 0.18), transparent 34%),
     linear-gradient(180deg, #17191a, #050505);
@@ -783,7 +860,7 @@ h3 {
 .team-grid article,
 .hours-grid div {
   border: 1px solid var(--dark-line);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: #ffffff;
   padding: 24px;
 }
@@ -854,7 +931,7 @@ h3 {
   align-self: center;
   width: min(100%, 620px);
   margin: 0;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: #111;
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
 }
@@ -972,7 +1049,7 @@ h3 {
   place-items: center;
   gap: 12px;
   border: 1px solid rgba(8, 8, 8, 0.12);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--paper);
   color: var(--ink);
   padding: 18px 12px;
@@ -1041,7 +1118,7 @@ h3 {
   overflow: hidden;
   min-height: min(52svh, 460px);
   border: 1px solid var(--dark-line);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: #ffffff;
 }
 
@@ -1102,26 +1179,58 @@ h3 {
   width: max-content;
 }
 
+/* Two columns: name/email, then phone/reason. Message, button, status and
+   note run full width. Five stacked fields read as a long form; paired
+   fields read as a short one. */
 .contact-form {
+  position: relative;
   display: grid;
-  gap: 16px;
-  border: 1px solid rgba(248, 247, 242, 0.14);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  padding: clamp(22px, 3.5vw, 36px);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.24);
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px 20px;
+  overflow: hidden;
+  border: 1px solid rgba(248, 247, 242, 0.16);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.028));
+  padding: clamp(26px, 4vw, 46px);
+  box-shadow: var(--shadow-lg);
   backdrop-filter: blur(18px);
+}
+
+/* Gold hairline across the top edge, fading out. Signals where the eye
+   should start without adding another element to the page. */
+.contact-form::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, var(--gold), rgba(255, 191, 0, 0.05) 62%, transparent);
+}
+
+.contact-form > .form-message,
+.contact-form > button,
+.contact-form > .form-status,
+.contact-form > .form-note {
+  grid-column: 1 / -1;
 }
 
 .contact-form label {
   display: grid;
-  gap: 8px;
-  color: rgba(248, 247, 242, 0.78);
+  gap: 10px;
+  align-content: start;
+  color: rgba(248, 247, 242, 0.62);
   font-family: var(--font-utility);
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 900;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.contact-form label:focus-within {
+  color: var(--gold);
 }
 
 .contact-form input,
@@ -1129,26 +1238,59 @@ h3 {
 .contact-form textarea {
   width: 100%;
   border: 1px solid rgba(248, 247, 242, 0.18);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: rgba(0, 0, 0, 0.28);
+  min-height: 54px;
   color: var(--paper);
   font: inherit;
   font-family: var(--font-body);
-  font-size: 0.98rem;
+  font-size: 1rem;
+  font-weight: 600;
   letter-spacing: 0;
-  padding: 14px 15px;
+  padding: 15px 18px;
   text-transform: none;
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+
+.contact-form input:hover,
+.contact-form select:hover,
+.contact-form textarea:hover {
+  border-color: rgba(248, 247, 242, 0.32);
 }
 
 .contact-form textarea {
+  min-height: 168px;
   resize: vertical;
+  line-height: 1.6;
+}
+
+.contact-form textarea::placeholder {
+  color: rgba(248, 247, 242, 0.34);
+  font-weight: 500;
+}
+
+/* The native select arrow is the one element on this form that still
+   looks like a browser default. */
+.contact-form select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23FFBF00' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  background-size: 12px 8px;
+  padding-right: 46px;
 }
 
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
   border-color: var(--gold);
+  background-color: rgba(0, 0, 0, 0.42);
   outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 191, 0, 0.16);
 }
 
 .contact-form option {
@@ -1157,17 +1299,32 @@ h3 {
 }
 
 .contact-form button {
-  min-height: 52px;
+  min-height: 60px;
+  margin-top: 6px;
   cursor: pointer;
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: var(--gold);
   color: var(--ink);
   font-family: var(--font-utility);
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   font-weight: 950;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  transition:
+    transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease),
+    filter var(--dur-fast) var(--ease);
+}
+
+.contact-form button:hover:not([disabled]) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+  filter: brightness(1.06);
+}
+
+.contact-form button:active:not([disabled]) {
+  transform: translateY(0);
 }
 
 .contact-form .form-botcheck {
@@ -1188,7 +1345,7 @@ h3 {
 
 .form-status {
   margin: 0;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   border: 1px solid transparent;
   padding: 14px 16px;
   font-family: var(--font-utility);
@@ -1239,7 +1396,7 @@ h3 {
 
 .contact-hours {
   border: 1px solid rgba(248, 247, 242, 0.14);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 24px;
 }
 
@@ -1300,7 +1457,7 @@ h3 {
 .contact-poster img {
   width: min(420px, 100%);
   justify-self: end;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   box-shadow: 0 28px 72px rgba(8, 8, 8, 0.18);
 }
 
@@ -1492,7 +1649,7 @@ footer {
     margin: 18px clamp(44px, 9vw, 68px) 0;
     justify-content: center;
     border: 0;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     background: var(--gold);
     color: var(--ink);
     padding: 0 22px;
@@ -1718,7 +1875,23 @@ footer {
   }
 
   .contact-form {
-    padding: 20px;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 22px;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    min-height: 50px;
+  }
+
+  .contact-form textarea {
+    min-height: 140px;
+  }
+
+  .contact-form button {
+    min-height: 54px;
   }
 
   .contact-hours div {
