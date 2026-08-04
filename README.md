@@ -58,10 +58,34 @@ The core positioning is credibility first, booking second. Booking is always ava
 - Assets organized under `assets/images` and `assets/team-logos`.
 - `.gitignore` excludes `.DS_Store`, `.vercel`, `node_modules`, and `.env*`.
 
+## Contact Form
+
+The contact form posts to [Web3Forms](https://web3forms.com) (`https://api.web3forms.com/submit`) and is
+delivered by email to `info@mvmntcultr.com`. Web3Forms forwards submissions to email and does not
+store them, which is deliberate: the form invites people to describe medical complaints, so that
+content is never persisted in a database by us.
+
+Behaviour:
+
+- Submission is handled by `fetch` in `script.js`, so the visitor stays on the page.
+- `replyto` is set to the submitter's email address, so Kyle can reply directly from his inbox.
+- `botcheck` is Web3Forms' honeypot field. It is visually hidden, `tabindex="-1"`, and `aria-hidden`.
+- Success and error states render in `#form-status`. On failure the message surfaces the clinic
+  phone number and email so an inquiry is never silently lost.
+- The `<form>` still has a real `action` and `method="POST"`, so submission degrades gracefully if
+  JavaScript fails to load.
+
+### Required before launch
+
+The `access_key` hidden input in `contact/index.html` is set to
+`REPLACE_WITH_WEB3FORMS_ACCESS_KEY`. Until a real key is in place, every submission fails and the
+visitor sees the error state. To get one, enter `info@mvmntcultr.com` at
+<https://web3forms.com> and paste the UUID that arrives by email into that input.
+
 ## Known Placeholders
 
 - Social links currently use `#` placeholders until Kyle provides exact URLs or handles.
-- Contact form currently uses a `mailto:` action. A production version should use a real form handler if Kyle wants reliable submissions.
+- Web3Forms `access_key` is a placeholder. See "Required before launch" above.
 - ID Forest Medicine Consulting copy is a placeholder area for Kyle's new consulting work.
 - Additional office photos/videos can be added after the new shoot is ready.
 
@@ -97,7 +121,5 @@ Future pushes to `main` should trigger Vercel deployments because the GitHub rep
 
 - Confirm exact social profile links.
 - Confirm final clinic hours.
-- Confirm whether `info@mvmntcultr.com` is the preferred contact email.
-- Confirm whether the Contact form should stay as `mailto:` or move to a hosted form provider.
 - Add final office photo/video shoot assets when ready.
-- Decide when to connect the real `mvmntcultr.com` domain.
+- Connect the real `mvmntcultr.com` domain (registered at GoDaddy) once the UI is finalized.

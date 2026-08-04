@@ -61,7 +61,23 @@
           </div>
         </div>
 
-        <form class="contact-form" action="mailto:info@mvmntcultr.com" method="post" enctype="text/plain">
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+          <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY" />
+          <input type="hidden" name="from_name" value="MVMNT CULTR Website" />
+          <input type="hidden" name="subject" value="New inquiry from the MVMNT CULTR website" />
+          <input
+            class="form-botcheck"
+            type="checkbox"
+            name="botcheck"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
           <label>
             Name
             <input type="text" name="name" autocomplete="name" required />
@@ -90,6 +106,7 @@
             <textarea name="message" rows="6" placeholder="Share what you are dealing with, your goals, and any timeline we should know about."></textarea>
           </label>
           <button type="submit">Submit inquiry</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
           <p class="form-note">
             Please do not include sensitive medical records in this form. Appointment
             scheduling and clinical documentation are handled through Jane.
