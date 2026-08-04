@@ -25,6 +25,11 @@ if (header && mobileMenu) {
 const contactForm = document.querySelector("#contact-form");
 
 if (contactForm) {
+  const SUCCESS_MESSAGE =
+    "Thank you. Your inquiry has been sent to the clinic. We will get back to you at the email you provided.";
+  const ERROR_MESSAGE =
+    "Sorry, your inquiry could not be sent. Please call 323.248.1211 or email info@mvmntcultr.com and we will take care of you.";
+
   const status = contactForm.querySelector("#form-status");
   const submitButton = contactForm.querySelector("button[type='submit']");
   const submitLabel = submitButton ? submitButton.textContent : "";
@@ -37,21 +42,19 @@ if (contactForm) {
     status.hidden = false;
   };
 
+  // Covers the no-JavaScript path, where the form posts normally and the
+  // function redirects back here with a flag.
+  const submissionFlag = new URLSearchParams(window.location.search);
+  if (submissionFlag.has("sent")) {
+    showStatus(SUCCESS_MESSAGE, "success");
+  } else if (submissionFlag.has("error")) {
+    showStatus(ERROR_MESSAGE, "error");
+  }
+
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const formData = new FormData(contactForm);
-    const name = (formData.get("name") || "").toString().trim();
-    const email = (formData.get("email") || "").toString().trim();
-    const reason = (formData.get("reason") || "").toString().trim();
-
-    formData.set(
-      "subject",
-      `New website inquiry${name ? ` from ${name}` : ""}${reason ? ` - ${reason}` : ""}`
-    );
-
-    // The clinic replies straight from their inbox to the person who wrote in.
-    if (email) formData.set("replyto", email);
 
     if (submitButton) {
       submitButton.disabled = true;
@@ -70,19 +73,13 @@ if (contactForm) {
 
       if (response.ok && result.success) {
         contactForm.reset();
-        showStatus(
-          "Thank you. Your inquiry has been sent to the clinic. We will get back to you at the email you provided.",
-          "success"
-        );
+        showStatus(SUCCESS_MESSAGE, "success");
       } else {
         throw new Error(result.message || `Request failed with status ${response.status}`);
       }
     } catch (error) {
       console.error("Contact form submission failed:", error);
-      showStatus(
-        "Sorry, your inquiry could not be sent. Please call 323.248.1211 or email info@mvmntcultr.com and we will take care of you.",
-        "error"
-      );
+      showStatus(ERROR_MESSAGE, "error");
     } finally {
       if (submitButton) {
         submitButton.disabled = false;

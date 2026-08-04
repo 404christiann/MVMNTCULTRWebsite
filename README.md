@@ -60,32 +60,53 @@ The core positioning is credibility first, booking second. Booking is always ava
 
 ## Contact Form
 
-The contact form posts to [Web3Forms](https://web3forms.com) (`https://api.web3forms.com/submit`) and is
-delivered by email to `info@mvmntcultr.com`. Web3Forms forwards submissions to email and does not
-store them, which is deliberate: the form invites people to describe medical complaints, so that
-content is never persisted in a database by us.
+The form posts to `/api/contact`, a Vercel serverless function that relays the submission to the
+clinic by email through [Resend](https://resend.com). It writes nothing to a database and does not
+log submission content: the form invites people to describe medical complaints, so that content
+lives in email and nowhere else.
+
+A hosted form service (Web3Forms, Formspree) was rejected for this reason. Both store submissions —
+Web3Forms' privacy policy states submission data is kept in an AWS database for up to three years
+and that submitter IP and email are shared with CleanTalk and Akismet for spam filtering. Resend's
+free plan retains data for one day.
 
 Behaviour:
 
 - Submission is handled by `fetch` in `script.js`, so the visitor stays on the page.
-- `replyto` is set to the submitter's email address, so Kyle can reply directly from his inbox.
-- `botcheck` is Web3Forms' honeypot field. It is visually hidden, `tabindex="-1"`, and `aria-hidden`.
+- `reply_to` is the submitter's address, so Kyle can reply straight from his inbox.
+- `botcheck` is a honeypot: visually hidden, `tabindex="-1"`, `aria-hidden`. When tripped the
+  function returns success and sends nothing, so bots learn nothing.
 - Success and error states render in `#form-status`. On failure the message surfaces the clinic
-  phone number and email so an inquiry is never silently lost.
-- The `<form>` still has a real `action` and `method="POST"`, so submission degrades gracefully if
-  JavaScript fails to load.
+  phone number and email, so an inquiry is never a dead end.
+- The `<form>` keeps a real `action` and `method="POST"`. Without JavaScript the browser posts
+  normally, the function accepts form-encoded bodies, and redirects to `/contact/?sent=1`, which
+  `script.js` reads to show the banner.
+- User input is HTML-escaped before it goes into the email body.
 
-### Required before launch
+### Environment variables
 
-The `access_key` hidden input in `contact/index.html` is set to
-`REPLACE_WITH_WEB3FORMS_ACCESS_KEY`. Until a real key is in place, every submission fails and the
-visitor sees the error state. To get one, enter `info@mvmntcultr.com` at
-<https://web3forms.com> and paste the UUID that arrives by email into that input.
+Set these in Vercel > Project Settings > Environment Variables. Changing them requires a redeploy
+to take effect. `.env.local` mirrors them for `vercel dev` only and is gitignored — the deployed
+site never reads it.
+
+| Variable | Required | Notes |
+| --- | --- | --- |
+| `RESEND_API_KEY` | yes | From the Resend dashboard. Without it the function returns 500. |
+| `CONTACT_TO` | no | Defaults to `info@mvmntcultr.com`. |
+| `CONTACT_FROM` | no | Defaults to `MVMNT CULTR Website <onboarding@resend.dev>`. |
+
+### Switching to the real domain
+
+`onboarding@resend.dev` is a testing sender: Resend will only deliver to the email address on the
+Resend account. To send to `info@mvmntcultr.com`, add `mvmntcultr.com` in Resend, add the generated
+SPF/DKIM/MX records at GoDaddy, then set `CONTACT_FROM` to an address on the verified domain and
+`CONTACT_TO` to `info@mvmntcultr.com`. No code change is needed.
 
 ## Known Placeholders
 
 - Social links currently use `#` placeholders until Kyle provides exact URLs or handles.
-- Web3Forms `access_key` is a placeholder. See "Required before launch" above.
+- The form still sends from `onboarding@resend.dev` to a test inbox. See "Switching to the real
+  domain" above.
 - ID Forest Medicine Consulting copy is a placeholder area for Kyle's new consulting work.
 - Additional office photos/videos can be added after the new shoot is ready.
 
