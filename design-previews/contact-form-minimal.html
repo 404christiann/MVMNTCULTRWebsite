@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MVMNT CULTR — Contact form, minimal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#080808; --paper:#f8f7f2; --muted:#565c5f; --gold:#ffbf00; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#eceeed; font-family:Montserrat,Arial,sans-serif; line-height:1.6; }
+    h1,h2,p,label { margin:0; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    button { font:inherit; cursor:pointer; }
+    a { color:inherit; text-decoration:none; }
+    :focus-visible { outline:2px solid #fff; outline-offset:3px; }
+
+    .review { max-width:1100px; margin:auto; padding:26px 32px 22px; }
+    .review-head { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .wordmark { font-size:12px; font-weight:900; }
+    .review-head a { font-size:12px; text-decoration:underline; text-underline-offset:4px; }
+    h1.title { font-size:22px; letter-spacing:-.5px; margin-top:22px; }
+    .review-intro { font-size:13px; color:var(--muted); margin-top:6px; max-width:78ch; }
+    .sizes { display:flex; gap:7px; margin-top:20px; }
+    .sizes button { border:1px solid #bfc4c1; border-radius:8px; padding:11px 14px; min-height:44px; background:transparent; font-size:12px; font-weight:600; color:var(--ink); border-color:transparent; }
+    .sizes button[aria-pressed=true] { background:white; border-color:#d4d8d5; }
+    main { max-width:1100px; padding:0 32px 40px; margin:auto; }
+    .frame { width:100%; container-type:inline-size; margin:auto; background:white; border:1px solid #d5d9d6; transition:max-width .2s ease; overflow:hidden; }
+    body.mobile .frame { max-width:390px; }
+    .footnote { text-align:center; color:var(--muted); font-size:12px; margin-top:18px; }
+    @media (max-width:700px) { .review { padding:20px 16px; } h1.title { font-size:19px; } main { padding:0 10px 24px; } }
+
+    .stage { background:#000; color:var(--paper); padding:clamp(56px,8vw,100px) 40px; }
+    @container (max-width:700px) { .stage { padding:56px 22px; } }
+
+    .wrap { max-width:480px; margin:0 auto; }
+    .eyebrow { display:block; font-size:12px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+    h2 { font-family:Montserrat,sans-serif; font-weight:600; font-size:clamp(1.7rem,3.4cqw,2.3rem); letter-spacing:-.01em; line-height:1.15; margin-bottom:44px; }
+
+    form { display:flex; flex-direction:column; }
+    .field { padding:20px 0; border-bottom:1px solid rgba(255,255,255,.14); }
+    .field label { display:block; font-size:13px; color:rgba(248,247,242,.5); margin-bottom:6px; }
+    .field input, .field select, .field textarea {
+      width:100%; border:0; background:transparent; color:var(--paper);
+      font-family:Montserrat,sans-serif; font-size:17px; font-weight:400; padding:0; resize:none;
+    }
+    .field textarea { min-height:96px; line-height:1.5; padding-top:2px; scrollbar-width:none; }
+    .field textarea::-webkit-scrollbar { display:none; }
+    .field select { appearance:none; cursor:pointer; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23f8f7f2' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='.6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 2px center; }
+    .field select option { background:#000; color:var(--paper); }
+    .field input::placeholder, .field textarea::placeholder { color:rgba(248,247,242,.28); }
+    .field input:focus, .field select:focus, .field textarea:focus { outline:none; }
+    .field:focus-within { border-color:var(--gold); }
+    .field:focus-within label { color:var(--gold); }
+
+    button[type="submit"] {
+      margin-top:36px; min-height:54px; border:0; border-radius:999px;
+      background:var(--gold); color:var(--ink);
+      font-size:15px; font-weight:700; letter-spacing:0; text-transform:none;
+      transition:filter .15s ease;
+    }
+    button[type="submit"]:hover { filter:brightness(1.06); }
+
+    .form-note { margin-top:20px; font-size:12.5px; color:rgba(248,247,242,.4); }
+  </style>
+</head>
+<body class="mobile">
+  <header class="review">
+    <div class="review-head"><div class="wordmark">MVMNT CULTR</div><a href="http://localhost:4181/contact/">Current contact page</a></div>
+    <h1 class="title">Contact form &mdash; one minimal direction</h1>
+    <p class="review-intro">Still no card, no glass, no glow &mdash; but now color coded to the brand: gold eyebrow, gold focus state, gold submit button. Everything else stays quiet so gold reads as the one accent, not noise.</p>
+    <div class="sizes" role="group" aria-label="Preview width"><button type="button" aria-pressed="true" data-size="mobile">Mobile</button><button type="button" aria-pressed="false" data-size="desktop">Desktop</button></div>
+  </header>
+  <main>
+    <div class="frame">
+      <section class="stage">
+        <div class="wrap">
+          <span class="eyebrow">Contact MVMNT CULTR</span>
+          <h2>Tell us what you are working through.</h2>
+          <form onsubmit="return false">
+            <div class="field"><label for="mf-name">Name</label><input id="mf-name" type="text"></div>
+            <div class="field"><label for="mf-email">Email</label><input id="mf-email" type="email"></div>
+            <div class="field"><label for="mf-phone">Phone</label><input id="mf-phone" type="tel"></div>
+            <div class="field">
+              <label for="mf-reason">Reason for reaching out</label>
+              <select id="mf-reason">
+                <option>Select one</option>
+                <option>Consulting or Partnership</option>
+                <option>Event / Seasonal Coverage</option>
+                <option>Performance Chiropractic Care</option>
+                <option>Athletic Rehab</option>
+                <option>Athletic Performance Assessment</option>
+              </select>
+            </div>
+            <div class="field"><label for="mf-msg">Message</label><textarea id="mf-msg" placeholder="Share what you are dealing with, your goals, and any timeline we should know about."></textarea></div>
+            <button type="submit">Submit inquiry</button>
+            <p class="form-note">Please do not include sensitive medical records in this form.</p>
+          </form>
+        </div>
+      </section>
+    </div>
+    <p class="footnote">Design exploration only &mdash; nothing submits.</p>
+  </main>
+  <script>
+    document.querySelectorAll('[data-size]').forEach(button => button.addEventListener('click', () => {
+      document.body.classList.toggle('mobile', button.dataset.size === 'mobile');
+      document.querySelectorAll('[data-size]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    }));
+  </script>
+</body>
+</html>

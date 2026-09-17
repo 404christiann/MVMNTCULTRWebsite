@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MVMNT CULTR — Scrolled nav pill spacing options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#080808; --gold:#ffbf00; --muted:#565c5f; --pill:#202020; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#eceeed; font-family:Montserrat,Arial,sans-serif; line-height:1.6; }
+    h1,p { margin:0; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    button { font:inherit; cursor:pointer; }
+    a { color:inherit; text-decoration:none; }
+    :focus-visible { outline:3px solid #916500; outline-offset:5px; }
+
+    .review { max-width:1200px; margin:auto; padding:26px 32px 22px; }
+    .review-head { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .wordmark { font-size:12px; font-weight:900; }
+    .review-head a { font-size:12px; text-decoration:underline; text-underline-offset:4px; }
+    h1 { font-size:22px; letter-spacing:-.5px; margin-top:22px; }
+    .review-intro { font-size:13px; color:var(--muted); margin-top:6px; max-width:78ch; }
+    .toolbar { display:flex; flex-wrap:wrap; gap:7px; margin-top:23px; }
+    .toolbar button { border:1px solid #bfc4c1; border-radius:8px; padding:11px 14px; min-height:44px; background:transparent; font-size:12px; font-weight:600; color:var(--ink); }
+    .toolbar button[aria-pressed=true] { background:var(--ink); color:white; border-color:var(--ink); }
+    .note { color:var(--muted); font-size:13px; margin-top:16px; max-width:92ch; }
+    .measure { font-size:12px; color:#8a7100; margin-top:8px; }
+    main { max-width:1200px; padding:0 32px 40px; margin:auto; }
+
+    .stage { position:relative; height:180px; border-radius:14px; overflow:hidden; background:linear-gradient(180deg,#fbfbfa,#f1f2ef); border:1px solid #e0e2de; }
+    .stage-fill { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#c7cac5; font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+
+    /* ===== the scrolled pill nav, positioned inside .stage ===== */
+    .pill {
+      position:absolute; top:20px; left:50%; translate:-50% 0;
+      width:var(--pill-w); height:52px;
+      border-radius:999px; background:var(--pill);
+      box-shadow:0 14px 34px rgba(8,8,8,.18);
+    }
+    .pill-brand { position:absolute; left:12px; top:50%; translate:0 -50%; display:flex; align-items:center; gap:8px; color:#fff; font-size:13px; font-weight:900; text-transform:uppercase; white-space:nowrap; }
+    .pill-brand .mark { width:28px; height:28px; border-radius:50%; background:#fff; display:grid; place-items:center; font-size:12px; color:var(--ink); font-weight:900; }
+    .pill-links { position:absolute; top:0; left:var(--links-left); width:var(--links-w); height:52px; display:flex; align-items:center; gap:var(--links-gap); padding-left:var(--links-pad-left, var(--links-pad)); padding-right:var(--links-pad-right, var(--links-pad)); }
+    .pill-divider { position:absolute; left:0; top:16px; height:20px; width:1px; background:rgba(255,255,255,.12); }
+    .pill-links.no-divider .pill-divider { display:none; }
+    .pill-links.dot-divider .pill-divider { position:static; width:auto; height:auto; display:flex; align-items:center; background:none; color:rgba(255,255,255,.35); font-size:16px; margin-right:2px; }
+    .pill-links a { color:#aaa; font-size:13px; font-weight:500; }
+    .pill-links a:first-of-type { color:#fff; }
+    .pill-book { position:absolute; top:var(--book-top); right:var(--book-right, 8px); width:var(--book-w); height:var(--book-h); border-radius:9px; background:var(--gold); color:var(--ink); display:grid; place-items:center; font-size:var(--book-fs); font-weight:800; letter-spacing:.02em; }
+
+    .footnote { text-align:center; color:var(--muted); font-size:12px; margin-top:18px; }
+    @media (max-width:700px) {
+      .review { padding:20px 16px; } h1 { font-size:19px; }
+      main { padding:0 10px 24px; }
+      .toolbar { display:grid; grid-template-columns:1fr 1fr; }
+      .toolbar button { text-align:left; font-size:11px; padding:11px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="review">
+    <div class="review-head"><div class="wordmark">MVMNT CULTR</div><a href="http://localhost:4181/">Current homepage</a></div>
+    <h1>Scrolled nav pill — spacing options</h1>
+    <p class="review-intro">Desktop only (this pill only exists at 861px+ — mobile uses the hamburger drawer, untouched here). Iterating on "Tightest," the one you liked: same overall tightness, just more room between the divider and "Home."</p>
+    <div class="toolbar" role="group" aria-label="Concept">
+      <button type="button" aria-pressed="false" data-concept="1c-prev">Tightest (previous)</button>
+      <button type="button" aria-pressed="true" data-concept="1c">Tightest — more divider space (this iteration)</button>
+    </div>
+    <p class="note" id="design-note"></p>
+    <p class="measure" id="measure-note"></p>
+  </header>
+  <main>
+    <div class="stage">
+      <div class="stage-fill">page content scrolls behind the pill</div>
+      <div class="pill" id="pill">
+        <div class="pill-brand"><span class="mark">C</span>MVMNT CULTR</div>
+        <div class="pill-links" id="pill-links">
+          <span class="pill-divider" id="divider"></span>
+          <a href="#">Home</a><a href="#">About</a><a href="#">Contact</a>
+        </div>
+        <div class="pill-book" id="pill-book">Book Now</div>
+      </div>
+    </div>
+    <p class="footnote">Design exploration only &mdash; static mock of the scrolled state (no scroll-linked animation here). Colors, type, and the Book Now gold match the live site exactly.</p>
+  </main>
+  <script>
+    const concepts = {
+      '1c-prev': {
+        note: 'Tightest, last round: pill at 470px — but the divider only had 6px of padding before "Home," so the line and the text read as almost touching.',
+        measure: 'Pill: 470px. Divider-to-"Home" padding: 6px.',
+        vars: { '--pill-w':'470px', '--links-left':'172px', '--links-w':'178px', '--links-gap':'14px', '--links-pad-left':'6px', '--links-pad-right':'6px', '--book-top':'9px', '--book-w':'90px', '--book-h':'33px', '--book-fs':'11px', '--book-right':'12px' },
+        divider: 'line'
+      },
+      '1c': {
+        note: 'This iteration: same tight pill and same close Book Now, but the divider now has real breathing room before "Home" (6px → 20px) instead of nearly touching it.',
+        measure: 'Pill: still 470px. Divider-to-"Home": 6px → 20px. Book Now side unchanged.',
+        vars: { '--pill-w':'470px', '--links-left':'172px', '--links-w':'192px', '--links-gap':'14px', '--links-pad-left':'20px', '--links-pad-right':'6px', '--book-top':'9px', '--book-w':'90px', '--book-h':'33px', '--book-fs':'11px', '--book-right':'12px' },
+        divider: 'line'
+      }
+    };
+    const pill = document.getElementById('pill');
+    const links = document.getElementById('pill-links');
+    const divider = document.getElementById('divider');
+    const buttons = [...document.querySelectorAll('.toolbar button')];
+    function apply(id) {
+      const c = concepts[id];
+      Object.entries(c.vars).forEach(([k, v]) => pill.style.setProperty(k, v));
+      links.classList.toggle('no-divider', c.divider === 'none');
+      links.classList.toggle('dot-divider', c.divider === 'dot');
+      divider.textContent = c.divider === 'dot' ? '·' : '';
+      document.getElementById('design-note').textContent = c.note;
+      document.getElementById('measure-note').textContent = c.measure;
+      buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.concept === id)));
+    }
+    buttons.forEach(b => b.addEventListener('click', () => { apply(b.dataset.concept); history.replaceState(null, '', '#' + b.dataset.concept); }));
+    apply(location.hash.slice(1) && concepts[location.hash.slice(1)] ? location.hash.slice(1) : '1c');
+  </script>
+</body>
+</html>

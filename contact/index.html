@@ -97,7 +97,7 @@
           </label>
           <label class="form-message">
             Message
-            <textarea name="message" rows="6" placeholder="Share what you are dealing with, your goals, and any timeline we should know about."></textarea>
+            <textarea name="message" rows="3" placeholder="Share what you are dealing with, your goals, and any timeline we should know about."></textarea>
           </label>
           <button type="submit">Submit inquiry</button>
           <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
@@ -119,11 +119,18 @@
           <a class="primary-link" href="https://movementprescribed.janeapp.com/">Book Now</a>
         </div>
         <div class="contact-hours">
-          <p class="eyebrow">Clinic hours</p>
-          <dl>
-            <div><dt>Mon-Fri</dt><dd>09:00 am - 07:00 pm</dd></div>
-            <div><dt>Saturday</dt><dd>By appointment</dd></div>
-            <div><dt>Sunday</dt><dd>Closed</dd></div>
+          <div class="contact-hours-heading">
+            <h3>This week</h3>
+            <span>Pacific time</span>
+          </div>
+          <dl aria-label="Weekly clinic hours, Pacific time">
+            <div data-clinic-day="Mon"><dt>Monday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
+            <div data-clinic-day="Tue"><dt>Tuesday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
+            <div data-clinic-day="Wed"><dt>Wednesday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
+            <div data-clinic-day="Thu"><dt>Thursday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
+            <div data-clinic-day="Fri"><dt>Friday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
+            <div data-clinic-day="Sat"><dt>Saturday</dt><dd>By appointment</dd></div>
+            <div data-clinic-day="Sun" class="contact-hours-closed"><dt>Sunday</dt><dd>Closed</dd></div>
           </dl>
         </div>
       </section>

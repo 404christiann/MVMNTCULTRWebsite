@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MVMNT CULTR — Contact page clinic hours card options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#080808; --charcoal:#17191a; --gold:#ffbf00; --oxide:#a12d2b; --paper:#f8f7f2; --muted:#565c5f; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#eceeed; font-family:Montserrat,Arial,sans-serif; line-height:1.6; }
+    h1,h2,h3,p,dl,dt,dd { margin:0; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    button { font:inherit; cursor:pointer; }
+    a { color:inherit; text-decoration:none; }
+    :focus-visible { outline:3px solid #916500; outline-offset:5px; }
+
+    .review { max-width:1200px; margin:auto; padding:26px 32px 22px; }
+    .review-head { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .wordmark { font-size:12px; font-weight:900; }
+    .review-head a { font-size:12px; text-decoration:underline; text-underline-offset:4px; }
+    h1.title { font-size:22px; letter-spacing:-.5px; margin-top:22px; }
+    .review-intro { font-size:13px; color:var(--muted); margin-top:6px; max-width:80ch; }
+    .toolbar { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-top:23px; }
+    .options,.sizes { display:flex; flex-wrap:wrap; gap:7px; }
+    .toolbar button { border:1px solid #bfc4c1; border-radius:8px; padding:11px 14px; min-height:44px; background:transparent; font-size:12px; font-weight:600; color:var(--ink); }
+    .options button[aria-pressed=true] { background:var(--ink); color:white; border-color:var(--ink); }
+    .sizes button { border-color:transparent; }
+    .sizes button[aria-pressed=true] { background:white; border-color:#d4d8d5; }
+    .note { color:var(--muted); font-size:13px; margin-top:16px; max-width:92ch; }
+    main { max-width:1200px; padding:0 32px 40px; margin:auto; }
+    .frame { width:100%; container-type:inline-size; margin:auto; background:white; border:1px solid #d5d9d6; transition:max-width .2s ease; overflow:hidden; }
+    body.mobile .frame { max-width:390px; }
+    .footnote { text-align:center; color:var(--muted); font-size:12px; margin-top:18px; }
+    @media (max-width:700px) {
+      .review { padding:20px 16px; } h1.title { font-size:19px; }
+      .toolbar { gap:12px; } .options { display:grid; grid-template-columns:1fr 1fr 1fr; width:100%; }
+      .options button { text-align:left; font-size:11px; padding:11px 8px; }
+      main { padding:0 10px 24px; } .note { font-size:12px; }
+    }
+
+    .stage { background: radial-gradient(circle at 18% 20%, rgba(255,191,0,.18), transparent 30%), linear-gradient(135deg,#050505 0%,#151718 58%,#090909 100%); color:var(--paper); padding:56px 40px; }
+    .stage-grid { display:grid; grid-template-columns:1fr .85fr; gap:44px; align-items:start; }
+    .stage-copy .eyebrow { color:var(--gold); font-size:12.5px; font-weight:800; text-transform:uppercase; margin-bottom:14px; display:block; }
+    .stage-copy h2 { font-family:Oswald,sans-serif; font-size:clamp(1.8rem,3cqw,2.4rem); margin-bottom:14px; }
+    .stage-copy p { color:rgba(248,247,242,.72); font-size:14px; max-width:40ch; }
+    .stage-copy .cta { display:inline-flex; margin-top:20px; align-items:center; justify-content:center; min-height:46px; padding:0 22px; border-radius:10px; font-size:13px; font-weight:800; background:var(--gold); color:var(--ink); }
+    @container (max-width:820px) { .stage-grid { grid-template-columns:1fr; } .stage { padding:44px 22px; } }
+
+    /* ===== hours card, colors driven by custom properties per concept ===== */
+    .hcard { border-radius:18px; padding:24px; background:var(--card-bg); border:1px solid var(--card-border); box-shadow:var(--card-shadow); }
+    .hcard-head { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:0 4px 16px; padding-bottom:16px; border-bottom:1px solid var(--card-divider); }
+    .hcard-head h3 { font-size:15px; font-weight:700; color:var(--card-fg); }
+    .hcard-head span { font-size:11px; color:var(--card-muted); }
+    .hlist { margin:0; font-variant-numeric:tabular-nums; }
+    .hlist > div { display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:44px; padding:10px 12px; border-radius:8px; }
+    .hlist dt { font-size:13.5px; font-weight:500; color:var(--card-fg); display:flex; align-items:center; }
+    .hlist dd { font-size:13.5px; font-weight:600; color:var(--card-fg-muted); }
+    .hlist .closed dd { color:var(--card-closed); font-weight:500; }
+    .hlist .today { background:var(--today-bg); }
+    .hlist .today dt, .hlist .today dd { color:var(--today-fg); font-weight:700; }
+    .hlist .today dt::before { content:''; display:inline-block; width:6px; height:6px; margin-right:8px; border-radius:50%; background:var(--today-dot); }
+
+    /* ===== Concept A: charcoal card, gold today-highlight (inverted homepage card) ===== */
+    body.concept-a {
+      --card-bg:var(--charcoal); --card-border:rgba(255,191,0,.18); --card-shadow:0 20px 48px rgba(0,0,0,.35);
+      --card-divider:rgba(255,255,255,.1); --card-fg:var(--paper); --card-muted:rgba(248,247,242,.55);
+      --card-fg-muted:rgba(248,247,242,.72); --card-closed:rgba(248,247,242,.4);
+      --today-bg:rgba(255,191,0,.14); --today-fg:var(--paper); --today-dot:var(--gold);
+    }
+    /* ===== Concept B: glass card, matching the contact form's frosted style ===== */
+    body.concept-b {
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03)); --card-border:rgba(255,255,255,.18); --card-shadow:none;
+      --card-divider:rgba(255,255,255,.14); --card-fg:var(--paper); --card-muted:rgba(248,247,242,.55);
+      --card-fg-muted:rgba(248,247,242,.7); --card-closed:rgba(248,247,242,.38);
+      --today-bg:rgba(255,191,0,.16); --today-fg:var(--paper); --today-dot:var(--gold);
+    }
+    /* ===== Concept C: bordered card, oxide "today" accent ===== */
+    body.concept-c {
+      --card-bg:var(--charcoal); --card-border:rgba(255,255,255,.12); --card-shadow:0 20px 48px rgba(0,0,0,.35);
+      --card-divider:rgba(255,255,255,.1); --card-fg:var(--paper); --card-muted:rgba(248,247,242,.55);
+      --card-fg-muted:rgba(248,247,242,.72); --card-closed:rgba(248,247,242,.4);
+      --today-bg:rgba(161,45,43,.24); --today-fg:var(--paper); --today-dot:#e2554f;
+    }
+  </style>
+</head>
+<body class="mobile concept-a">
+  <header class="review">
+    <div class="review-head"><div class="wordmark">MVMNT CULTR</div><a href="http://localhost:4181/contact/">Current contact page</a></div>
+    <h1 class="title">Contact page &mdash; clinic hours card</h1>
+    <p class="review-intro">Bringing the Contact page's hours block up to the same card treatment Home's "Clinic hours" section has &mdash; a proper elevated card with a header row, all seven days, a closed-day style, and a "today" highlight &mdash; but color coded for Contact's black background instead of Home's white one. Three looks before we implement.</p>
+    <div class="toolbar">
+      <div class="options" role="group" aria-label="Concept">
+        <button type="button" aria-pressed="true" data-concept="a">A. Charcoal card, gold today</button>
+        <button type="button" aria-pressed="false" data-concept="b">B. Glass card (matches form)</button>
+        <button type="button" aria-pressed="false" data-concept="c">C. Oxide "today" accent</button>
+      </div>
+      <div class="sizes" role="group" aria-label="Preview width"><button type="button" aria-pressed="true" data-size="mobile">Mobile</button><button type="button" aria-pressed="false" data-size="desktop">Desktop</button></div>
+    </div>
+    <p class="note" id="design-note">Charcoal card sitting on the dark page, thin gold-tinted border, and today's row (Wednesday, shown as the example) gets a translucent gold wash with a gold dot &mdash; the direct dark-mode equivalent of Home's pale-gold highlight.</p>
+  </header>
+  <main>
+    <div class="frame">
+      <section class="stage">
+        <div class="stage-grid">
+          <div class="stage-copy">
+            <span class="eyebrow">Appointments</span>
+            <h2>Book directly through Jane.</h2>
+            <p>Existing and new clients can use Kyle&rsquo;s booking system for appointment availability, intake, and documentation.</p>
+            <a class="cta" href="#">Book Now</a>
+          </div>
+          <div class="hcard">
+            <div class="hcard-head"><h3>This week</h3><span>Pacific time</span></div>
+            <dl class="hlist">
+              <div><dt>Monday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
+              <div><dt>Tuesday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
+              <div class="today"><dt>Wednesday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
+              <div><dt>Thursday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
+              <div><dt>Friday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
+              <div><dt>Saturday</dt><dd>By appointment</dd></div>
+              <div class="closed"><dt>Sunday</dt><dd>Closed</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+    </div>
+    <p class="footnote">Design exploration only. "Wednesday" stands in for whichever day is actually today &mdash; the live site already highlights the current day automatically on Home; this brings that same behavior to Contact.</p>
+  </main>
+  <script>
+    const notes = {
+      a: 'Charcoal card sitting on the dark page, thin gold-tinted border, and today’s row (Wednesday, shown as the example) gets a translucent gold wash with a gold dot — the direct dark-mode equivalent of Home’s pale-gold highlight.',
+      b: 'Glass card: same frosted, translucent-white treatment the contact form already uses on this page, so the hours card reads as part of the same family instead of a new card style. Today still gets a gold wash and dot for a clear, consistent "you are here" cue.',
+      c: 'Bordered card with a plain neutral frame, but today’s row uses the site’s oxide red instead of gold — a bolder, more distinctive "today" cue that reserves gold purely for buttons, and gives the Contact page a little of its own visual identity.'
+    };
+    const concepts = [...document.querySelectorAll('[data-concept]')];
+    function showConcept(id) {
+      if (!Object.hasOwn(notes, id)) id = 'a';
+      concepts.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.concept === id)));
+      document.body.className = document.body.className.replace(/\bconcept-\S+/g, '').trim();
+      document.body.classList.add('concept-' + id);
+      document.getElementById('design-note').textContent = notes[id];
+    }
+    concepts.forEach(button => button.addEventListener('click', () => {
+      showConcept(button.dataset.concept);
+      history.replaceState(null, '', '#' + button.dataset.concept);
+    }));
+    showConcept(location.hash.slice(1) || 'a');
+    window.addEventListener('hashchange', () => showConcept(location.hash.slice(1)));
+    document.querySelectorAll('[data-size]').forEach(button => button.addEventListener('click', () => {
+      document.body.classList.toggle('mobile', button.dataset.size === 'mobile');
+      document.querySelectorAll('[data-size]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    }));
+  </script>
+</body>
+</html>

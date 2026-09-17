@@ -265,7 +265,7 @@ footer {
 
   .site-header.is-scrolled {
     top: 14px;
-    width: 504px;
+    width: 474px;
     min-height: 52px;
   }
 
@@ -278,9 +278,10 @@ footer {
   .site-header.is-scrolled .brand span { font-size: 13px; }
 
   .site-header.is-scrolled .desktop-nav-links {
-    left: 154px;
-    width: 231px;
-    padding: 0 10px;
+    left: 172px;
+    width: 192px;
+    padding-left: 20px;
+    padding-right: 6px;
     color: #aaa;
   }
 
@@ -295,14 +296,14 @@ footer {
   }
 
   .site-header.is-scrolled .desktop-nav > .book-button {
-    top: 8px;
-    right: 8px;
-    width: 104px;
-    height: 36px;
-    min-height: 36px;
+    top: 9px;
+    right: 16px;
+    width: 90px;
+    height: 33px;
+    min-height: 33px;
     border-radius: 9px;
-    padding-inline: 10px;
-    font-size: 12px;
+    padding-inline: 8px;
+    font-size: 11px;
   }
 }
 
@@ -901,9 +902,13 @@ h3 {
   .sports-support-section { padding-block: 36px; }
   .sports-support-section h2 { font-size: 38px; }
   .sports-support-section .eyebrow { font-size: 12px; margin-bottom: 14px; }
-  .sports-support-services { grid-template-columns: 1fr; gap: 19px; }
-  .sports-support-services article { border-top: 1px solid #d6d9d5; padding-top: 17px; }
-  .sports-support-services p { margin-top: 6px; }
+  .sports-support-services { gap: 22px 16px; }
+  .sports-support-services article { padding-top: 15px; }
+  .sports-support-services h3 { font-size: 15px; }
+  .sports-support-services p { margin-top: 6px; font-size: 13px; }
+}
+@media (max-width: 420px) {
+  .sports-support-services { grid-template-columns: 1fr; gap: 18px; }
 }
 
 .bio-copy p,
@@ -958,11 +963,11 @@ h3 {
 .service-card {
   min-width: 0;
   padding: clamp(24px, 2.5vw, 32px);
-  color: var(--ink);
-  background: #f3f4f1;
-  border: 1px solid #d8dcd7;
+  color: #fff;
+  background: var(--charcoal);
+  border: 1px solid rgba(255, 191, 0, 0.22);
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(8, 8, 8, 0.06);
+  box-shadow: 0 10px 26px rgba(8, 8, 8, 0.16);
 }
 .service-card-icon {
   display: grid;
@@ -971,9 +976,9 @@ h3 {
   height: 50px;
   margin-bottom: 24px;
   border-radius: 50%;
-  border: 1px solid rgba(181, 134, 0, 0.18);
-  background: #fff3cc;
-  color: #896600;
+  border: 1px solid transparent;
+  background: var(--gold);
+  color: var(--ink);
 }
 .service-card-icon svg { width: 24px; height: 24px; }
 .services-list h3 {
@@ -987,7 +992,7 @@ h3 {
 .services-list p {
   max-width: 54ch;
   margin-bottom: 0;
-  color: inherit;
+  color: rgba(248, 247, 242, 0.72);
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -1009,15 +1014,15 @@ h3 {
   min-height: 48px;
   padding: 12px 20px;
   border-radius: 28px;
-  background: var(--ink);
-  color: #ffffff;
+  background: var(--gold);
+  color: var(--ink);
   font-size: .875rem;
   font-weight: 700;
   text-align: center;
 }
-.services-book > span { color: var(--gold); font-size: 24px; line-height: 1; }
-.services-book:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; }
-@media (hover: hover) { .services-book:hover { background: #2a2a2a; } }
+.services-book > span { color: var(--ink); font-size: 24px; line-height: 1; }
+.services-book:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+@media (hover: hover) { .services-book:hover { background: #edb200; } }
 
 @media (min-width: 761px) {
   .service-card:first-child {
@@ -1026,6 +1031,7 @@ h3 {
     border-color: rgba(255,230,157,.86);
     box-shadow: inset 0 1px 0 rgba(255,255,255,.66), inset 0 -1px 0 rgba(136,88,0,.20), 0 10px 24px rgba(8,8,8,.13);
   }
+  .service-card:first-child p { color: rgba(8, 8, 8, 0.72); }
   .service-card:first-child .service-card-icon { background: var(--ink); color: var(--gold); }
 }
 
@@ -1106,6 +1112,7 @@ h3 {
     border-color: rgba(255,230,157,.86);
     box-shadow: inset 0 1px 0 rgba(255,255,255,.66), inset 0 -1px 0 rgba(136,88,0,.20), 0 10px 24px rgba(8,8,8,.13);
   }
+  .services-accordion-ready .service-card.is-open p { color: rgba(8, 8, 8, 0.72); }
 }
 
 .logo-carousel-section {
@@ -1685,25 +1692,25 @@ h3 {
 
 .about-profile-section {
   display: grid;
-  min-height: 100svh;
-  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(36px, 6vw, 76px);
+  grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 56px);
   align-items: center;
   background:
     radial-gradient(circle at 18% 32%, rgba(255, 191, 0, 0.2), transparent 28%),
     linear-gradient(135deg, #050505 0%, #151718 58%, #090909 100%);
-  padding: clamp(118px, 15vw, 154px) max(20px, calc((100vw - var(--max)) / 2)) clamp(42px, 5vw, 68px);
+  padding: clamp(118px, 15vw, 150px) max(20px, calc((100vw - var(--max)) / 2)) clamp(56px, 7vw, 84px);
 }
 
 .about-portrait {
   position: relative;
   overflow: hidden;
   align-self: center;
-  width: min(100%, 620px);
+  width: min(100%, 380px);
   margin: 0;
+  border: 1px solid rgba(255, 191, 0, 0.22);
   border-radius: var(--radius-md);
   background: #111;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 .about-portrait img {
@@ -1715,20 +1722,19 @@ h3 {
 }
 
 .about-profile-copy {
-  max-width: 780px;
+  max-width: 640px;
 }
 
 .about-profile-copy h1 {
-  max-width: 840px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: var(--paper);
-  font-size: clamp(3rem, 6vw, 6.1rem);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
 }
 
 .about-profile-copy p:not(.eyebrow) {
-  max-width: 760px;
+  max-width: 600px;
   color: rgba(248, 247, 242, 0.76);
-  font-size: clamp(1.02rem, 1.55vw, 1.18rem);
+  font-size: clamp(0.98rem, 1.3vw, 1.05rem);
 }
 
 .about-actions {
@@ -2046,8 +2052,7 @@ h3 {
 }
 
 .contact-intro p:not(.eyebrow),
-.contact-support-section p,
-.form-note {
+.contact-support-section p {
   color: rgba(248, 247, 242, 0.72);
 }
 
@@ -2069,57 +2074,32 @@ h3 {
   width: max-content;
 }
 
-/* Two columns: name/email, then phone/reason. Message, button, status and
-   note run full width. Five stacked fields read as a long form; paired
-   fields read as a short one. */
+/* Minimal, color-coded-to-brand form: no card, no glass, no glow. Plain
+   fields on the page's own dark background, a quiet hairline per field,
+   and gold reserved for the eyebrow, focus state, and submit button. */
 .contact-form {
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 20px 20px;
-  overflow: hidden;
-  border: 1px solid rgba(248, 247, 242, 0.16);
-  border-radius: var(--radius-lg);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.028));
-  padding: clamp(26px, 4vw, 46px);
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(18px);
-}
-
-/* Gold hairline across the top edge, fading out. Signals where the eye
-   should start without adding another element to the page. */
-.contact-form::before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 1px;
-  content: "";
-  background: linear-gradient(90deg, var(--gold), rgba(255, 191, 0, 0.05) 62%, transparent);
-}
-
-.contact-form > .form-message,
-.contact-form > button,
-.contact-form > .form-status,
-.contact-form > .form-note {
-  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-form label {
   display: grid;
-  gap: 10px;
+  gap: 6px;
   align-content: start;
-  color: rgba(248, 247, 242, 0.62);
-  font-family: var(--font-utility);
-  font-size: 0.7rem;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  transition: color var(--dur-fast) var(--ease);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(248, 247, 242, 0.5);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 
 .contact-form label:focus-within {
+  border-color: var(--gold);
   color: var(--gold);
 }
 
@@ -2127,39 +2107,34 @@ h3 {
 .contact-form select,
 .contact-form textarea {
   width: 100%;
-  border: 1px solid rgba(248, 247, 242, 0.18);
-  border-radius: var(--radius-sm);
-  background: rgba(0, 0, 0, 0.28);
-  min-height: 54px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  min-height: 0;
   color: var(--paper);
   font: inherit;
   font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 400;
   letter-spacing: 0;
-  padding: 15px 18px;
+  padding: 0;
   text-transform: none;
-  transition:
-    border-color var(--dur-fast) var(--ease),
-    background-color var(--dur-fast) var(--ease),
-    box-shadow var(--dur-fast) var(--ease);
-}
-
-.contact-form input:hover,
-.contact-form select:hover,
-.contact-form textarea:hover {
-  border-color: rgba(248, 247, 242, 0.32);
 }
 
 .contact-form textarea {
-  min-height: 168px;
-  resize: vertical;
-  line-height: 1.6;
+  min-height: 96px;
+  resize: none;
+  line-height: 1.5;
+  scrollbar-width: none;
+}
+
+.contact-form textarea::-webkit-scrollbar {
+  display: none;
 }
 
 .contact-form textarea::placeholder {
-  color: rgba(248, 247, 242, 0.34);
-  font-weight: 500;
+  color: rgba(248, 247, 242, 0.28);
+  font-weight: 400;
 }
 
 /* The native select arrow is the one element on this form that still
@@ -2167,20 +2142,17 @@ h3 {
 .contact-form select {
   appearance: none;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23FFBF00' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%23f8f7f2' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='.6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 18px center;
+  background-position: right 2px center;
   background-size: 12px 8px;
-  padding-right: 46px;
+  padding-right: 24px;
 }
 
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
-  border-color: var(--gold);
-  background-color: rgba(0, 0, 0, 0.42);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 191, 0, 0.16);
 }
 
 .contact-form option {
@@ -2189,32 +2161,27 @@ h3 {
 }
 
 .contact-form button {
-  min-height: 60px;
-  margin-top: 6px;
+  min-height: 54px;
+  margin-top: 36px;
   cursor: pointer;
   border: 0;
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   background: var(--gold);
   color: var(--ink);
-  font-family: var(--font-utility);
-  font-size: 0.94rem;
-  font-weight: 950;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  transition:
-    transform var(--dur-fast) var(--ease),
-    box-shadow var(--dur-fast) var(--ease),
-    filter var(--dur-fast) var(--ease);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: filter var(--dur-fast) var(--ease);
 }
 
 .contact-form button:hover:not([disabled]) {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-gold);
   filter: brightness(1.06);
 }
 
 .contact-form button:active:not([disabled]) {
-  transform: translateY(0);
+  filter: brightness(0.97);
 }
 
 .contact-form .form-botcheck {
@@ -2231,6 +2198,15 @@ h3 {
 .contact-form button[disabled] {
   cursor: progress;
   opacity: 0.68;
+}
+
+.contact-form .form-status {
+  margin-top: 20px;
+}
+
+.contact-form .form-note {
+  margin-top: 20px;
+  color: rgba(248, 247, 242, 0.4);
 }
 
 .form-status {
@@ -2285,21 +2261,48 @@ h3 {
 }
 
 .contact-hours {
-  border: 1px solid rgba(248, 247, 242, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-md);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
   padding: 24px;
 }
 
-.contact-hours dl {
-  display: grid;
+.contact-hours-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 16px;
-  margin: 0;
+  margin: 0 4px 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.contact-hours div {
-  display: grid;
-  grid-template-columns: 100px 1fr;
+.contact-hours-heading h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.contact-hours-heading span {
+  color: rgba(248, 247, 242, 0.55);
+  font-size: 11px;
+}
+
+.contact-hours dl {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.contact-hours dl > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 16px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 8px;
 }
 
 .contact-hours dt,
@@ -2308,12 +2311,34 @@ h3 {
 }
 
 .contact-hours dt {
-  color: var(--gold);
-  font-weight: 900;
+  font-size: 13.5px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
 }
 
 .contact-hours dd {
-  color: rgba(248, 247, 242, 0.72);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(248, 247, 242, 0.7);
+}
+
+.contact-hours .contact-hours-closed dd { color: rgba(248, 247, 242, 0.38); font-weight: 500; }
+.contact-hours .is-today { background: rgba(255, 191, 0, 0.16); }
+.contact-hours .is-today dt,
+.contact-hours .is-today dd {
+  color: var(--paper);
+  font-weight: 700;
+}
+
+.contact-hours .is-today dt::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--gold);
 }
 
 .contact-detail-panel {
@@ -2618,16 +2643,26 @@ footer {
   }
 
   .about-profile-section {
-    min-height: auto;
     padding-top: 112px;
+    text-align: center;
+  }
+
+  .about-profile-copy {
+    margin: 0 auto;
   }
 
   .about-portrait {
     align-self: center;
+    width: min(100%, 320px);
+    margin: 0 auto;
   }
 
   .about-portrait img {
-    aspect-ratio: 5 / 4;
+    aspect-ratio: 4 / 5;
+  }
+
+  .about-actions {
+    justify-content: center;
   }
 
   .about-proof-row div + div {
@@ -2683,11 +2718,11 @@ footer {
   }
 
   .about-profile-copy h1 {
-    font-size: 2.85rem;
+    font-size: 2rem;
   }
 
   .about-portrait {
-    width: 100%;
+    width: min(100%, 240px);
   }
 
   .about-portrait img {
@@ -2710,30 +2745,11 @@ footer {
     font-size: 2.85rem;
   }
 
-  .contact-form {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 22px;
-  }
 
-  .contact-form input,
-  .contact-form select,
-  .contact-form textarea {
-    min-height: 50px;
-  }
-
-  .contact-form textarea {
-    min-height: 140px;
-  }
-
-  .contact-form button {
-    min-height: 54px;
-  }
-
-  .contact-hours div {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
+  .contact-hours { padding: 18px 12px; }
+  .contact-hours-heading { margin: 0 12px 10px; padding-bottom: 14px; }
+  .contact-hours dl > div { padding: 10px 12px; }
+  .contact-hours dt, .contact-hours dd { font-size: 12.5px; }
 
   .logo-carousel-head > p {
     font-size: 0.95rem;
