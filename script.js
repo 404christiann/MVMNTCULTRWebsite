@@ -1,24 +1,66 @@
 const header = document.querySelector(".site-header");
 const mobileMenu = document.querySelector(".mobile-menu");
+const mobileNavigation = window.matchMedia("(max-width: 860px)");
+let desktopNavCompact = false;
 
 function updateHeaderState() {
   if (!header) return;
-  header.classList.toggle("is-scrolled", window.scrollY > 12);
+  // Hysteresis keeps the desktop transition steady near the scroll threshold.
+  desktopNavCompact = window.scrollY > (desktopNavCompact ? 70 : 80);
+  header.classList.toggle("is-scrolled", mobileNavigation.matches
+    ? window.scrollY > 12
+    : desktopNavCompact);
 }
 
 updateHeaderState();
 window.addEventListener("scroll", updateHeaderState, { passive: true });
+mobileNavigation.addEventListener("change", () => {
+  if (!mobileNavigation.matches && mobileMenu) mobileMenu.open = false;
+  updateHeaderState();
+});
 
 if (header && mobileMenu) {
-  mobileMenu.addEventListener("toggle", () => {
-    header.classList.toggle("menu-is-open", mobileMenu.open);
-  });
+  const toggle = mobileMenu.querySelector("summary");
+  let previousOverflow = null;
 
+  const syncMobileMenu = () => {
+    const open = mobileMenu.open;
+    header.classList.toggle("menu-is-open", open);
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (open && previousOverflow === null) {
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+    } else if (!open && previousOverflow !== null) {
+      document.body.style.overflow = previousOverflow;
+      previousOverflow = null;
+    }
+  };
+
+  mobileMenu.addEventListener("toggle", syncMobileMenu);
   mobileMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       mobileMenu.open = false;
-      header.classList.remove("menu-is-open");
+      syncMobileMenu();
     });
+  });
+
+  mobileMenu.addEventListener("keydown", (event) => {
+    if (!mobileMenu.open) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      mobileMenu.open = false;
+      syncMobileMenu();
+      toggle.focus({ preventScroll: true });
+    } else if (event.key === "Tab") {
+      const lastLink = mobileMenu.querySelector("a:last-child");
+      if (event.shiftKey && document.activeElement === toggle) {
+        event.preventDefault();
+        lastLink.focus();
+      } else if (!event.shiftKey && document.activeElement === lastLink) {
+        event.preventDefault();
+        toggle.focus();
+      }
+    }
   });
 }
 
@@ -89,6 +131,102 @@ if (contactForm) {
   });
 }
 
+const methodTitle = document.querySelector(".method-heading h2");
+
+if (methodTitle && "IntersectionObserver" in window) {
+  const methodMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const finishMethodSweep = () => methodTitle.classList.remove("is-sweeping");
+  const methodObserver = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    methodObserver.disconnect();
+    if (!methodMotion.matches) methodTitle.classList.add("is-sweeping");
+  }, { threshold: 0.5, rootMargin: "0px 0px -12% 0px" });
+
+  methodTitle.addEventListener("animationend", finishMethodSweep);
+  methodTitle.addEventListener("animationcancel", finishMethodSweep);
+  methodMotion.addEventListener("change", (event) => {
+    if (event.matches) finishMethodSweep();
+  });
+  // Wait for the display font so the sweep crosses the final letter shapes.
+  document.fonts.ready.then(() => methodObserver.observe(methodTitle));
+}
+
+const careAccordion = document.querySelector(".care-accordion");
+
+if (careAccordion) {
+  const rows = Array.from(careAccordion.querySelectorAll(".care-row"));
+
+  const setOpenRow = (target) => {
+    rows.forEach((row) => {
+      const open = row === target;
+      row.classList.toggle("is-open", open);
+      row.querySelector(".care-row-trigger").setAttribute("aria-expanded", String(open));
+      row.querySelector(".care-row-panel").inert = !open;
+    });
+  };
+
+  rows.forEach((row) => {
+    row.querySelector(".care-row-trigger").addEventListener("click", () => {
+      setOpenRow(row.classList.contains("is-open") ? null : row);
+    });
+  });
+}
+
+const servicesSection = document.querySelector(".services-section");
+
+if (servicesSection) {
+  const cards = Array.from(servicesSection.querySelectorAll(".service-card"));
+  const mobileServices = window.matchMedia("(max-width: 760px)");
+  let openCard = cards[0];
+
+  // One shared set of content becomes an accordion on phones and a full grid on desktop.
+  const updateServices = () => {
+    cards.forEach((card) => {
+      const open = card === openCard;
+      card.classList.toggle("is-open", open);
+      card.querySelector(".service-trigger").setAttribute("aria-expanded", String(open));
+      card.querySelector(".service-body").hidden = mobileServices.matches && !open;
+    });
+    window.ScrollTrigger?.refresh();
+  };
+
+  cards.forEach((card) => {
+    card.querySelector(".service-trigger").addEventListener("click", () => {
+      if (!mobileServices.matches) return;
+      openCard = card === openCard ? null : card;
+      updateServices();
+    });
+  });
+
+  servicesSection.classList.add("services-accordion-ready");
+  mobileServices.addEventListener("change", updateServices);
+  updateServices();
+}
+
+const clinicHourRows = document.querySelectorAll("[data-clinic-day]");
+
+if (clinicHourRows.length) {
+  // Clinic hours follow Arcadia's date, even when the visitor is in another time zone.
+  const clinicDayFormatter = new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    timeZone: "America/Los_Angeles"
+  });
+  const updateClinicDay = () => {
+    const today = clinicDayFormatter.format(new Date());
+    clinicHourRows.forEach((row) => {
+      const isToday = row.dataset.clinicDay === today;
+      row.classList.toggle("is-today", isToday);
+      if (isToday) row.setAttribute("aria-current", "date");
+      else row.removeAttribute("aria-current");
+    });
+  };
+  updateClinicDay();
+  window.setInterval(updateClinicDay, 60000);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) updateClinicDay();
+  });
+}
+
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const gsapReady = window.gsap && !prefersReducedMotion;
 
@@ -100,10 +238,10 @@ if (gsapReady) {
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  gsap.set(".site-header", { y: -18, autoAlpha: 0 });
+  gsap.set(".site-header", { autoAlpha: 0 });
   gsap.to(".site-header", {
-    y: 0,
     autoAlpha: 1,
+    clearProps: "opacity,visibility",
     duration: 0.7,
     ease: "power3.out"
   });
@@ -139,16 +277,17 @@ if (gsapReady) {
   }
 
   if (ScrollTrigger) {
+    // Keep compact social rows visible: near the footer, they may never reach
+    // the reveal threshold on taller screens.
     const revealGroups = [
-      ".section-heading",
+      ".section-heading:not(.method-heading)",
       ".sports-support-section > *",
       ".logo-carousel-head",
       ".services-heading",
       ".home-hours-section > *",
       ".consulting-section > *",
-      ".about-social-row > *",
       ".location-copy > *",
-      ".location-map",
+      ".location-media",
       ".contact-support-section > *"
     ];
 
@@ -169,10 +308,8 @@ if (gsapReady) {
     });
 
     [
-      ".care-grid article",
-      ".services-list article",
-      ".about-social-links a",
-      ".home-hours-list div"
+      ".care-row",
+      ".services-list article"
     ].forEach((selector) => {
       const items = document.querySelectorAll(selector);
       if (!items.length) return;

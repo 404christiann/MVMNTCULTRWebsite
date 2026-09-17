@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <base href="/">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -14,9 +15,11 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=method-sweep-1" />
+    <link rel="stylesheet" href="styles.css?v=social-inline-r2" />
     <link rel="stylesheet" href="assets/logo-carousel.css?v=continuous-1" />
-  </head>
+  <style>html.review-section{scroll-behavior:auto}html.review-section body{background:white}html.review-section .site-header,html.review-section footer,html.review-section main>section:not(#proof){display:none}html.review-section #proof{padding:44px 20px 32px}html.review-section #proof h2{opacity:1!important;transform:none!important}</style>
+<script>if(new URLSearchParams(location.search).has("section"))document.documentElement.classList.add("review-section");</script>
+</head>
   <body>
     <header class="site-header" aria-label="Main navigation">
       <a class="brand" href="/" aria-label="MVMNT CULTR home">
@@ -24,13 +27,11 @@
         <span>MVMNT CULTR</span>
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <div class="desktop-nav-links">
-          <a aria-current="page" href="/">Home</a>
-          <a href="/about/">About</a>
-          <a href="/contact/">Contact</a>
-        </div>
-        <a class="book-button" href="https://movementprescribed.janeapp.com/">Book Now</a>
+        <a aria-current="page" href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
       </nav>
+      <a class="book-button" href="https://movementprescribed.janeapp.com/">Book Now</a>
       <details class="mobile-menu">
         <summary class="menu-toggle" aria-label="Open menu">
           <span class="sr-only">Menu</span>
@@ -65,74 +66,126 @@
         </div>
       </section>
 
-      <section class="section approach approach--columns" id="approach" aria-labelledby="approach-title">
-        <div class="section-heading method-heading">
-          <h2 id="approach-title">The MVMNT CULTR method</h2>
+      <section class="section approach" id="approach" aria-labelledby="approach-title">
+        <div class="section-heading">
+          <p class="eyebrow">The MVMNT CULTR method</p>
+          <h2 id="approach-title">A clinic experience that connects wellness, rehab, and performance.</h2>
         </div>
-        <div class="method-columns">
-          <article class="method-column">
-            <span class="method-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2.5 12h4l2 6 4-13 2.5 7h6.5"></path>
-              </svg>
-            </span>
-            <h3>Wellness</h3>
-            <p class="method-copy"><strong class="method-summary">Support daily movement</strong> Care for the joints, muscles, and habits that shape how you move through work, training, family, and everyday life.</p>
-          </article>
-          <article class="method-column">
-            <span class="method-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="6" y1="12" x2="18" y2="12"></line>
-                <line x1="4" y1="8" x2="4" y2="16"></line>
-                <line x1="20" y1="8" x2="20" y2="16"></line>
-                <line x1="7" y1="9" x2="7" y2="15"></line>
-                <line x1="17" y1="9" x2="17" y2="15"></line>
-              </svg>
-            </span>
-            <h3>Rehab</h3>
-            <p class="method-copy"><strong class="method-summary">Build confidence back</strong> One-on-one athletic rehab focused on movement assessments, recovery, performance testing, and a plan that fits the person.</p>
-          </article>
-          <article class="method-column">
-            <span class="method-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3 17 9 11 13 15 21 7"></polyline>
-                <polyline points="14 7 21 7 21 14"></polyline>
-              </svg>
-            </span>
-            <h3>Performance</h3>
-            <p class="method-copy"><strong class="method-summary">Move from pain to output</strong> A performance-based approach that evolves from the initial plan of care into stronger, more resilient movement.</p>
-          </article>
+        <div class="care-accordion">
+          <div class="care-row is-open">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-wellness"
+                aria-expanded="true" aria-controls="care-panel-wellness">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 12h4l2 6 4-13 2.5 7h6.5"></path>
+                  </svg>
+                </span>
+                <span class="care-row-label">Wellness</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-wellness" role="region"
+              aria-labelledby="care-trigger-wellness">
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Support daily movement</strong>
+                  Care for the joints, muscles, and habits that shape how you move
+                  through work, training, family, and everyday life.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="care-row">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-rehab"
+                aria-expanded="false" aria-controls="care-panel-rehab">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="6" y1="12" x2="18" y2="12"></line>
+                    <line x1="4" y1="8" x2="4" y2="16"></line>
+                    <line x1="20" y1="8" x2="20" y2="16"></line>
+                    <line x1="7" y1="9" x2="7" y2="15"></line>
+                    <line x1="17" y1="9" x2="17" y2="15"></line>
+                  </svg>
+                </span>
+                <span class="care-row-label">Rehab</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-rehab" role="region"
+              aria-labelledby="care-trigger-rehab" inert>
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Build confidence back</strong>
+                  One-on-one athletic rehab focused on movement assessments, recovery,
+                  performance testing, and a plan that fits the person.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="care-row">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-performance"
+                aria-expanded="false" aria-controls="care-panel-performance">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 17 9 11 13 15 21 7"></polyline>
+                    <polyline points="14 7 21 7 21 14"></polyline>
+                  </svg>
+                </span>
+                <span class="care-row-label">Performance</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-performance" role="region"
+              aria-labelledby="care-trigger-performance" inert>
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Move from pain to output</strong>
+                  A performance-based approach that evolves from the initial plan of
+                  care into stronger, more resilient movement.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="team-support" class="sports-support-section" aria-labelledby="sports-support-title">
-        <div class="sports-support-intro">
+      <section class="sports-support-section" aria-labelledby="sports-support-title">
+        <div>
           <p class="eyebrow">Team consulting / coverage</p>
-          <h2 id="sports-support-title">Better support.<br />All season.</h2>
+          <h2 id="sports-support-title">Are your athletes getting optimal care all season?</h2>
+        </div>
+        <div class="sports-support-copy">
           <p>
-            Flexible care for professional and amateur sports organizations,
-            tailored to your athletes and the people supporting them.
+            MVMNT CULTR partners with professional and amateur sports organizations
+            to help build healthier, stronger athletes physically and mentally.
           </p>
+          <p>
+            Flexible solutions can be customized for consulting, event coverage,
+            seasonal medical coverage, or support alongside existing medical and
+            performance staff.
+          </p>
+          <a class="primary-link" href="/contact/">Contact Me</a>
         </div>
-        <div class="sports-support-services">
-          <article>
-            <h3>Team consulting</h3>
-            <p>Collaborative guidance for your organization’s athlete care and performance needs.</p>
-          </article>
-          <article>
-            <h3>Event coverage</h3>
-            <p>Care and support tailored to your sporting event.</p>
-          </article>
-          <article>
-            <h3>Seasonal medical coverage</h3>
-            <p>Medical support built around your team’s season.</p>
-          </article>
-          <article>
-            <h3>Support for your staff</h3>
-            <p>Work alongside your existing medical and performance team.</p>
-          </article>
-        </div>
-        <a class="primary-link sports-support-action" href="/contact/">Let’s talk about your team</a>
       </section>
 
       <section class="logo-carousel-section" id="proof" aria-labelledby="proof-title">
@@ -192,7 +245,7 @@
             </div>
           </article>
           <article class="service-card">
-            <span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="15.6" cy="4.4" r="2.5"/><path d="M13.5 7.5c-2.6-.8-4.5.2-5.3 2.6-.9 2.7-.2 5.4 2 7.2l2 1.6M12.1 18.9H7.3c-1.4 0-2.4 1-2.4 2.3M10.9 11.1c.7 2.2 2 3.3 4.2 3.4l-.7 6.5"/><path d="m18 12.3 2-1.2m-1.5 3.3h2.7m-3.2 2 2 1.2"/></svg></span>
+            <span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3c7 2-1 6 6 9s-1 6 0 9"/><path d="m8 6 7 1M8 10l8 2M10 15l7 2M10 19l6 1"/></svg></span>
             <div class="service-card-copy">
               <h3>
                 <span class="service-title">Chiropractic care</span>
@@ -251,89 +304,64 @@
         <a class="services-book" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book an appointment <span aria-hidden="true">›</span></a>
       </section>
 
-      <section id="clinic-hours" class="home-hours-section" aria-labelledby="home-hours-title">
-        <div class="home-hours-intro">
-          <h2 id="home-hours-title">Clinic hours</h2>
-          <p class="home-hours-copy">Make time for better movement. Find a visit that fits your week.</p>
-          <a class="home-hours-book home-hours-book-desktop" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book now</a>
-          <p class="home-hours-location">26 La Porte St, Suite A<br>Arcadia, CA</p>
-        </div>
-        <div class="home-hours-card">
-          <div class="home-hours-card-heading">
-            <h3>This week</h3>
-            <span>Pacific time</span>
+      <section class="home-hours-section" aria-labelledby="home-hours-title">
+        <h2 id="home-hours-title">Clinic hours</h2>
+        <dl class="home-hours-list" aria-label="Clinic hours">
+          <div>
+            <dt>Mon-Fri</dt>
+            <dd>09:00 am - 07:00 pm</dd>
           </div>
-          <dl class="home-hours-list" aria-label="Weekly clinic hours, Pacific time">
-            <div data-clinic-day="Mon"><dt>Monday</dt><dd>9:00 am – 7:00 pm</dd></div>
-            <div data-clinic-day="Tue"><dt>Tuesday</dt><dd>9:00 am – 7:00 pm</dd></div>
-            <div data-clinic-day="Wed"><dt>Wednesday</dt><dd>9:00 am – 7:00 pm</dd></div>
-            <div data-clinic-day="Thu"><dt>Thursday</dt><dd>9:00 am – 7:00 pm</dd></div>
-            <div data-clinic-day="Fri"><dt>Friday</dt><dd>9:00 am – 7:00 pm</dd></div>
-            <div data-clinic-day="Sat"><dt>Saturday</dt><dd>By appointment</dd></div>
-            <div data-clinic-day="Sun" class="home-hours-closed"><dt>Sunday</dt><dd>Closed</dd></div>
-          </dl>
-          <a class="home-hours-book home-hours-book-mobile" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book now</a>
-        </div>
+          <div>
+            <dt>Saturday</dt>
+            <dd>By appointment</dd>
+          </div>
+          <div>
+            <dt>Sunday</dt>
+            <dd>Closed</dd>
+          </div>
+        </dl>
       </section>
 
-      <section class="consulting-section" id="member-support" aria-labelledby="consulting-title">
-        <div class="consulting-intro">
+      <section class="consulting-section" aria-labelledby="consulting-title">
+        <div>
           <h2 id="consulting-title">Performance insight beyond the treatment room.</h2>
-          <p>All members receive strategies to stay strong outside the clinic.</p>
         </div>
-        <div class="consulting-benefits">
-          <article class="consulting-benefit">
-            <span class="consulting-label">For every member</span>
-            <div class="consulting-benefit-heading">
-              <span class="consulting-icon" aria-hidden="true">
-                <svg viewBox="0 0 28 28"><path d="M3 15h5l3-9 6 17 3-8h5" /></svg>
-              </span>
-              <h3>Stay strong outside the clinic.</h3>
-            </div>
-          </article>
-          <article class="consulting-benefit consulting-benefit-dark">
-            <span class="consulting-label">With a movement plan</span>
-            <div class="consulting-benefit-heading">
-              <span class="consulting-icon" aria-hidden="true">
-                <svg viewBox="0 0 28 28">
-                  <path d="M23 17a3 3 0 0 1-3 3h-8l-6 4v-5a3 3 0 0 1-2-3V7a3 3 0 0 1 3-3h13a3 3 0 0 1 3 3z" />
-                  <path d="M9 10h9M9 14h6" />
-                </svg>
-              </span>
-              <h3>Stay connected to Dr. Simi.</h3>
-            </div>
-            <p>Ongoing access for health and wellness updates.</p>
-            <p class="consulting-note">This can include professional second opinions.</p>
-          </article>
-        </div>
+        <p>
+          All members receive strategies to stay strong outside the clinic.
+        </p>
+        <p>
+          Those who invest in their movement plans, have ongoing access to Dr. Simi
+          for health and wellness updates. This can include professional second
+          opinions.
+        </p>
       </section>
 
       <section class="about-social-row" aria-labelledby="home-social-title">
         <div class="about-social-copy">
-          <h2 id="home-social-title">Keep in touch.</h2>
+          <h2 id="home-social-title">Connect with <span>MVMNT CULTR</span></h2>
         </div>
-        <nav class="about-social-links" aria-label="MVMNT CULTR social profiles">
-          <a href="https://www.instagram.com/mvmntcultr/" target="_blank" rel="noopener noreferrer" aria-label="MVMNT CULTR on Instagram (opens in a new tab)">
+        <div class="about-social-links" aria-label="MVMNT CULTR social profiles">
+          <a href="https://www.instagram.com/mvmntcultr/" aria-label="MVMNT CULTR on Instagram">
             <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
               <rect x="4" y="4" width="16" height="16" rx="5"></rect>
               <circle cx="12" cy="12" r="3.5"></circle>
               <circle cx="17" cy="7" r="1"></circle>
             </svg></span>
-            <span class="social-label">Instagram</span>
+            <span class="social-tooltip" aria-hidden="true">Instagram</span>
           </a>
-          <a href="https://www.tiktok.com/@thedrsimi" target="_blank" rel="noopener noreferrer" aria-label="MVMNT CULTR on TikTok (opens in a new tab)">
+          <a href="https://www.tiktok.com/@thedrsimi" aria-label="MVMNT CULTR on TikTok">
             <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M14 4c.4 3 2.1 4.8 5 5v3.2c-1.7 0-3.2-.5-4.7-1.5v5.7c0 3-2.1 5.2-5.1 5.2A5 5 0 0 1 4 16.7c0-3 2.3-5.1 5.5-5.1.4 0 .8 0 1.2.1V15c-.4-.1-.7-.2-1.1-.2-1.4 0-2.3.8-2.3 2 0 1.1.8 1.9 1.9 1.9 1.3 0 2.1-.8 2.1-2.4V4h2.7Z"></path>
             </svg></span>
-            <span class="social-label">TikTok</span>
+            <span class="social-tooltip" aria-hidden="true">TikTok</span>
           </a>
-          <a href="https://www.facebook.com/MVMNTCLTR" target="_blank" rel="noopener noreferrer" aria-label="MVMNT CULTR on Facebook (opens in a new tab)">
+          <a href="https://www.facebook.com/MVMNTCLTR" aria-label="MVMNT CULTR on Facebook">
             <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M14 8.2h2.5V4.3c-.5-.1-1.9-.3-3.5-.3-3.5 0-5.8 2.1-5.8 6v3.4H4v4.4h3.2V24H12v-6.2h3.8l.6-4.4H12v-3c0-1.3.4-2.2 2-2.2Z"></path>
             </svg></span>
-            <span class="social-label">Facebook</span>
+            <span class="social-tooltip" aria-hidden="true">Facebook</span>
           </a>
-        </nav>
+        </div>
       </section>
 
     </main>
@@ -345,7 +373,7 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="script.js?v=method-sweep-1"></script>
+    <script src="script.js?v=social-inline-r2"></script>
     <script src="assets/logo-carousel.js?v=continuous-3"></script>
   </body>
 </html>

@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MVMNT CULTR — Clinic hours designs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#080808; --charcoal:#17191a; --paper:#f8f7f2; --gold:#ffbf00; --muted:#626464; --line:#dedfdc; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Montserrat,sans-serif; line-height:1.5; }
+    h1,h2,h3,p,dl,dd { margin:0; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    button { font:inherit; }
+    a { color:inherit; }
+    [hidden] { display:none!important; }
+    a:focus-visible,button:focus-visible,summary:focus-visible { outline:3px solid #ad7a00; outline-offset:5px; }
+    .review { padding:24px max(24px,calc((100vw - 1180px)/2)); background:#fff; border-bottom:1px solid var(--line); }
+    .review-top { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:20px; }
+    .review h1 { font-size:16px; font-weight:700; }
+    .review-top a { font-size:12px; text-underline-offset:4px; }
+    .tabs { display:flex; gap:8px; flex-wrap:wrap; }
+    .tabs button { padding:11px 17px; background:#fff; border:1px solid #d8dad5; border-radius:8px; color:var(--ink); cursor:pointer; font-size:13px; font-weight:600; }
+    .tabs button[aria-selected=true] { color:#fff; border-color:var(--ink); background:var(--ink); }
+    .review-note { margin-top:15px; color:#595b58; font-size:13px; max-width:920px; min-height:40px; }
+    .site-context { padding:20px max(24px,calc((100vw - 1180px)/2)); display:flex; align-items:center; justify-content:space-between; gap:24px; background:#17191a; color:#fff; }
+    .brand { display:flex; align-items:center; gap:10px; font-size:13px; font-weight:900; }
+    .brand img { width:28px; height:32px; object-fit:contain; filter:brightness(0) invert(1); }
+    .context-label { color:#bfc2bd; font-size:11px; }
+    .section { padding:76px max(24px,calc((100vw - 1180px)/2)); }
+    h2 { font-family:Oswald,sans-serif; font-size:clamp(44px,5vw,66px); line-height:1.08; text-transform:uppercase; font-weight:600; letter-spacing:-.025em; }
+    .intro p { color:var(--muted); max-width:32ch; margin-top:22px; font-size:16px; line-height:1.75; }
+    .book { display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:14px 29px; background:var(--gold); color:var(--ink); border-radius:10px; font-size:14px; font-weight:800; text-decoration:none; transition:background 160ms,transform 160ms; }
+    .book:hover { background:#edb200; transform:translateY(-1px); }
+    .location,.intro p.location { color:var(--muted); font-size:12px; line-height:1.7; }
+    .schedule { font-variant-numeric:tabular-nums; }
+    .schedule>div { display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:48px; padding:12px 16px; border-radius:8px; }
+    .schedule dt { font-size:14px; font-weight:500; }
+    .schedule dd { font-size:14px; font-weight:600; text-align:right; }
+    .schedule .is-today { background:#fff0bf; }
+    .schedule .is-today dt,.schedule .is-today dd { font-weight:700; }
+    .day-mark { display:inline-block; width:6px; height:6px; background:currentColor; border-radius:50%; vertical-align:middle; margin-right:8px; }
+    .closed dd { color:#777b76; font-weight:500; }
+    .tz { display:block; font-size:11px; color:var(--muted); }
+    .weekly { display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:center; background:#fff; }
+    .weekly .book { margin-top:28px; }
+    .weekly .location { margin-top:24px; }
+    .weekly-card { padding:24px; border:1px solid #e6e7e2; border-radius:18px; background:#fff; box-shadow:0 14px 48px #08080808; }
+    .schedule-head { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:0 16px 18px; padding-bottom:18px; border-bottom:1px solid #e8e9e5; }
+    .schedule-head h3 { font-size:15px; font-weight:700; }
+    .glass { display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:center; background:radial-gradient(ellipse at 9% 90%,#ffbf0014,transparent 48%),linear-gradient(135deg,#050505,#17191a 68%,#090909); color:var(--paper); }
+    .glass h2 { max-width:8ch; }
+    .glass .intro p { color:#c9cbc7; }
+    .glass .location { color:#c9cbc7; margin-top:26px; }
+    .glass-card { border:1px solid #ffffff35; border-radius:18px; padding:32px; background:linear-gradient(125deg,#ffffff18,#ffffff05 55%,#ffffff0d),#1e20218f; box-shadow:inset 0 1px 0 #ffffff24,0 16px 40px #00000030; backdrop-filter:blur(18px); }
+    .glass-top { padding:0 0 23px; margin-bottom:15px; border-bottom:1px solid #ffffff24; display:flex; justify-content:space-between; gap:16px; align-items:baseline; }
+    .glass-top h3 { font-size:17px; font-weight:600; }
+    .glass .tz { color:#c9cbc7; }
+    .glass .schedule>div { min-height:66px; padding:16px 12px; }
+    .glass .schedule .is-today { background:#ffbf001a; color:#ffda69; }
+    .glass .closed dd { color:#b6b9b4; }
+    .glass .book { display:flex; margin-top:30px; }
+    .card-foot { color:#b6b9b4; font-size:11px; text-align:center; margin-top:13px; }
+    .compact { background:#fff; padding-top:60px; padding-bottom:60px; }
+    .strip { display:grid; grid-template-columns:.85fr 1.15fr auto; align-items:center; gap:46px; }
+    .compact h2 { font-size:48px; }
+    .compact .location { margin-top:14px; }
+    .today-summary { padding-left:34px; border-left:3px solid var(--gold); }
+    .today-day { color:#5c625a; font-size:13px; margin-bottom:8px; }
+    .today-time { font-size:clamp(22px,2.7vw,32px); font-weight:600; letter-spacing:-.04em; line-height:1.25; }
+    .today-summary .tz { margin-top:9px; }
+    .week-disclosure { margin-top:35px; border-top:1px solid var(--line); padding-top:20px; }
+    .week-disclosure summary { cursor:pointer; display:flex; width:fit-content; gap:12px; align-items:center; font-size:13px; font-weight:600; list-style:none; padding:5px 0; }
+    .week-disclosure summary::-webkit-details-marker { display:none; }
+    .week-disclosure summary:after { content:'+'; font-size:22px; line-height:1; font-weight:400; }
+    .week-disclosure[open] summary:after { content:'−'; }
+    .week-disclosure[open] .when-closed,.week-disclosure:not([open]) .when-open { display:none; }
+    .compact-week { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:22px; }
+    .compact-week p { color:var(--muted); font-size:14px; line-height:1.8; max-width:30ch; padding-top:12px; }
+    .compact-week .schedule { max-width:560px; }
+    .after-context { padding:34px max(24px,calc((100vw - 1180px)/2)); border-top:1px solid #e4e5df; color:#696c66; display:flex; gap:32px; align-items:center; justify-content:space-between; }
+    .after-context span { font-size:11px; }
+    .after-context p { font-family:Oswald,sans-serif; font-size:21px; text-transform:uppercase; color:#30332c; }
+    @media(max-width:950px) { .weekly,.glass { gap:40px; grid-template-columns:.9fr 1.1fr; } .section { padding-top:55px; padding-bottom:55px; } .strip { gap:24px; } .compact h2 { font-size:40px; } .glass-card { padding:24px; } }
+    @media(max-width:700px) {
+      .review { padding:20px; } .review-top { align-items:start; gap:12px; } .review h1 { max-width:180px; font-size:14px; } .review-top a { white-space:nowrap; font-size:11px; } .tabs { gap:6px; } .tabs button { padding:10px 11px; font-size:11px; } .review-note { min-height:0; font-size:12px; }
+      .site-context { padding:17px 20px; } .context-label { max-width:110px; text-align:right; line-height:1.4; font-size:10px; } .brand { font-size:11px; } .brand img { width:23px; height:27px; }
+      .section { padding:40px 20px; } h2 { font-size:42px; } .weekly,.glass { display:flex; flex-direction:column; align-items:stretch; gap:30px; } .intro p { margin-top:16px; max-width:36ch; font-size:15px; } .weekly .intro .book { display:none; } .weekly .location { margin-top:18px; }
+      .weekly-card { padding:18px 12px; } .schedule-head { margin:0 12px 10px; padding-bottom:14px; } .schedule>div { padding:12px; } .schedule dt,.schedule dd { font-size:12px; } .weekly .mobile-book { display:flex; margin:20px 10px 3px; } .glass h2 { max-width:none; } .glass-card { padding:24px 18px; } .glass .schedule dt,.glass .schedule dd { font-size:12px; } .glass .location { margin-top:18px; } .glass-top h3 { font-size:15px; }
+      .strip { grid-template-columns:1fr; gap:24px; } .compact h2 { font-size:42px; } .today-summary { padding-left:18px; } .today-time { font-size:30px; } .strip .book { display:flex; } .week-disclosure { margin-top:23px; padding-top:16px; } .compact-week { grid-template-columns:1fr; gap:18px; } .compact-week p { padding-top:0; max-width:none; font-size:12px; } .after-context { padding:26px 20px; align-items:start; flex-direction:column; gap:9px; } .after-context p { font-size:20px; }
+    }
+    @media(min-width:701px) { .mobile-book { display:none; } }
+    @media(prefers-reduced-motion:reduce) { * { transition:none!important; } }
+  </style>
+</head>
+<body>
+  <header class="review">
+    <div class="review-top"><h1>Clinic hours · Design options</h1><a href="../#home-hours-title">Back to homepage</a></div>
+    <div class="tabs" role="tablist" aria-label="Clinic hours designs">
+      <button id="tab-weekly" role="tab" aria-controls="weekly" aria-selected="true" data-design="weekly">1. Weekly schedule</button>
+      <button id="tab-glass" role="tab" aria-controls="glass" aria-selected="false" tabindex="-1" data-design="glass">2. Glass hours card</button>
+      <button id="tab-compact" role="tab" aria-controls="compact" aria-selected="false" tabindex="-1" data-design="compact">3. Today-first strip</button>
+    </div>
+    <p class="review-note" id="review-note" aria-live="polite">Recommended: a light section after the dark services area. All seven days stay visible, with today highlighted in gold. On mobile, Book now sits directly below the schedule.</p>
+  </header>
+  <div class="site-context"><div class="brand"><img src="../assets/images/mark.webp" alt="">MVMNT CULTR</div><span class="context-label">Placement: after Services</span></div>
+  <main>
+    <section id="weekly" class="section weekly" role="tabpanel" aria-labelledby="tab-weekly">
+      <div class="intro"><h2>Clinic hours</h2><p>Make time for better movement. Find a visit that fits your week.</p><a class="book" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book now</a><p class="location">26 La Porte St, Suite A<br>Arcadia, CA</p></div>
+      <div class="weekly-card">
+        <div class="schedule-head"><h3>This week</h3><span class="tz">Pacific time</span></div>
+        <dl class="schedule" aria-label="Weekly clinic hours">
+          <div data-days="Mon"><dt>Monday</dt><dd>9:00 am – 7:00 pm</dd></div>
+          <div data-days="Tue"><dt>Tuesday</dt><dd>9:00 am – 7:00 pm</dd></div>
+          <div data-days="Wed"><dt>Wednesday</dt><dd>9:00 am – 7:00 pm</dd></div>
+          <div data-days="Thu"><dt>Thursday</dt><dd>9:00 am – 7:00 pm</dd></div>
+          <div data-days="Fri"><dt>Friday</dt><dd>9:00 am – 7:00 pm</dd></div>
+          <div data-days="Sat"><dt>Saturday</dt><dd>By appointment</dd></div>
+          <div data-days="Sun" class="closed"><dt>Sunday</dt><dd>Closed</dd></div>
+        </dl>
+        <a class="book mobile-book" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book now</a>
+      </div>
+    </section>
+    <section id="glass" class="section glass" role="tabpanel" aria-labelledby="tab-glass" hidden>
+      <div class="intro"><h2>Clinic hours</h2><p>Your next step toward stronger, more confident movement starts here.</p><p class="location">26 La Porte St, Suite A<br>Arcadia, CA</p></div>
+      <div class="glass-card">
+        <div class="glass-top"><h3>Plan your visit</h3><span class="tz">Pacific time</span></div>
+        <dl class="schedule" aria-label="Clinic hours">
+          <div data-days="Mon Tue Wed Thu Fri"><dt>Monday–Friday</dt><dd>9:00 am – 7:00 pm</dd></div>
+          <div data-days="Sat"><dt>Saturday</dt><dd>By appointment</dd></div>
+          <div data-days="Sun" class="closed"><dt>Sunday</dt><dd>Closed</dd></div>
+        </dl>
+        <a class="book" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book now</a><p class="card-foot">Choose your appointment through Jane.</p>
+      </div>
+    </section>
+    <section id="compact" class="section compact" role="tabpanel" aria-labelledby="tab-compact" hidden>
+      <div class="strip">
+        <div><h2>Clinic hours</h2><p class="location">Arcadia, California</p></div>
+        <div class="today-summary"><p class="today-day" id="today-day">Today's hours</p><p class="today-time" id="today-time">9:00 am – 7:00 pm</p><span class="tz">Pacific time</span></div>
+        <a class="book" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book now</a>
+      </div>
+      <details class="week-disclosure"><summary><span class="when-closed">View weekly hours</span><span class="when-open">Hide weekly hours</span></summary>
+        <div class="compact-week"><p>26 La Porte St, Suite A<br>Arcadia, CA<br>Saturday visits are by appointment.</p>
+          <dl class="schedule" aria-label="Weekly clinic hours">
+            <div data-days="Mon"><dt>Monday</dt><dd>9:00 am – 7:00 pm</dd></div>
+            <div data-days="Tue"><dt>Tuesday</dt><dd>9:00 am – 7:00 pm</dd></div>
+            <div data-days="Wed"><dt>Wednesday</dt><dd>9:00 am – 7:00 pm</dd></div>
+            <div data-days="Thu"><dt>Thursday</dt><dd>9:00 am – 7:00 pm</dd></div>
+            <div data-days="Fri"><dt>Friday</dt><dd>9:00 am – 7:00 pm</dd></div>
+            <div data-days="Sat"><dt>Saturday</dt><dd>By appointment</dd></div>
+            <div data-days="Sun" class="closed"><dt>Sunday</dt><dd>Closed</dd></div>
+          </dl>
+        </div>
+      </details>
+    </section>
+  </main>
+  <div class="after-context"><span>Next on the homepage</span><p>Performance insight beyond the treatment room.</p></div>
+  <script>
+    const notes = {
+      weekly: 'Recommended: a light section after the dark services area. All seven days stay visible, with today highlighted in gold. On mobile, Book now sits directly below the schedule.',
+      glass: 'Continues the services section’s dark glass treatment. Grouped hours make a shorter card, with Book now built into its base. The heading and card stack on mobile.',
+      compact: 'The smallest footprint: today’s hours and Book now come first. Open View weekly hours for the full schedule. On mobile, the button spans the section width.'
+    };
+    const tabs = [...document.querySelectorAll('[role="tab"]')];
+    function choose(name, update = true) {
+      if (!Object.hasOwn(notes, name)) name = 'weekly';
+      tabs.forEach(tab => {
+        const active = tab.dataset.design === name;
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        document.getElementById(tab.dataset.design).hidden = !active;
+      });
+      document.getElementById('review-note').textContent = notes[name];
+      if (update) history.replaceState(null, '', '#' + name);
+    }
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => choose(tab.dataset.design));
+      tab.addEventListener('keydown', event => {
+        const targets = { ArrowRight:(index + 1) % tabs.length, ArrowLeft:(index + tabs.length - 1) % tabs.length, Home:0, End:tabs.length - 1 };
+        if (!(event.key in targets)) return;
+        event.preventDefault();
+        const next = tabs[targets[event.key]];
+        choose(next.dataset.design);
+        next.focus();
+      });
+    });
+    function updateToday() {
+      const now = new Date();
+      const day = new Intl.DateTimeFormat('en-US', { weekday:'short', timeZone:'America/Los_Angeles' }).format(now);
+      const fullDay = new Intl.DateTimeFormat('en-US', { weekday:'long', timeZone:'America/Los_Angeles' }).format(now);
+      document.querySelectorAll('[data-days]').forEach(row => {
+        const today = row.dataset.days.split(' ').includes(day);
+        row.classList.toggle('is-today', today);
+        const label = row.querySelector('dt');
+        if (today) row.setAttribute('aria-current', 'date'); else row.removeAttribute('aria-current');
+        if (today && !label.querySelector('.day-mark')) {
+          const mark = document.createElement('span');
+          mark.className = 'day-mark';
+          mark.setAttribute('aria-hidden', 'true');
+          label.prepend(mark);
+        } else if (!today) label.querySelector('.day-mark')?.remove();
+      });
+      document.getElementById('today-day').textContent = 'Today, ' + fullDay;
+      document.getElementById('today-time').textContent = day === 'Sun' ? 'Closed today' : day === 'Sat' ? 'By appointment' : '9:00 am – 7:00 pm';
+    }
+    choose(location.hash.slice(1), false);
+    window.addEventListener('hashchange', () => choose(location.hash.slice(1), false));
+    updateToday();
+    setInterval(updateToday, 60000);
+  </script>
+</body>
+</html>

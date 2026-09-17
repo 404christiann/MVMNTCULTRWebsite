@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MVMNT CULTR — Method section concepts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#080808; --charcoal:#17191a; --gold:#ffbf00; --paper:#f8f7f2; --muted:#5c615e; --line:#dcdedb; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#eceeed; color:var(--ink); font-family:Montserrat,Arial,sans-serif; line-height:1.6; }
+    h1,h2,h3,p { margin:0; }
+    button,summary { -webkit-tap-highlight-color:transparent; cursor:pointer; }
+    button { font:inherit; }
+    a { color:inherit; text-underline-offset:4px; }
+    [hidden] { display:none!important; }
+    :focus-visible { outline:3px solid #976b00; outline-offset:4px; }
+    .review { max-width:1360px; margin:auto; padding:26px 32px 22px; }
+    .review-top { display:flex; justify-content:space-between; gap:20px; font-size:12px; }
+    .brand { font-weight:900; }
+    h1 { margin-top:20px; font-size:24px; letter-spacing:-.6px; }
+    .intro,.note { font-size:13px; color:var(--muted); margin-top:8px; max-width:85ch; }
+    .toolbar { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin:22px 0 12px; }
+    .choices,.sizes { display:flex; flex-wrap:wrap; gap:7px; }
+    .toolbar button { border:1px solid #bfc4c1; border-radius:8px; padding:10px 14px; min-height:44px; background:transparent; color:var(--ink); font-size:12px; font-weight:600; }
+    .choices button[aria-pressed=true] { background:var(--ink); color:#fff; border-color:var(--ink); }
+    .sizes button[aria-pressed=true] { background:#fff; }
+    main { max-width:1360px; padding:0 32px 32px; margin:auto; }
+    .frame { width:100%; margin:auto; container-type:inline-size; background:var(--paper); border:1px solid #d5d9d6; overflow:hidden; }
+    body.mobile .frame { max-width:390px; }
+    .context { background:#fff; padding:17px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px; font-size:11px; }
+    .context img { width:22px; height:28px; object-fit:contain; filter:brightness(0); }
+    .context-brand { display:flex; align-items:center; gap:10px; font-weight:900; }
+    .context span { color:var(--muted); }
+    .method-title { color:var(--gold); font-family:Oswald,'Arial Narrow',sans-serif; font-weight:700; text-transform:uppercase; font-size:clamp(32px,4.1cqw,54px); line-height:1.1; text-wrap:balance; }
+    .body-copy { font-size:14px; line-height:1.7; max-width:55ch; }
+    .summary { display:block; font-size:14px; font-weight:700; margin-bottom:8px; }
+    .care-icon { width:42px; height:42px; flex:0 0 42px; display:grid; place-items:center; }
+    .care-icon svg { width:28px; height:28px; }
+    .dark { background:var(--ink); color:#fff; }
+    .dark :focus-visible { outline-color:var(--gold); }
+    .split { display:grid; grid-template-columns:.9fr 1.25fr; }
+    .split-title { padding:44px 40px; display:flex; align-items:center; }
+    .split-title .method-title { max-width:10ch; }
+    .split-list { padding:28px 40px; }
+    .split details { border-bottom:1px solid var(--line); }
+    .split details:last-child { border-bottom:0; }
+    .split summary { display:flex; gap:12px; align-items:center; min-height:76px; list-style:none; font-size:21px; font-weight:600; }
+    .split summary::-webkit-details-marker { display:none; }
+    .split summary::after { content:'+'; margin-left:auto; font-size:28px; font-weight:400; }
+    .split details[open] summary::after { content:'−'; }
+    .split .body-copy { padding:0 24px 22px 54px; color:var(--muted); }
+    .split .summary { color:var(--ink); }
+    .columns { padding:40px; }
+    .column-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:32px; }
+    .column { padding:0 28px; border-left:1px solid #3a3a3a; }
+    .column:first-child { padding-left:0; border-left:0; }
+    .column:last-child { padding-right:0; }
+    .column .care-icon { color:var(--gold); margin-bottom:15px; }
+    .column h3 { font-family:Oswald,sans-serif; font-size:30px; font-weight:500; margin-bottom:16px; }
+    .column .body-copy { color:#c7cac7; }
+    .column .summary { color:#fff; }
+    .photo-layout { display:grid; grid-template-columns:1fr 1.15fr; }
+    .photo { position:relative; min-height:390px; background:var(--charcoal); }
+    .photo img { position:absolute; width:100%; height:100%; object-fit:cover; object-position:58% center; }
+    .photo::after { content:''; position:absolute; inset:0; background:linear-gradient(0deg,rgba(0,0,0,.25),transparent); }
+    .photo-content { padding:40px; }
+    .photo-content .method-title { max-width:14ch; }
+    .care-tabs { display:flex; gap:18px; margin:26px 0 22px; border-bottom:1px solid #414141; }
+    .care-tabs button { color:#ccc; background:none; border:0; border-bottom:3px solid transparent; min-height:44px; padding:8px 0; font-size:13px; font-weight:600; }
+    .care-tabs button[aria-selected=true] { color:var(--gold); border-color:var(--gold); }
+    .care-panel { min-height:138px; }
+    .care-panel h3 { font-size:20px; font-weight:600; margin-bottom:12px; }
+    .care-panel .body-copy { color:#c7cac7; }
+    .bands .title-bar { padding:30px 40px; }
+    .band-list { padding:8px 40px; }
+    .band { display:grid; grid-template-columns:220px 1fr; gap:32px; padding:24px 0; border-bottom:1px solid var(--line); align-items:start; }
+    .band:last-child { border-bottom:0; }
+    .band h3 { display:flex; align-items:center; gap:12px; font-size:21px; font-weight:600; }
+    .band .body-copy { max-width:68ch; color:var(--muted); }
+    .band .summary { color:var(--ink); margin-bottom:4px; }
+    .next-section { padding:26px 40px; background:#fff; border-top:1px solid var(--line); }
+    .next-section p { font-size:11px; font-weight:600; margin-bottom:6px; }
+    .next-section h2 { font-family:Oswald,sans-serif; font-size:25px; line-height:1.2; text-transform:uppercase; }
+    .footnote { text-align:center; color:var(--muted); font-size:12px; padding-top:16px; }
+    @container(max-width:720px) {
+      .context { padding:16px 22px; }
+      .context>span { display:none; }
+      .split,.photo-layout { grid-template-columns:1fr; }
+      .split-title { padding:28px 22px; }
+      .split-title .method-title,.photo-content .method-title { max-width:17ch; }
+      .split-list { padding:6px 22px 16px; }
+      .split summary { font-size:19px; min-height:72px; }
+      .split .body-copy { padding-left:54px; padding-right:0; }
+      .columns { padding:30px 22px; }
+      .column-grid { grid-template-columns:1fr; margin-top:24px; }
+      .column,.column:first-child,.column:last-child { padding:22px 0; border-left:0; border-top:1px solid #3a3a3a; display:grid; grid-template-columns:42px 1fr; column-gap:12px; }
+      .column:last-child { padding-bottom:0; }
+      .column .care-icon { grid-column:1; grid-row:1; margin:0; }
+      .column h3 { grid-column:2; margin-bottom:12px; font-size:27px; }
+      .column .body-copy { grid-column:2; }
+      .photo { min-height:190px; max-height:190px; }
+      .photo-content { padding:28px 22px; }
+      .care-tabs { gap:20px; }
+      .care-tabs button { font-size:12px; }
+      .care-panel { min-height:165px; }
+      .bands .title-bar { padding:28px 22px; }
+      .band-list { padding:0 22px; }
+      .band { grid-template-columns:1fr; gap:9px; padding:20px 0; }
+      .band h3 { font-size:20px; }
+      .band .body-copy { padding-left:54px; }
+      .next-section { padding:24px 22px; }
+    }
+    @media(max-width:600px) {
+      .review { padding:20px 16px; }
+      main { padding:0 12px 24px; }
+      h1 { font-size:22px; }
+      .choices { display:grid; grid-template-columns:1fr 1fr; width:100%; }
+      .choices button { text-align:left; }
+      .sizes { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="review">
+    <div class="review-top"><a class="brand" href="../index.html#approach">MVMNT CULTR</a><a href="../index.html#approach">Current section</a></div>
+    <h1>Four ways to present the method</h1>
+    <p class="intro">The same care, four different layouts. Try each direction at desktop and mobile sizes.</p>
+    <div class="toolbar">
+      <nav class="choices" aria-label="Section concepts">
+        <button type="button" data-option="split" aria-pressed="true" aria-controls="concept-split">1. Split accordion</button>
+        <button type="button" data-option="columns" aria-pressed="false" aria-controls="concept-columns">2. Open columns</button>
+        <button type="button" data-option="photo" aria-pressed="false" aria-controls="concept-photo">3. Photo + tabs</button>
+        <button type="button" data-option="bands" aria-pressed="false" aria-controls="concept-bands">4. Compact rows</button>
+      </nav>
+      <div class="sizes" aria-label="Preview width">
+        <button type="button" data-size="desktop" aria-pressed="true">Desktop</button>
+        <button type="button" data-size="mobile" aria-pressed="false">Mobile</button>
+      </div>
+    </div>
+    <p class="note" id="concept-note" aria-live="polite"></p>
+  </header>
+  <main>
+    <div class="frame">
+      <div class="context"><div class="context-brand"><img src="../assets/images/mark.webp" alt="">MVMNT CULTR</div><span>Home / The method</span></div>
+      <section class="split" id="concept-split" aria-labelledby="title-split">
+        <div class="split-title dark"><h2 class="method-title" id="title-split">The MVMNT CULTR method</h2></div>
+        <div class="split-list" id="split-list"></div>
+      </section>
+      <section class="columns dark" id="concept-columns" aria-labelledby="title-columns" hidden>
+        <h2 class="method-title" id="title-columns">The MVMNT CULTR method</h2>
+        <div class="column-grid" id="column-grid"></div>
+      </section>
+      <section class="photo-layout dark" id="concept-photo" aria-labelledby="title-photo" hidden>
+        <div class="photo"><img src="../assets/images/hero-gym.webp" alt="Training equipment inside the MVMNT CULTR clinic"></div>
+        <div class="photo-content">
+          <h2 class="method-title" id="title-photo">The MVMNT CULTR method</h2>
+          <div class="care-tabs" role="tablist" aria-label="Explore care" id="care-tabs"></div>
+          <div id="care-panels"></div>
+        </div>
+      </section>
+      <section class="bands" id="concept-bands" aria-labelledby="title-bands" hidden>
+        <div class="title-bar dark"><h2 class="method-title" id="title-bands">The MVMNT CULTR method</h2></div>
+        <div class="band-list" id="band-list"></div>
+      </section>
+      <div class="next-section"><p>Team consulting / coverage</p><h2>Better support. All season.</h2></div>
+    </div>
+    <p class="footnote">Design preview · Choose a direction before replacing the current layout.</p>
+  </main>
+  <script>
+    const care = [
+      {id:'wellness',name:'Wellness',summary:'Support daily movement',copy:'Care for the joints, muscles, and habits that shape how you move through work, training, family, and everyday life.',path:'<path d="M2.5 12h4l2 6 4-13 2.5 7h6.5"/>'},
+      {id:'rehab',name:'Rehab',summary:'Build confidence back',copy:'One-on-one athletic rehab focused on movement assessments, recovery, performance testing, and a plan that fits the person.',path:'<path d="M6 12h12M4 8v8M20 8v8M7 9v6M17 9v6"/>'},
+      {id:'performance',name:'Performance',summary:'Move from pain to output',copy:'A performance-based approach that evolves from the initial plan of care into stronger, more resilient movement.',path:'<path d="m3 17 6-6 4 4 8-8M14 7h7v7"/>'}
+    ];
+    const icon = item => `<span class="care-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${item.path}</svg></span>`;
+    const copy = item => `<p class="body-copy"><strong class="summary">${item.summary}</strong>${item.copy}</p>`;
+    document.querySelector('#split-list').innerHTML = care.map((item,i) => `<details name="split-care" ${i===0?'open':''}><summary>${icon(item)}${item.name}</summary>${copy(item)}</details>`).join('');
+    document.querySelector('#column-grid').innerHTML = care.map(item => `<article class="column">${icon(item)}<h3>${item.name}</h3>${copy(item)}</article>`).join('');
+    document.querySelector('#band-list').innerHTML = care.map(item => `<article class="band"><h3>${icon(item)}${item.name}</h3>${copy(item)}</article>`).join('');
+    document.querySelector('#care-tabs').innerHTML = care.map((item,i) => `<button type="button" role="tab" id="tab-${item.id}" aria-controls="panel-${item.id}" aria-selected="${i===0}" tabindex="${i===0?0:-1}">${item.name}</button>`).join('');
+    document.querySelector('#care-panels').innerHTML = care.map((item,i) => `<div class="care-panel" role="tabpanel" id="panel-${item.id}" aria-labelledby="tab-${item.id}" tabindex="0" ${i===0?'':'hidden'}><h3>${item.summary}</h3><p class="body-copy">${item.copy}</p></div>`).join('');
+    const notes = {
+      split:'Recommended: a bold title beside a compact accordion. Keeps the familiar interaction and makes better use of desktop width.',
+      columns:'All three areas visible at once. An athletic black-and-yellow section, with columns that stack naturally on mobile.',
+      photo:'The clinic provides the visual context. Tabs keep the copy focused, with one area of care visible at a time.',
+      bands:'The easiest to scan. Three compact rows show all the details without requiring a click.'
+    };
+    function selectConcept(id) {
+      if (!Object.hasOwn(notes,id)) id='split';
+      document.querySelectorAll('[data-option]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.option===id)));
+      document.querySelectorAll('section[id^="concept-"]').forEach(section => section.hidden=section.id!==`concept-${id}`);
+      document.querySelector('#concept-note').textContent=notes[id];
+    }
+    document.querySelectorAll('[data-option]').forEach(button => button.addEventListener('click',() => { selectConcept(button.dataset.option); history.replaceState(null,'',`#${button.dataset.option}`); }));
+    document.querySelectorAll('[data-size]').forEach(button => button.addEventListener('click',() => {
+      document.body.classList.toggle('mobile',button.dataset.size==='mobile');
+      document.querySelectorAll('[data-size]').forEach(item => item.setAttribute('aria-pressed',String(item===button)));
+    }));
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    function selectTab(tab) {
+      tabs.forEach(item => {item.setAttribute('aria-selected',String(item===tab));item.tabIndex=item===tab?0:-1;});
+      document.querySelectorAll('[role="tabpanel"]').forEach(panel => panel.hidden=panel.id!==tab.getAttribute('aria-controls'));
+    }
+    tabs.forEach((tab,i) => {
+      tab.addEventListener('click',() => selectTab(tab));
+      tab.addEventListener('keydown',event => {
+        let target;
+        if(event.key==='ArrowRight') target=tabs[(i+1)%tabs.length];
+        if(event.key==='ArrowLeft') target=tabs[(i+tabs.length-1)%tabs.length];
+        if(event.key==='Home') target=tabs[0];
+        if(event.key==='End') target=tabs[tabs.length-1];
+        if(target){event.preventDefault();selectTab(target);target.focus();}
+      });
+    });
+    selectConcept(location.hash.slice(1));
+    addEventListener('hashchange',() => selectConcept(location.hash.slice(1)));
+  </script>
+</body>
+</html>

@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles.css?v=wordmark-nav-1" />
   </head>
   <body>
     <header class="site-header" aria-label="Main navigation">
@@ -23,11 +23,13 @@
         <span>MVMNT CULTR</span>
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a aria-current="page" href="/contact/">Contact</a>
+        <div class="desktop-nav-links">
+          <a href="/">Home</a>
+          <a href="/about/">About</a>
+          <a aria-current="page" href="/contact/">Contact</a>
+        </div>
+        <a class="book-button" href="https://movementprescribed.janeapp.com/">Book Now</a>
       </nav>
-      <a class="book-button" href="https://movementprescribed.janeapp.com/">Book Now</a>
       <details class="mobile-menu">
         <summary class="menu-toggle" aria-label="Open menu">
           <span class="sr-only">Menu</span>
@@ -134,6 +136,6 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="../script.js"></script>
+    <script src="../script.js?v=wordmark-nav-1"></script>
   </body>
 </html>

@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVMNT CULTR — Book Now navbar options</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Oswald:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #080808;
+        --charcoal: #202020;
+        --paper: #f8f7f2;
+        --gold: #ffbf00;
+        --muted: #aaa;
+        --line: rgba(255, 255, 255, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: #eceeeb;
+        color: var(--ink);
+        font-family: "Montserrat", system-ui, sans-serif;
+      }
+
+      button,
+      a { font: inherit; }
+
+      button { cursor: pointer; }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #a97e00;
+        outline-offset: 3px;
+      }
+
+      .review-header {
+        padding: 24px max(24px, calc((100vw - 1180px) / 2));
+        border-bottom: 1px solid #d9dcd7;
+        background: #fff;
+      }
+
+      .review-header h1 {
+        margin: 0;
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        letter-spacing: -0.025em;
+      }
+
+      .review-header > p {
+        max-width: 760px;
+        margin: 8px 0 0;
+        color: #555a55;
+        font-size: 0.86rem;
+        line-height: 1.65;
+      }
+
+      .option-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .option-controls button {
+        min-height: 44px;
+        padding: 0 16px;
+        border: 1px solid #d5d9d3;
+        border-radius: 9px;
+        background: #fff;
+        color: var(--ink);
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+
+      .option-controls button[aria-pressed="true"] {
+        border-color: var(--ink);
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .stage {
+        position: relative;
+        min-height: min(720px, calc(100svh - 190px));
+        overflow: hidden;
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .stage::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.56) 54%, rgba(0, 0, 0, 0.68) 100%),
+          url("../assets/images/hero-gym.webp") center / cover;
+      }
+
+      .preview-label {
+        position: absolute;
+        z-index: 2;
+        top: 26px;
+        left: max(24px, calc((100vw - 1180px) / 2));
+        margin: 0;
+        color: rgba(248, 247, 242, 0.56);
+        font-size: 0.68rem;
+        font-weight: 700;
+      }
+
+      .nav-preview {
+        position: absolute;
+        z-index: 3;
+        top: 72px;
+        left: 50%;
+        display: flex;
+        width: 566px;
+        height: 56px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--charcoal);
+        box-shadow: 0 14px 38px rgba(0, 0, 0, 0.34);
+        padding: 0 7px 0 14px;
+        transform: translateX(-50%);
+      }
+
+      .nav-preview .brand {
+        display: flex;
+        min-width: 146px;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .nav-preview .brand img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+      }
+
+      .nav-preview .brand span {
+        font-size: 0.78rem;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        height: 32px;
+        flex: 1;
+        align-items: center;
+        justify-content: space-evenly;
+        border-left: 1px solid var(--line);
+        padding-inline: 12px;
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        font-size: 0.77rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .nav-links a:first-child,
+      .nav-links a:hover { color: #fff; }
+
+      .book-inside {
+        display: inline-flex;
+        width: 116px;
+        height: 40px;
+        flex: 0 0 116px;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        background: var(--gold);
+        color: var(--ink);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .nav-preview[data-option="pill"] .book-inside {
+        border-radius: 999px;
+      }
+
+      .nav-preview[data-option="block"] {
+        width: 504px;
+        padding-right: 8px;
+      }
+
+      .nav-preview[data-option="block"] .brand { min-width: 136px; }
+
+      .nav-preview[data-option="block"] .nav-links { padding-inline: 10px; }
+
+      .nav-preview[data-option="block"] .book-inside {
+        width: 104px;
+        height: 36px;
+        flex-basis: 104px;
+        border-radius: 9px;
+      }
+
+      .nav-preview[data-option="outline"] {
+        width: 558px;
+        padding-right: 8px;
+      }
+
+      .nav-preview[data-option="outline"] .brand { min-width: 144px; }
+
+      .nav-preview[data-option="outline"] .book-inside {
+        width: 112px;
+        height: 38px;
+        flex-basis: 112px;
+        border: 1px solid var(--gold);
+        border-radius: 999px;
+        background: rgba(255, 191, 0, 0.08);
+        color: var(--gold);
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 2;
+        width: min(720px, calc(100% - 48px));
+        margin: 0 auto;
+        padding-top: 230px;
+        text-align: center;
+      }
+
+      .hero-copy p:first-child {
+        margin: 0;
+        color: var(--gold);
+        font-size: 0.78rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .hero-copy h2 {
+        margin: 16px 0 0;
+        font-family: "Oswald", sans-serif;
+        font-size: clamp(3rem, 8vw, 6.4rem);
+        line-height: 0.94;
+        text-transform: uppercase;
+      }
+
+      .option-note {
+        position: absolute;
+        z-index: 3;
+        right: max(24px, calc((100vw - 1180px) / 2));
+        bottom: 28px;
+        width: min(410px, calc(100% - 48px));
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 14px;
+        background: rgba(8, 8, 8, 0.82);
+        padding: 18px 20px;
+        backdrop-filter: blur(14px);
+      }
+
+      .option-note strong {
+        display: block;
+        color: var(--gold);
+        font-size: 0.82rem;
+      }
+
+      .option-note p {
+        margin: 7px 0 0;
+        color: rgba(248, 247, 242, 0.74);
+        font-size: 0.78rem;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 700px) {
+        .review-header { padding: 20px; }
+        .stage { min-height: 650px; }
+        .nav-preview {
+          top: 84px;
+          width: 566px !important;
+          transform: translateX(-50%) scale(0.62);
+        }
+        .hero-copy { padding-top: 215px; }
+        .option-note { right: 20px; bottom: 20px; left: 20px; width: auto; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { scroll-behavior: auto !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="review-header">
+      <h1>Book Now inside the scrolled navbar</h1>
+      <p>
+        All three options keep one continuous dark navigation shell. The yellow action is
+        a real button inside that shell—not a separate pill attached beside it.
+      </p>
+      <div class="option-controls" role="group" aria-label="Book Now button treatments">
+        <button type="button" data-option="pill" aria-pressed="false">1. Inset pill</button>
+        <button type="button" data-option="block" aria-pressed="true">2. Compact block</button>
+        <button type="button" data-option="outline" aria-pressed="false">3. Gold outline</button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <p class="preview-label">Scrolled desktop state</p>
+      <nav class="nav-preview" data-option="block" aria-label="Navigation preview">
+        <a class="brand" href="#" aria-label="MVMNT CULTR home">
+          <img src="../assets/images/mark.webp" alt="" />
+          <span>MVMNT CULTR</span>
+        </a>
+        <div class="nav-links">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </div>
+        <a class="book-inside" href="#">Book Now</a>
+      </nav>
+
+      <section class="hero-copy" aria-labelledby="preview-title">
+        <p>Wellness / rehab / performance</p>
+        <h2 id="preview-title">From pain to performance.</h2>
+      </section>
+
+      <aside class="option-note" aria-live="polite">
+        <strong id="option-title">2. Compact block — selected</strong>
+        <p id="option-description">
+          A tighter, more clinical treatment. The smaller rounded rectangle echoes the
+          site’s existing control geometry while remaining visibly inside the navbar.
+        </p>
+      </aside>
+    </main>
+
+    <script>
+      const options = {
+        pill: {
+          title: "1. Inset pill — recommended",
+          description: "The clearest hierarchy. The gold pill has breathing room on every side, so it unmistakably reads as a button contained by the dark navbar."
+        },
+        block: {
+          title: "2. Compact block — selected",
+          description: "A tighter, more clinical treatment. The smaller rounded rectangle echoes the site’s existing control geometry while remaining visibly inside the navbar."
+        },
+        outline: {
+          title: "3. Gold outline",
+          description: "The quietest option. Gold still identifies the booking action, but the lighter visual weight keeps the wordmark and navigation links more prominent."
+        }
+      };
+
+      const preview = document.querySelector(".nav-preview");
+      const title = document.querySelector("#option-title");
+      const description = document.querySelector("#option-description");
+
+      document.querySelectorAll("[data-option]").forEach((button) => {
+        if (button === preview) return;
+        button.addEventListener("click", () => {
+          const option = button.dataset.option;
+          preview.dataset.option = option;
+          title.textContent = options[option].title;
+          description.textContent = options[option].description;
+          document.querySelectorAll(".option-controls button").forEach((control) => {
+            control.setAttribute("aria-pressed", String(control === button));
+          });
+          history.replaceState(null, "", `#${option}`);
+        });
+      });
+
+      const initialOption = location.hash.slice(1);
+      if (options[initialOption]) {
+        document.querySelector(`.option-controls [data-option="${initialOption}"]`).click();
+      }
+    </script>
+  </body>
+</html>

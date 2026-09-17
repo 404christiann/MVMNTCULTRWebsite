@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MVMNT — Yellow accordion options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+body {padding:48px 24px 64px;}
+main {max-width:1180px;margin:auto;}
+.preview-heading {font-size:clamp(30px,4vw,48px);line-height:1.1;max-width:none;margin-bottom:12px;}
+.preview-intro {max-width:760px;margin-bottom:36px;color:#515151;}
+.options {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 48px;align-items:start;}
+.option h2 {font-size:28px;line-height:1.2;margin-bottom:4px;}
+.option-note {font-size:14px;margin-bottom:14px;color:#515151;}
+.option .care-accordion {margin:0;max-width:none;}
+.option:not(.glass) .care-row {border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;}
+.option:not(.glass) .care-row-icon {background:#fff;box-shadow:none;}
+.yellow .care-row {background:var(--gold);}
+.option .care-row {background:rgba(255,191,0,var(--box-opacity));}
+.back {display:inline-block;margin-bottom:24px;font-size:14px;text-decoration:underline;}
+@media(max-width:760px){body{padding:28px 20px;}.options{grid-template-columns:1fr;gap:32px;}}
+</style></head><body><main>
+<a class="back" href="../#approach">Back to website</a>
+<h1 class="preview-heading">Find the right yellow.</h1>
+<p class="preview-intro">Compare solid brand yellow with three softer tints. Dark text and white icon circles stay fully opaque. The website now uses frosted glass; these yellow options are retained for comparison.</p>
+<div class="options"><section class="option" style="--box-opacity:1.0"><h2>100% yellow</h2><p class="option-note">Solid brand yellow</p>        <div class="care-accordion">
+          <div class="care-row is-open">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-wellness-100"
+                aria-expanded="true" aria-controls="care-panel-wellness-100">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 12h4l2 6 4-13 2.5 7h6.5"></path>
+                  </svg>
+                </span>
+                <span class="care-row-label">Wellness</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-wellness-100" role="region"
+              aria-labelledby="care-trigger-wellness-100">
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Support daily movement</strong>
+                  Care for the joints, muscles, and habits that shape how you move
+                  through work, training, family, and everyday life.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="care-row">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-rehab-100"
+                aria-expanded="false" aria-controls="care-panel-rehab-100">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="6" y1="12" x2="18" y2="12"></line>
+                    <line x1="4" y1="8" x2="4" y2="16"></line>
+                    <line x1="20" y1="8" x2="20" y2="16"></line>
+                    <line x1="7" y1="9" x2="7" y2="15"></line>
+                    <line x1="17" y1="9" x2="17" y2="15"></line>
+                  </svg>
+                </span>
+                <span class="care-row-label">Rehab</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-rehab-100" role="region"
+              aria-labelledby="care-trigger-rehab-100" inert>
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Build confidence back</strong>
+                  One-on-one athletic rehab focused on movement assessments, recovery,
+                  performance testing, and a plan that fits the person.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="care-row">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-performance-100"
+                aria-expanded="false" aria-controls="care-panel-performance-100">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 17 9 11 13 15 21 7"></polyline>
+                    <polyline points="14 7 21 7 21 14"></polyline>
+                  </svg>
+                </span>
+                <span class="care-row-label">Performance</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-performance-100" role="region"
+              aria-labelledby="care-trigger-performance-100" inert>
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Move from pain to output</strong>
+                  A performance-based approach that evolves from the initial plan of
+                  care into stronger, more resilient movement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div></section><section class="option" style="--box-opacity:0.75"><h2>75% yellow</h2><p class="option-note">25% transparent</p>        <div class="care-accordion">
+          <div class="care-row is-open">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-wellness-75"
+                aria-expanded="true" aria-controls="care-panel-wellness-75">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 12h4l2 6 4-13 2.5 7h6.5"></path>
+                  </svg>
+                </span>
+                <span class="care-row-label">Wellness</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-wellness-75" role="region"
+              aria-labelledby="care-trigger-wellness-75">
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Support daily movement</strong>
+                  Care for the joints, muscles, and habits that shape how you move
+                  through work, training, family, and everyday life.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="care-row">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-rehab-75"
+                aria-expanded="false" aria-controls="care-panel-rehab-75">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="6" y1="12" x2="18" y2="12"></line>
+                    <line x1="4" y1="8" x2="4" y2="16"></line>
+                    <line x1="20" y1="8" x2="20" y2="16"></line>
+                    <line x1="7" y1="9" x2="7" y2="15"></line>
+                    <line x1="17" y1="9" x2="17" y2="15"></line>
+                  </svg>
+                </span>
+                <span class="care-row-label">Rehab</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-rehab-75" role="region"
+              aria-labelledby="care-trigger-rehab-75" inert>
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Build confidence back</strong>
+                  One-on-one athletic rehab focused on movement assessments, recovery,
+                  performance testing, and a plan that fits the person.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="care-row">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-performance-75"
+                aria-expanded="false" aria-controls="care-panel-performance-75">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 17 9 11 13 15 21 7"></polyline>
+                    <polyline points="14 7 21 7 21 14"></polyline>
+                  </svg>
+                </span>
+                <span class="care-row-label">Performance</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-performance-75" role="region"
+              aria-labelledby="care-trigger-performance-75" inert>
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Move from pain to output</strong>
+                  A performance-based approach that evolves from the initial plan of
+                  care into stronger, more resilient movement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div></section><section class="option" style="--box-opacity:0.5"><h2>50% yellow</h2><p class="option-note">50% transparent</p>        <div class="care-accordion">
+          <div class="care-row is-open">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-wellness-50"
+                aria-expanded="true" aria-controls="care-panel-wellness-50">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 12h4l2 6 4-13 2.5 7h6.5"></path>
+                  </svg>
+                </span>
+                <span class="care-row-label">Wellness</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-wellness-50" role="region"
+              aria-labelledby="care-trigger-wellness-50">
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Support daily movement</strong>
+                  Care for the joints, muscles, and habits that shape how you move
+                  through work, training, family, and everyday life.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="care-row">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-rehab-50"
+                aria-expanded="false" aria-controls="care-panel-rehab-50">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="6" y1="12" x2="18" y2="12"></line>
+                    <line x1="4" y1="8" x2="4" y2="16"></line>
+                    <line x1="20" y1="8" x2="20" y2="16"></line>
+                    <line x1="7" y1="9" x2="7" y2="15"></line>
+                    <line x1="17" y1="9" x2="17" y2="15"></line>
+                  </svg>
+                </span>
+                <span class="care-row-label">Rehab</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-rehab-50" role="region"
+              aria-labelledby="care-trigger-rehab-50" inert>
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Build confidence back</strong>
+                  One-on-one athletic rehab focused on movement assessments, recovery,
+                  performance testing, and a plan that fits the person.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="care-row">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-performance-50"
+                aria-expanded="false" aria-controls="care-panel-performance-50">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 17 9 11 13 15 21 7"></polyline>
+                    <polyline points="14 7 21 7 21 14"></polyline>
+                  </svg>
+                </span>
+                <span class="care-row-label">Performance</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-performance-50" role="region"
+              aria-labelledby="care-trigger-performance-50" inert>
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Move from pain to output</strong>
+                  A performance-based approach that evolves from the initial plan of
+                  care into stronger, more resilient movement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div></section><section class="option" style="--box-opacity:0.25"><h2>25% yellow</h2><p class="option-note">75% transparent</p>        <div class="care-accordion">
+          <div class="care-row is-open">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-wellness-25"
+                aria-expanded="true" aria-controls="care-panel-wellness-25">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.5 12h4l2 6 4-13 2.5 7h6.5"></path>
+                  </svg>
+                </span>
+                <span class="care-row-label">Wellness</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-wellness-25" role="region"
+              aria-labelledby="care-trigger-wellness-25">
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Support daily movement</strong>
+                  Care for the joints, muscles, and habits that shape how you move
+                  through work, training, family, and everyday life.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="care-row">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-rehab-25"
+                aria-expanded="false" aria-controls="care-panel-rehab-25">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="6" y1="12" x2="18" y2="12"></line>
+                    <line x1="4" y1="8" x2="4" y2="16"></line>
+                    <line x1="20" y1="8" x2="20" y2="16"></line>
+                    <line x1="7" y1="9" x2="7" y2="15"></line>
+                    <line x1="17" y1="9" x2="17" y2="15"></line>
+                  </svg>
+                </span>
+                <span class="care-row-label">Rehab</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-rehab-25" role="region"
+              aria-labelledby="care-trigger-rehab-25" inert>
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Build confidence back</strong>
+                  One-on-one athletic rehab focused on movement assessments, recovery,
+                  performance testing, and a plan that fits the person.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="care-row">
+            <h3 class="care-row-heading">
+              <button type="button" class="care-row-trigger" id="care-trigger-performance-25"
+                aria-expanded="false" aria-controls="care-panel-performance-25">
+                <span class="care-row-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 17 9 11 13 15 21 7"></polyline>
+                    <polyline points="14 7 21 7 21 14"></polyline>
+                  </svg>
+                </span>
+                <span class="care-row-label">Performance</span>
+                <span class="care-row-toggle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+            </h3>
+            <div class="care-row-panel" id="care-panel-performance-25" role="region"
+              aria-labelledby="care-trigger-performance-25" inert>
+              <div class="care-row-panel-inner">
+                <p class="care-row-desc">
+                  <strong class="care-row-summary">Move from pain to output</strong>
+                  A performance-based approach that evolves from the initial plan of
+                  care into stronger, more resilient movement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div></section></div></main>
+<script>
+document.querySelectorAll('.care-accordion').forEach(accordion => {
+ const rows=[...accordion.querySelectorAll('.care-row')];
+ rows.forEach(row => row.querySelector('button').addEventListener('click', () => {
+  const open=!row.classList.contains('is-open');
+  rows.forEach(item => {
+   const active=item===row && open;
+   item.classList.toggle('is-open', active);
+   item.querySelector('button').setAttribute('aria-expanded',String(active));
+   item.querySelector('.care-row-panel').inert=!active;
+  });
+ }));
+});
+</script></body></html>

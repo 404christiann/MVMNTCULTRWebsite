@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MVMNT CULTR — Three new social designs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --gold:#ffbf00; --ink:#080808; --white:#fff; --pink:#bf2267; --cyan:#007f86; --blue:#0866df; --body:'Montserrat',sans-serif; --display:'Oswald',sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#eeeef0; color:var(--ink); font-family:var(--body); }
+    a { color:inherit; }
+    button { font:inherit; cursor:pointer; }
+    [hidden] { display:none!important; }
+    .review { max-width:1340px; margin:auto; padding:28px 30px 20px; }
+    .review-top { display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .wordmark { display:flex; align-items:center; gap:9px; font-size:13px; font-weight:900; }
+    .wordmark img { width:24px; height:30px; object-fit:contain; filter:brightness(0); }
+    .review-top>a { font-size:12px; text-underline-offset:4px; }
+    h1 { font-size:25px; letter-spacing:-.8px; margin:24px 0 9px; }
+    .intro { margin:0; font-size:13px; line-height:1.6; color:#56575b; }
+    .toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-top:24px; }
+    .tabs,.sizes { display:flex; gap:7px; }
+    .tabs button,.sizes button { border:1px solid #c9c9ce; background:transparent; color:var(--ink); padding:11px 15px; font-size:12px; font-weight:600; border-radius:7px; }
+    .tabs button[aria-selected=true] { border-color:var(--ink); background:var(--ink); color:white; }
+    .sizes button { border:0; padding:9px 11px; color:#616269; }
+    .sizes button[aria-pressed=true] { color:var(--ink); background:white; box-shadow:0 1px 3px #08080812; }
+    .design-note { font-size:12px; line-height:1.6; color:#56575b; margin:16px 0 0; }
+    main { max-width:1340px; margin:auto; padding:0 30px 30px; }
+    .frame { container-type:inline-size; margin:0 auto; width:100%; background:white; border:1px solid #dddde0; box-shadow:0 6px 30px #08080806; }
+    body.mobile .frame { max-width:390px; }
+    .concept { background:#fff; padding:64px 56px; }
+    .concept h2 { font-family:var(--display); text-transform:uppercase; font-weight:600; font-size:clamp(36px,4.35cqw,56px); line-height:1.08; letter-spacing:-.03em; margin:0; }
+    .concept p { font-size:14px; line-height:1.7; color:#626267; margin:16px 0 0; }
+    .social-links { display:flex; }
+    .social-links a { text-decoration:none; -webkit-tap-highlight-color:transparent; }
+    .social-links svg { width:28px; height:28px; flex-shrink:0; fill:none; stroke:currentColor; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
+    .social-links .tiktok svg,.social-links .facebook svg { fill:currentColor; stroke:none; }
+    a:focus-visible,button:focus-visible { outline:3px solid #986c00; outline-offset:6px; }
+    .external { width:16px!important; height:16px!important; fill:none!important; stroke:currentColor!important; stroke-width:1.5!important; }
+    /* One continuous gold bar; the surrounding section stays pure white. */
+    .concept.gold-dock { padding:clamp(32px,6cqw,72px) clamp(24px,5.6cqw,64px); }
+    .gold-dock .intro-row { display:block; max-width:760px; margin-inline:auto; }
+    .gold-dock .intro-row p { max-width:none; margin:clamp(18px,3cqw,30px) 0 0; font-size:clamp(13px,2.4cqw,24px); line-height:1.5; }
+    .concept.gold-dock h2 { font-size:clamp(34px,7.5cqw,64px); font-weight:700; line-height:1.12; letter-spacing:-.025em; }
+    .gold-dock h2 span { display:block; white-space:nowrap; }
+    .gold-dock .social-links { margin:clamp(24px,4.6cqw,46px) auto 0; width:min(100%,760px); background:var(--gold); border-radius:clamp(16px,3.7cqw,32px); padding:clamp(10px,2.2cqw,22px) clamp(6px,1.4cqw,14px); gap:0; }
+    .gold-dock .social-links a { flex:1; min-width:0; padding:clamp(6px,1.3cqw,12px) 4px; display:flex; flex-direction:column; align-items:center; gap:clamp(10px,2cqw,20px); border-radius:10px; position:relative; }
+    .gold-dock .social-links a+a::before { content:''; position:absolute; left:0; top:15%; height:70%; width:1px; background:#08080824; }
+    .gold-dock .icon { display:grid; place-items:center; width:clamp(64px,16.5cqw,140px); height:clamp(64px,16.5cqw,140px); flex:0 0 auto; border:2px solid transparent; border-radius:clamp(13px,3.3cqw,28px); background:var(--ink); color:white; transition:transform 220ms cubic-bezier(.2,.8,.2,1); }
+    .gold-dock .icon svg { width:50%; height:50%; }
+    .gold-dock .tooltip { position:absolute; bottom:calc(100% + 5px); left:50%; transform:translate(-50%,3px); border:1px solid #ffffff1a; border-radius:6px; padding:6px 10px; background:#080808f0; color:white; font-size:11px; font-weight:500; white-space:nowrap; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 160ms ease,transform 160ms ease,visibility 160ms ease; z-index:2; }
+    .gold-dock .tooltip::after { content:""; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:4px solid transparent; border-bottom:0; border-top-color:#080808f0; }
+    .gold-dock a:focus-visible .icon { transform:translateY(-3px) scale(1.12); }
+    .gold-dock a:focus-visible .tooltip { opacity:1; visibility:visible; transform:translate(-50%,0); }
+    .gold-dock .name { display:block; font-size:clamp(11px,2.6cqw,24px); font-weight:700; line-height:1.2; }
+    .gold-dock .handle { display:none; }
+    /* Typography and each platform's colors do the work, with no card boxes. */
+    .signatures h2 { font-size:clamp(32px,3.4cqw,44px); }
+    .signatures .social-links { margin-top:46px; gap:38px; }
+    .signatures .social-links a { flex:1; min-width:0; padding:0 0 25px; position:relative; }
+    .signatures .social-links a::after { content:''; display:block; height:5px; position:absolute; inset:auto 0 0; background:currentColor; transform-origin:left; transition:transform .2s ease; }
+    .signatures .instagram { color:var(--pink); }
+    .signatures .tiktok { color:var(--ink); }
+    .signatures .facebook { color:var(--blue); }
+    .signatures .instagram::after { background:linear-gradient(90deg,#ffbf00,#e43b5f,#a9278d)!important; }
+    .signatures .tiktok::after { background:linear-gradient(90deg,#25d9dc 0 50%,#fa3158 50%)!important; }
+    .signatures .name-row { display:flex; align-items:center; gap:12px; }
+    .signatures .name { font-size:clamp(23px,2.9cqw,37px); font-weight:700; letter-spacing:-1.6px; }
+    .signatures .icon { display:flex; align-items:center; }
+    .signatures .tiktok .icon { filter:drop-shadow(-2px 0 #25d9dc) drop-shadow(2px 1px #fa3158); }
+    .signatures .details { display:flex; align-items:center; justify-content:space-between; gap:10px; color:#626267; font-size:11px; margin-top:24px; }
+    /* The existing portrait gives this direction a human focal point. */
+    .portrait { display:grid; grid-template-columns:190px 1fr; gap:56px; align-items:center; padding-block:62px; }
+    .portrait-photo { position:relative; margin:0; }
+    .portrait-photo::before { content:''; position:absolute; inset:8px -9px -9px 8px; background:var(--gold); border-radius:75px 75px 18px 18px; transform:rotate(4deg); }
+    .portrait-photo img { position:relative; display:block; width:190px; height:218px; object-fit:cover; object-position:50% 28%; border-radius:75px 75px 18px 18px; }
+    .portrait h2 { font-size:clamp(36px,4.25cqw,55px); }
+    .portrait p { margin-top:12px; }
+    .portrait .social-links { gap:10px; margin-top:27px; flex-wrap:wrap; }
+    .portrait .social-links a { display:flex; align-items:center; gap:10px; padding:14px 19px; border-radius:28px; font-size:12px; font-weight:700; min-height:49px; transition:box-shadow .18s ease; }
+    .portrait .social-links svg { width:21px; height:21px; }
+    .portrait .instagram { background:#ffe9f0; color:#a21954; }
+    .portrait .tiktok { background:#def8f8; color:#005f64; }
+    .portrait .facebook { background:#e8f0ff; color:#0759c3; }
+    .context-footer { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:26px 56px; background:var(--ink); color:#bababb; font-size:9px; font-weight:600; line-height:1.6; }
+    .footnote { margin:19px 0 0; font-size:11px; color:#66676d; line-height:1.6; }
+    @media(hover:hover) {
+      .gold-dock .social-links a:hover .icon { transform:translateY(-3px) scale(1.12); }
+      .gold-dock .social-links a:hover .tooltip { opacity:1; visibility:visible; transform:translate(-50%,0); }
+      .signatures .social-links a:hover::after { transform:scaleX(.7); }
+      .portrait .social-links a:hover { box-shadow:inset 0 0 0 1.5px currentColor; }
+    }
+    @container(max-width:1000px) {
+      .concept { padding:48px 36px; }
+      .signatures .social-links { gap:24px; }
+      .signatures .name { font-size:26px; letter-spacing:-1px; }
+      .signatures .social-links svg { width:23px; height:23px; }
+      .portrait { grid-template-columns:150px 1fr; gap:36px; }
+      .portrait-photo img { width:150px; height:195px; }
+      .portrait .social-links a { padding:12px 14px; }
+    }
+    @container(max-width:650px) {
+      .concept { padding:40px 24px; }
+      .concept h2,.signatures h2,.portrait h2 { font-size:34px; line-height:1.12; letter-spacing:-.6px; }
+      .concept p { font-size:13px; }
+      .signatures .social-links { flex-direction:column; gap:25px; margin-top:32px; }
+      .signatures .social-links a { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-bottom:20px; }
+      .signatures .name { font-size:27px; }
+      .signatures .name-row { gap:10px; }
+      .signatures .details { margin:0; }
+      .signatures .handle { display:none; }
+      .signatures .social-links a::after { height:3px; }
+      .portrait { grid-template-columns:1fr; gap:32px; }
+      .portrait-photo { width:112px; }
+      .portrait-photo img { width:112px; height:130px; border-radius:45px 45px 12px 12px; }
+      .portrait-photo::before { border-radius:45px 45px 12px 12px; }
+      .portrait .social-links { flex-wrap:nowrap; gap:7px; }
+      .portrait .social-links a { flex:1; justify-content:center; min-width:0; padding:12px 8px; gap:6px; font-size:11px; }
+      .portrait .social-links svg { width:17px; height:17px; }
+      .context-footer { padding:25px 24px; flex-direction:column; align-items:flex-start; gap:8px; }
+    }
+    @container(max-width:360px) {
+      .portrait .social-links a { flex-direction:column; padding:12px 4px; gap:8px; }
+    }
+    @media(max-width:650px) {
+      .review { padding:22px 16px 18px; }
+      .review-top>a { font-size:10px; }
+      h1 { font-size:23px; }
+      .tabs { width:100%; }
+      .tabs button { flex:1; padding:11px 6px; font-size:10px; }
+      .sizes { display:none; }
+      main { padding:0 12px 24px; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none!important; } .gold-dock a:is(:hover,:focus-visible) .icon { transform:none; } }
+  </style>
+</head>
+<body>
+  <header class="review">
+    <div class="review-top"><div class="wordmark"><img src="../assets/images/mark.webp" alt="">MVMNT CULTR</div><a href="../?v=social-inline-r2#home-social-title">Current section ↗</a></div>
+    <h1>White space. More personality.</h1>
+    <p class="intro">Three new social section directions. Pure-white backgrounds, familiar type, and a different use of color in each.</p>
+    <div class="toolbar">
+      <div class="tabs" role="tablist" aria-label="Social section designs">
+        <button id="tab-gold" role="tab" aria-selected="true" aria-controls="gold" data-design="gold">01 / Gold dock</button>
+        <button id="tab-signatures" role="tab" aria-selected="false" aria-controls="signatures" data-design="signatures" tabindex="-1">02 / Signatures</button>
+        <button id="tab-portrait" role="tab" aria-selected="false" aria-controls="portrait" data-design="portrait" tabindex="-1">03 / Personal</button>
+      </div>
+      <div class="sizes" aria-label="Preview width"><button data-size="desktop" aria-pressed="true">Desktop</button><button data-size="mobile" aria-pressed="false">Mobile</button></div>
+    </div>
+    <p class="design-note" id="design-note"></p>
+  </header>
+  <main>
+    <div class="frame">
+      <section id="gold" class="concept gold-dock" role="tabpanel" aria-labelledby="tab-gold">
+        <div class="intro-row"><h2>Connect with <span>MVMNT CULTR</span></h2><p>Follow along beyond your next appointment.</p></div>
+        <nav class="social-links" data-layout="gold" aria-label="Social profiles, Gold dock"></nav>
+      </section>
+      <section id="signatures" class="concept signatures" role="tabpanel" aria-labelledby="tab-signatures" hidden>
+        <h2>Find your daily MVMNT.</h2>
+        <nav class="social-links" data-layout="signatures" aria-label="Social profiles, Signatures"></nav>
+      </section>
+      <section id="portrait" class="concept portrait" role="tabpanel" aria-labelledby="tab-portrait" hidden>
+        <figure class="portrait-photo"><img src="../assets/images/dr-simi.webp" alt="Dr. Kyle Simi Simkovich"></figure>
+        <div><h2>Keep moving with us.</h2><p>Stay connected with Dr. Simi and MVMNT CULTR.</p><nav class="social-links" data-layout="portrait" aria-label="Social profiles, Personal"></nav></div>
+      </section>
+      <div class="context-footer"><span>MVMNT CULTR Performance Chiropractic</span><span>26 La Porte St, Arcadia, Suite A</span><span>info@mvmntcultr.com</span></div>
+    </div>
+    <p class="footnote">Separate design previews. Your approved section is unchanged. All social links use the existing profile destinations.</p>
+  </main>
+  <script>
+    const profiles = [{"name": "Instagram", "url": "https://www.instagram.com/mvmntcultr/", "handle": "@mvmntcultr", "slug": "instagram", "icon": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n              <rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"5\"></rect>\n              <circle cx=\"12\" cy=\"12\" r=\"3.5\"></circle>\n              <circle cx=\"17\" cy=\"7\" r=\"1\"></circle>\n            </svg>"}, {"name": "TikTok", "url": "https://www.tiktok.com/@thedrsimi", "handle": "@thedrsimi", "slug": "tiktok", "icon": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n              <path d=\"M14 4c.4 3 2.1 4.8 5 5v3.2c-1.7 0-3.2-.5-4.7-1.5v5.7c0 3-2.1 5.2-5.1 5.2A5 5 0 0 1 4 16.7c0-3 2.3-5.1 5.5-5.1.4 0 .8 0 1.2.1V15c-.4-.1-.7-.2-1.1-.2-1.4 0-2.3.8-2.3 2 0 1.1.8 1.9 1.9 1.9 1.3 0 2.1-.8 2.1-2.4V4h2.7Z\"></path>\n            </svg>"}, {"name": "Facebook", "url": "https://www.facebook.com/MVMNTCLTR", "handle": "MVMNT CULTR", "slug": "facebook", "icon": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n              <path d=\"M14 8.2h2.5V4.3c-.5-.1-1.9-.3-3.5-.3-3.5 0-5.8 2.1-5.8 6v3.4H4v4.4h3.2V24H12v-6.2h3.8l.6-4.4H12v-3c0-1.3.4-2.2 2-2.2Z\"></path>\n            </svg>"}];
+    const arrow = '<svg class="external" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>';
+    document.querySelectorAll('[data-layout]').forEach(nav => {
+      nav.innerHTML=profiles.map(p=>{
+        const icon=`<span class="icon" aria-hidden="true">${p.icon}</span>`;
+        let content;
+        if(nav.dataset.layout==='gold') content=`${icon}<span><span class="name">${p.name}</span><span class="handle">${p.handle}</span></span><span class="tooltip" aria-hidden="true">${p.name}</span>`;
+        else if(nav.dataset.layout==='signatures') content=`<span class="name-row">${icon}<span class="name">${p.name}</span></span><span class="details"><span class="handle">${p.handle}</span>${arrow}</span>`;
+        else content=`${icon}<span>${p.name}</span>`;
+        return `<a href="${p.url}" class="${p.slug}" target="_blank" rel="noopener noreferrer" aria-label="MVMNT CULTR on ${p.name} (opens in a new tab)">${content}</a>`;
+      }).join('');
+    });
+    const notes={gold:'Matched to your reference: a two-line heading, supporting text below, and three large icons with labels underneath. The same arrangement scales across desktop and mobile.',signatures:'Large platform names and their recognizable colors. An open, typographic design without cards or button boxes.',portrait:'A more personal direction: Dr. Simi’s existing portrait, a gold accent, and soft platform-colored links.'};
+    const tabs=[...document.querySelectorAll('[data-design]')];
+    function select(name,update=true) {
+      if(!Object.hasOwn(notes,name)) name='gold';
+      tabs.forEach(t=>{const active=t.dataset.design===name;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;document.getElementById(t.dataset.design).hidden=!active});
+      document.getElementById('design-note').textContent=notes[name];
+      if(update) history.replaceState(null,'','#'+name);
+    }
+    tabs.forEach((t,i)=>{
+      t.addEventListener('click',()=>select(t.dataset.design));
+      t.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=(i+1)%3;else if(e.key==='ArrowLeft')next=(i+2)%3;else if(e.key==='Home')next=0;else if(e.key==='End')next=2;else return;e.preventDefault();select(tabs[next].dataset.design);tabs[next].focus()});
+    });
+    document.querySelectorAll('[data-size]').forEach(b=>b.addEventListener('click',()=>{document.body.classList.toggle('mobile',b.dataset.size==='mobile');document.querySelectorAll('[data-size]').forEach(t=>t.setAttribute('aria-pressed',String(t===b)))}));
+    select(location.hash.slice(1),false);
+    addEventListener('hashchange',()=>select(location.hash.slice(1),false));
+  </script>
+</body>
+</html>

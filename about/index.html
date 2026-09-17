@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../styles.css?v=visit-map-1" />
   </head>
   <body>
     <header class="site-header" aria-label="Main navigation">
@@ -23,11 +23,13 @@
         <span>MVMNT CULTR</span>
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="/">Home</a>
-        <a aria-current="page" href="/about/">About</a>
-        <a href="/contact/">Contact</a>
+        <div class="desktop-nav-links">
+          <a href="/">Home</a>
+          <a aria-current="page" href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+        </div>
+        <a class="book-button" href="https://movementprescribed.janeapp.com/">Book Now</a>
       </nav>
-      <a class="book-button" href="https://movementprescribed.janeapp.com/">Book Now</a>
       <details class="mobile-menu">
         <summary class="menu-toggle" aria-label="Open menu">
           <span class="sr-only">Menu</span>
@@ -70,55 +72,63 @@
         </div>
       </section>
 
-      <section class="about-social-row" aria-labelledby="about-social-title">
+      <section class="about-social-row social-dark" aria-labelledby="about-social-title">
         <div class="about-social-copy">
-          <span>Socials</span>
-          <h2 id="about-social-title">Connect with MVMNT CULTR</h2>
+          <h2 id="about-social-title">Keep in touch.</h2>
         </div>
-        <div class="about-social-links" aria-label="MVMNT CULTR social profiles">
-          <a href="https://www.instagram.com/mvmntcultr/" aria-label="MVMNT CULTR on Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+        <nav class="about-social-links" aria-label="MVMNT CULTR social profiles">
+          <a href="https://www.instagram.com/mvmntcultr/" target="_blank" rel="noopener noreferrer" aria-label="MVMNT CULTR on Instagram (opens in a new tab)">
+            <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
               <rect x="4" y="4" width="16" height="16" rx="5"></rect>
               <circle cx="12" cy="12" r="3.5"></circle>
               <circle cx="17" cy="7" r="1"></circle>
-            </svg>
-            <span>Instagram</span>
+            </svg></span>
+            <span class="social-label">Instagram</span>
           </a>
-          <a href="https://www.tiktok.com/@thedrsimi" aria-label="MVMNT CULTR on TikTok">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+          <a href="https://www.tiktok.com/@thedrsimi" target="_blank" rel="noopener noreferrer" aria-label="MVMNT CULTR on TikTok (opens in a new tab)">
+            <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M14 4c.4 3 2.1 4.8 5 5v3.2c-1.7 0-3.2-.5-4.7-1.5v5.7c0 3-2.1 5.2-5.1 5.2A5 5 0 0 1 4 16.7c0-3 2.3-5.1 5.5-5.1.4 0 .8 0 1.2.1V15c-.4-.1-.7-.2-1.1-.2-1.4 0-2.3.8-2.3 2 0 1.1.8 1.9 1.9 1.9 1.3 0 2.1-.8 2.1-2.4V4h2.7Z"></path>
-            </svg>
-            <span>TikTok</span>
+            </svg></span>
+            <span class="social-label">TikTok</span>
           </a>
-          <a href="https://www.facebook.com/MVMNTCLTR" aria-label="MVMNT CULTR on Facebook">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+          <a href="https://www.facebook.com/MVMNTCLTR" target="_blank" rel="noopener noreferrer" aria-label="MVMNT CULTR on Facebook (opens in a new tab)">
+            <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M14 8.2h2.5V4.3c-.5-.1-1.9-.3-3.5-.3-3.5 0-5.8 2.1-5.8 6v3.4H4v4.4h3.2V24H12v-6.2h3.8l.6-4.4H12v-3c0-1.3.4-2.2 2-2.2Z"></path>
-            </svg>
-            <span>Facebook</span>
+            </svg></span>
+            <span class="social-label">Facebook</span>
           </a>
-        </div>
+        </nav>
       </section>
 
-      <section class="about-location-section" aria-labelledby="location-title">
+      <section class="about-location-section" id="visit" aria-labelledby="location-title">
         <div class="location-copy">
-          <p class="eyebrow">Visit MVMNT CULTR</p>
+          <p class="location-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></svg>Visit MVMNT CULTR</p>
           <h2 id="location-title">Located in Arcadia, built for focused care.</h2>
-          <p>
+          <p class="location-description">
             The clinic is set up for treatment, movement assessment, rehab, and
             performance work without the noise of a crowded gym floor.
           </p>
-          <address>
-            26 La Porte St, Suite A<br />
-            Arcadia, CA 91006
-          </address>
+          <div class="location-actions">
+            <a class="location-button location-directions"
+              href="https://www.google.com/maps/dir/?api=1&amp;destination=26%20La%20Porte%20St%20Suite%20A%20Arcadia%20CA%2091006"
+              target="_blank" rel="noopener noreferrer">Get directions</a>
+            <a class="location-button location-book" href="https://movementprescribed.janeapp.com/"
+              target="_blank" rel="noopener noreferrer">Book a visit</a>
+          </div>
         </div>
-        <div class="location-map" aria-label="Map to MVMNT CULTR in Arcadia">
-          <iframe
-            title="Map to MVMNT CULTR"
-            src="https://www.google.com/maps?q=26%20La%20Porte%20St%20Suite%20A%20Arcadia%20CA%2091006&output=embed"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+        <div class="location-media">
+          <div class="location-map">
+            <iframe title="Map to MVMNT CULTR in Arcadia"
+              src="https://www.google.com/maps?q=26%20La%20Porte%20St%20Suite%20A%20Arcadia%20CA%2091006&amp;output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="location-address-card">
+            <span class="location-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></svg></span>
+            <address>
+              <strong>26 La Porte St, Suite A</strong>
+              <span>Arcadia, CA 91006</span>
+            </address>
+          </div>
         </div>
       </section>
     </main>
@@ -130,6 +140,6 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="../script.js"></script>
+    <script src="../script.js?v=visit-studio-1"></script>
   </body>
 </html>

@@ -9,6 +9,8 @@ Static website mockup for MVMNT CULTR, Dr. Kyle "Simi" Simkovich's performance c
 - Vercel production: https://mvmntcultrwebsite.vercel.app
 - Vercel project: `mvmntcultrwebsite`
 - Primary booking link: https://movementprescribed.janeapp.com/
+- September 16, 2026: homepage clinic-hours weekly schedule approved and implemented locally;
+  desktop/mobile and automatic day highlighting verified. This change has not been deployed.
 
 ## Site Direction
 
@@ -21,21 +23,22 @@ The core positioning is credibility first, booking second. Booking is always ava
 ### Home
 
 - Full-screen hero using facility imagery.
-- Transparent desktop/mobile navigation that turns white on scroll or when the mobile menu opens.
+- Desktop pill navigation with Home, About, Contact, and a yellow Book Now button; the full logo and wordmark move into the compact navigation group on scroll.
+- Mobile keeps the top-right hamburger; the closed header turns white on scroll, while the open menu uses the black, warm-white, and gold site palette.
 - Mobile hamburger drawer with Home, About, Contact, and Book Now.
-- "A clinic experience that connects wellness, rehab, and performance" card row.
+- "The MVMNT CULTR method" section with a yellow heading, black background, and three open care columns; stacked rows on mobile. All care details remain visible without interaction. The heading plays the approved 1.45-second gold light sweep once when it enters view, and stays static for reduced-motion preferences.
 - Partner logo carousel using supplied team logo assets.
 - "Welcome to MVMNT CULTR" service cards.
-- Clinic hours section.
+- Clinic hours with a seven-day schedule, automatic Pacific-time day highlight, and Book now CTA.
 - ID Forest Medicine Consulting section.
-- Socials section with Instagram, TikTok, Yelp, Facebook, and X placeholders.
+- Compact white social row with “Keep in touch.” and Instagram, TikTok, and Facebook text links.
 
 ### About
 
 - Redesigned around Dr. Simi's portrait.
 - Professional black/gold gradient hero-style profile section.
-- Socials section replacing the older education/experience/care model row.
-- Location section with address and embedded Google map.
+- Compact black social row with “Keep in touch.” and gold social icons beside the platform names.
+- Studio-style location section with the clinic photo, floating address card, and direct directions/booking links.
 
 ### Contact
 
@@ -61,6 +64,98 @@ The core positioning is credibility first, booking second. Booking is always ava
   `waiting-room.jpg`) were removed in commit `249b1e1`'s successor and remain recoverable from git
   history: `git checkout <commit>^ -- assets/images/<file>`.
 - `.gitignore` excludes `.DS_Store`, `.vercel`, `node_modules`, and `.env*`.
+
+## Approved Navigation
+
+The full-wordmark design from `design-previews/navigation-options.html#wordmark` is
+implemented locally on Home, About, and Contact. Desktop starts with the logo on the
+left, a centered 252 × 52px dark navigation pill, and a separate 124 × 52px yellow
+Book Now button on the right. Scrolling past 80px brings the full wordmark, navigation,
+and the selected compact-block booking button into one 504 × 52px dark navbar. The yellow
+104 × 36px button sits inside the shell with an 8px edge inset. It expands again below
+70px to avoid threshold flicker. Links use equal gaps, balanced padding, and light text
+without selection backgrounds. The approved direction came from option 2 in
+`design-previews/book-button-options.html`.
+
+At 860px and below, the existing top-right hamburger opens a full-screen black menu with
+warm-white links, a gold active state, and the gold **Book Now** button using its existing
+Jane URL. The menu supports
+Escape, keyboard focus wrapping, scroll locking, and automatic closure on desktop resize.
+Short screens can scroll the drawer. Navigation transitions respect reduced motion.
+The header entrance uses opacity only so it does not change the fixed drawer's positioning.
+
+Previous navigation verification covered desktop 1440 × 900, mobile 390 × 844, and the
+861px desktop boundary. The booking-button and mobile-palette update was browser checked at
+1280 × 720, 863px desktop, and 391 × 843, including active-page styling, compact scroll state,
+desktop/mobile booking visibility, the black-and-gold mobile menu, and Escape/scroll-lock
+cleanup. JavaScript syntax and diff checks passed. Existing page content and other in-progress
+edits were preserved. No contact forms were submitted. These changes have not been pushed or
+deployed.
+
+## About Page Visit Section
+
+The Studio split concept from `design-previews/visit-options.html#studio` is implemented
+locally at `/about/#visit`. The final version uses a live Google map without the
+photo/map switch. Desktop places the copy beside the map; at 700px and below, the copy
+and two equally sized buttons stack above the map and floating address card.
+
+**Get directions** opens Google Maps for 26 La Porte St, Suite A, Arcadia, CA 91006.
+**Book a visit** opens the existing Jane booking page. Both links open a new tab, use
+centered text, and have no arrows. The pin icons remain in the section label and address
+card. The map has a lower ledge so the floating address card does not obscure Google
+controls or attribution.
+
+Desktop and mobile visuals, map loading, button sizes, link destinations, and absence of
+horizontal overflow were checked. JavaScript syntax and diff checks passed. The About
+markup outside this section was compared with the pre-change file and preserved. No
+booking or form submission occurred. This work has not been pushed or deployed.
+
+## Homepage Clinic Hours
+
+The approved design is option 1, **Weekly schedule**, from
+[`design-previews/clinic-hours-options.html`](design-previews/clinic-hours-options.html#weekly).
+It takes inspiration from the [Framer Business Hours component](https://www.framer.com/marketplace/components/business-hours/)
+and is implemented directly in the static site, with no Framer dependency.
+
+The white section follows Services and precedes the consulting section. Desktop shows the
+heading, supporting copy, booking button, and Arcadia address on the left, with the full weekly
+schedule in a rounded card on the right. At widths of 700px and below, the content stacks and
+the full-width Book now button appears below the schedule. Both button variants link to the
+existing Jane booking page; only the appropriate variant is displayed at each width.
+
+The current schedule remains:
+
+| Days | Hours (Pacific time) |
+| --- | --- |
+| Monday–Friday | 9:00 am–7:00 pm |
+| Saturday | By appointment |
+| Sunday | Closed |
+
+### Automatic day highlighting
+
+`script.js` uses `Intl.DateTimeFormat` with `America/Los_Angeles` to identify the clinic's current
+day, independently of the visitor's time zone. The matching row receives a pale gold background,
+a dot, bold text, and `aria-current="date"`. It refreshes on page load, every minute while the
+page is open, and when the tab becomes visible again. Pacific daylight saving changes are handled
+by the browser's time-zone rules; there is no hardcoded date or annual rollover to maintain.
+
+This highlights the current day only, not live appointment availability or an open/closed status.
+The weekly hours are static content: holiday closures and schedule changes still require editing.
+Without JavaScript, all seven days and the booking link remain available without the highlight.
+
+### Maintenance and verification
+
+- Homepage markup and hours: `index.html`, section `#clinic-hours`, rows marked `data-clinic-day`.
+- Scoped styling: `.home-hours-*` rules in `styles.css`.
+- Day selection and refresh: `clinicHourRows` block in `script.js`.
+- The Contact page's separate hours were not changed by this homepage redesign; keep both
+  schedules consistent when updating actual operating hours.
+- Verified locally on September 16, 2026 at 1280px desktop and 390px mobile: all seven days,
+  correct day highlight, responsive booking-button placement, no horizontal overflow, and no
+  browser console errors. Booking destinations were checked; no appointment was submitted.
+- Script checks covered Pacific midnight rollover, Saturday/Sunday, daylight saving transitions,
+  return-to-tab refresh, and a future year. `node --check script.js` and `git diff --check` passed.
+- Local review: http://127.0.0.1:4174/#clinic-hours. Production deployment remains pending.
 
 ## Contact Form
 
@@ -171,3 +266,34 @@ Future pushes to `main` should trigger Vercel deployments because the GitHub rep
 - Confirm final clinic hours.
 - Add final office photo/video shoot assets when ready.
 - Connect the real `mvmntcultr.com` domain (registered at GoDaddy) once the UI is finalized.
+
+## Approved Social Text Links
+
+Option 1, **Text links**, from `design-previews/social-four-directions.html#text` is
+implemented locally on Home and About. Both use “Keep in touch.” with unboxed
+Instagram, TikTok, and Facebook links. Both use the brand yellow (`#FFBF00`) for icons and hover underlines. Home uses
+white (`#FFFFFF`) with ink text (`#080808`); About uses ink with the site’s
+warm-white text (`#F8F7F2`). Desktop is a 104px row; phones show the heading above
+one horizontal link row. Links retain their existing profile destinations and open
+in a new tab, with accessible labels, 44px tap targets, visible keyboard focus, and
+subtle gold hover underlines. Reduced motion disables the underline transition.
+
+Verified in the browser on desktop and at 390px and 320px widths for both pages,
+including overflow, link destinations, and keyboard focus. Not pushed or deployed.
+
+Social visibility fix: social rows are excluded from scroll-reveal animations. On tall
+desktop screens, the homepage footer prevented the row from reaching the old 84%
+viewport trigger, leaving it hidden. The row now renders visibly from page load.
+
+## Approved Performance Insight Section
+
+The **Clear split** design from `design-previews/performance-options.html#split`
+is implemented on the homepage at `#member-support`, between Clinic hours and
+Keep in touch. Desktop pairs the headline and member introduction with one panel:
+white for every-member support and charcoal for movement-plan access to Dr. Simi.
+The approved gold icons, copy, rounded corners, and second-opinion note are retained.
+At 620px and below, the introduction sits above the stacked panel.
+
+Verified visually on desktop and at 390px and 320px phone widths, with no horizontal
+overflow at either phone width or at 768px. This is a local implementation; not pushed
+or deployed.
