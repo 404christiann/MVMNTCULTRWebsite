@@ -239,17 +239,6 @@ h1, h2, h3, p { margin: 0; }
 .bx-tile--center { align-items: center; text-align: center; justify-content: center; }
 .bx-tile--center p { margin-inline: auto; }
 .bx-tile-icon { width: 30px; height: 30px; }
-.bx-tile-tag {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  padding: 6px 12px;
-  border-radius: 100px;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  font-size: 13px;
-}
 .bx-inline-link {
   display: inline-flex;
   align-items: center;
