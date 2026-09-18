@@ -8,141 +8,170 @@
       content="Contact MVMNT CULTR Performance Chiropractic in Arcadia, California."
     />
     <title>Contact | MVMNT CULTR</title>
+    <script>document.documentElement.classList.add("js");</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Montserrat:wght@600;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../styles.css?v=wordmark-nav-1" />
+    <link rel="stylesheet" href="../assets/site.css?v=blix-5" />
   </head>
   <body>
-    <header class="site-header" aria-label="Main navigation">
-      <a class="brand" href="/" aria-label="MVMNT CULTR home">
-        <img src="../assets/images/mark.webp" alt="" />
-        <span>MVMNT CULTR</span>
-      </a>
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <div class="desktop-nav-links">
+    <header class="site-nav" aria-label="Main navigation">
+      <div class="nav-pill">
+        <a class="brand" href="/" aria-label="MVMNT CULTR home">
+          <img src="../assets/images/mark.webp" alt="" />
+          <span>MVMNT CULTR</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <span class="nav-glider" aria-hidden="true"></span>
           <a href="/">Home</a>
           <a href="/about/">About</a>
           <a aria-current="page" href="/contact/">Contact</a>
-        </div>
-        <a class="book-button" href="https://movementprescribed.janeapp.com/">Book Now</a>
-      </nav>
-      <details class="mobile-menu">
-        <summary class="menu-toggle" aria-label="Open menu">
-          <span class="sr-only">Menu</span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </summary>
-        <nav class="mobile-drawer" aria-label="Mobile navigation">
-          <a href="/">Home</a>
-          <a href="/about/">About</a>
-          <a aria-current="page" href="/contact/">Contact</a>
-          <a class="mobile-book" href="https://movementprescribed.janeapp.com/">Book Now</a>
         </nav>
-      </details>
+        <a class="bx-btn nav-book" href="https://movementprescribed.janeapp.com/">Book Now</a>
+        <button class="nav-burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <i></i><i></i><i></i>
+        </button>
+      </div>
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a aria-current="page" href="/contact/">Contact</a>
+        <a class="bx-btn" href="https://movementprescribed.janeapp.com/">Book Now</a>
+      </nav>
     </header>
 
-    <main class="contact-page-main">
-      <section class="contact-intake-section" aria-labelledby="contact-page-title">
-        <div class="contact-intro">
-          <p class="eyebrow">Contact MVMNT CULTR</p>
-          <h1 id="contact-page-title">Tell us what you are working through.</h1>
-          <p>
-            Use the form for general questions, service details, partnerships, or
-            consulting inquiries. For appointments, booking through Jane is the
-            fastest path.
-          </p>
-          <div class="quick-contact" aria-label="Clinic contact information">
-            <a href="tel:+13232481211">323.248.1211</a>
-            <a href="mailto:info@mvmntcultr.com">info@mvmntcultr.com</a>
-            <span>26 La Porte St, Suite A, Arcadia, CA 91006</span>
+    <main>
+      <!-- INTAKE -->
+      <section data-dark class="bx-about-hero bx-contact-hero" aria-labelledby="contact-page-title">
+        <div class="bx-noise" aria-hidden="true"></div>
+        <div class="bx-wrap bx-contact-grid">
+          <div class="bx-contact-intro">
+            <span class="bx-eyebrow bx-eyebrow--light bx-eyebrow--plain" data-reveal data-hero style="--d:100ms">Contact MVMNT CULTR</span>
+            <h1 class="bx-h1" id="contact-page-title" data-split="words" data-hero>Tell us what you are working through.</h1>
+            <p class="bx-lede" data-reveal data-hero style="--d:700ms">
+              Use the form for general questions, service details, partnerships, or
+              consulting inquiries. For appointments, booking through Jane is the
+              fastest path.
+            </p>
+            <div class="bx-quick" aria-label="Clinic contact information" data-reveal data-hero style="--d:850ms">
+              <a href="tel:+13232481211">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+                <span><small>Call</small>323.248.1211</span>
+              </a>
+              <a href="mailto:info@mvmntcultr.com">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                <span><small>Email</small>info@mvmntcultr.com</span>
+              </a>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                <span><small>Visit</small>26 La Porte St, Suite A, Arcadia, CA 91006</span>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <form class="contact-form" id="contact-form" action="/api/contact" method="POST">
-          <input
-            class="form-botcheck"
-            type="checkbox"
-            name="botcheck"
-            tabindex="-1"
-            autocomplete="off"
-            aria-hidden="true"
-          />
-          <label>
-            Name
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" autocomplete="email" required />
-          </label>
-          <label>
-            Phone
-            <input type="tel" name="phone" autocomplete="tel" />
-          </label>
-          <label>
-            Reason for reaching out
-            <select name="reason" required>
-              <option value="">Select one</option>
-              <option>Consulting or Partnership</option>
-              <option>Event/Seasonal Coverage</option>
-              <option>Performance Chiropractic Care</option>
-              <option>Athletic Rehab</option>
-              <option>Athletic Performance Assessment</option>
-            </select>
-          </label>
-          <label class="form-message">
-            Message
-            <textarea name="message" rows="3" placeholder="Share what you are dealing with, your goals, and any timeline we should know about."></textarea>
-          </label>
-          <button type="submit">Submit inquiry</button>
-          <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
-          <p class="form-note">
-            Please do not include sensitive medical records in this form. Appointment
-            scheduling and clinical documentation are handled through Jane.
-          </p>
-        </form>
+          <!-- Field names, id and action are what api/contact.js and site.js expect -->
+          <form class="contact-form bx-form" id="contact-form" action="/api/contact" method="POST" data-reveal data-hero style="--d:300ms">
+            <input
+              class="form-botcheck"
+              type="checkbox"
+              name="botcheck"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+            <label class="bx-field bx-field--full">
+              Name
+              <input type="text" name="name" autocomplete="name" placeholder="Your name" required />
+            </label>
+            <label class="bx-field">
+              Email
+              <input type="email" name="email" autocomplete="email" placeholder="you@email.com" required />
+            </label>
+            <label class="bx-field">
+              Phone
+              <input type="tel" name="phone" autocomplete="tel" placeholder="(000) 000-0000" />
+            </label>
+            <label class="bx-field bx-field--full">
+              Reason for reaching out
+              <select name="reason" required>
+                <option value="">Select one</option>
+                <option>Consulting or Partnership</option>
+                <option>Event/Seasonal Coverage</option>
+                <option>Performance Chiropractic Care</option>
+                <option>Athletic Rehab</option>
+                <option>Athletic Performance Assessment</option>
+              </select>
+            </label>
+            <label class="bx-field bx-field--full">
+              Message
+              <textarea name="message" rows="4" placeholder="Share what you are dealing with, your goals, and any timeline we should know about."></textarea>
+            </label>
+            <button class="bx-btn bx-field--full" type="submit">Submit inquiry</button>
+            <p class="form-status bx-field--full" id="form-status" role="status" aria-live="polite" hidden></p>
+            <p class="form-note bx-field--full">
+              Please do not include sensitive medical records in this form. Appointment
+              scheduling and clinical documentation are handled through Jane.
+            </p>
+          </form>
+        </div>
       </section>
 
-      <section class="contact-support-section" aria-label="Visit and booking details">
-        <div>
-          <p class="eyebrow">Appointments</p>
-          <h2>Book directly through Jane.</h2>
-          <p>
-            Existing and new clients can use Kyle's booking system for appointment
-            availability, intake, and documentation.
-          </p>
-          <a class="primary-link" href="https://movementprescribed.janeapp.com/">Book Now</a>
-        </div>
-        <div class="contact-hours">
-          <div class="contact-hours-heading">
-            <h3>This week</h3>
-            <span>Pacific time</span>
+      <!-- APPOINTMENTS -->
+      <section class="bx-section" id="appointments" aria-labelledby="appointments-title">
+        <div class="bx-wrap bx-faq">
+          <div class="bx-faq-intro">
+            <span class="bx-eyebrow bx-eyebrow--plain" data-reveal>Appointments</span>
+            <h2 class="bx-h2" id="appointments-title" data-split="words">Book directly through Jane.</h2>
+            <p class="bx-lede" data-reveal style="--d:150ms">
+              Existing and new clients can use Kyle's booking system for appointment
+              availability, intake, and documentation.
+            </p>
+            <div data-reveal style="--d:250ms"><a class="bx-btn" href="https://movementprescribed.janeapp.com/">Book Now</a></div>
+            <p class="bx-address" data-reveal style="--d:300ms"><b>This week</b>Pacific time</p>
           </div>
-          <dl aria-label="Weekly clinic hours, Pacific time">
-            <div data-clinic-day="Mon"><dt>Monday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
-            <div data-clinic-day="Tue"><dt>Tuesday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
-            <div data-clinic-day="Wed"><dt>Wednesday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
-            <div data-clinic-day="Thu"><dt>Thursday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
-            <div data-clinic-day="Fri"><dt>Friday</dt><dd>9:00 am &ndash; 7:00 pm</dd></div>
-            <div data-clinic-day="Sat"><dt>Saturday</dt><dd>By appointment</dd></div>
-            <div data-clinic-day="Sun" class="contact-hours-closed"><dt>Sunday</dt><dd>Closed</dd></div>
-          </dl>
+          <div class="bx-rows" data-hours aria-label="Weekly clinic hours, Pacific time">
+            <div class="bx-row" data-day="1" data-reveal><span>Monday</span><span>9:00 am – 7:00 pm</span></div>
+            <div class="bx-row" data-day="2" data-reveal style="--d:60ms"><span>Tuesday</span><span>9:00 am – 7:00 pm</span></div>
+            <div class="bx-row" data-day="3" data-reveal style="--d:120ms"><span>Wednesday</span><span>9:00 am – 7:00 pm</span></div>
+            <div class="bx-row" data-day="4" data-reveal style="--d:180ms"><span>Thursday</span><span>9:00 am – 7:00 pm</span></div>
+            <div class="bx-row" data-day="5" data-reveal style="--d:240ms"><span>Friday</span><span>9:00 am – 7:00 pm</span></div>
+            <div class="bx-row" data-day="6" data-reveal style="--d:300ms"><span>Saturday</span><span>By appointment</span></div>
+            <div class="bx-row is-closed" data-day="0" data-reveal style="--d:360ms"><span>Sunday</span><span>Closed</span></div>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer>
-      <span>MVMNT CULTR Performance Chiropractic</span>
-      <span>26 La Porte St, Arcadia, Suite A</span>
-      <a href="mailto:info@mvmntcultr.com">info@mvmntcultr.com</a>
+    <footer class="bx-footer">
+      <div class="bx-wrap">
+        <div class="bx-footer-top">
+          <div class="bx-footer-brand">
+            <strong>MVMNT CULTR</strong>
+            <p>Performance chiropractic for sports medicine, athletic performance, and individualized recovery.</p>
+            <span>Email: <a href="mailto:info@mvmntcultr.com">info@mvmntcultr.com</a></span>
+          </div>
+          <div class="bx-footer-col">
+            <h4>Navigation</h4>
+            <a href="/">Home</a><a href="/about/">About</a><a href="/contact/">Contact</a>
+          </div>
+          <div class="bx-footer-col">
+            <h4>Visit</h4>
+            <span class="bx-small">26 La Porte St, Suite A</span>
+            <span class="bx-small">Arcadia, CA 91006</span>
+          </div>
+          <div class="bx-footer-col">
+            <h4>Social media</h4>
+            <a href="https://www.instagram.com/mvmntcultr/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.tiktok.com/@thedrsimi" target="_blank" rel="noopener noreferrer">TikTok</a>
+            <a href="https://www.facebook.com/MVMNTCLTR" target="_blank" rel="noopener noreferrer">Facebook</a>
+          </div>
+        </div>
+        <div class="bx-footer-bottom">© 2026 MVMNT CULTR Performance Chiropractic. All rights reserved.</div>
+      </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="../script.js?v=wordmark-nav-1"></script>
+    <script src="../assets/site.js?v=blix-4"></script>
   </body>
 </html>

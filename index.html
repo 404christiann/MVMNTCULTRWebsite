@@ -8,139 +8,173 @@
       content="MVMNT CULTR Performance Chiropractic mockup for sports medicine, athletic performance, and individualized recovery."
     />
     <title>MVMNT CULTR Performance Chiropractic</title>
+    <script>document.documentElement.classList.add("js");</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Montserrat:wght@600;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=method-sweep-1" />
+    <link rel="stylesheet" href="assets/site.css?v=blix-5" />
     <link rel="stylesheet" href="assets/logo-carousel.css?v=continuous-1" />
   </head>
   <body>
-    <header class="site-header" aria-label="Main navigation">
-      <a class="brand" href="/" aria-label="MVMNT CULTR home">
-        <img src="assets/images/mark.webp" alt="" />
-        <span>MVMNT CULTR</span>
-      </a>
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <div class="desktop-nav-links">
+    <header class="site-nav" aria-label="Main navigation">
+      <div class="nav-pill">
+        <a class="brand" href="/" aria-label="MVMNT CULTR home">
+          <img src="assets/images/mark.webp" alt="" />
+          <span>MVMNT CULTR</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <span class="nav-glider" aria-hidden="true"></span>
           <a aria-current="page" href="/">Home</a>
           <a href="/about/">About</a>
           <a href="/contact/">Contact</a>
-        </div>
-        <a class="book-button" href="https://movementprescribed.janeapp.com/">Book Now</a>
-      </nav>
-      <details class="mobile-menu">
-        <summary class="menu-toggle" aria-label="Open menu">
-          <span class="sr-only">Menu</span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </summary>
-        <nav class="mobile-drawer" aria-label="Mobile navigation">
-          <a aria-current="page" href="/">Home</a>
-          <a href="/about/">About</a>
-          <a href="/contact/">Contact</a>
-          <a class="mobile-book" href="https://movementprescribed.janeapp.com/">Book Now</a>
         </nav>
-      </details>
+        <a class="bx-btn nav-book" href="https://movementprescribed.janeapp.com/">Book Now</a>
+        <button class="nav-burger" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <i></i><i></i><i></i>
+        </button>
+      </div>
+      <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+        <a aria-current="page" href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a class="bx-btn" href="https://movementprescribed.janeapp.com/">Book Now</a>
+      </nav>
     </header>
 
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-media" aria-hidden="true">
-          <img src="assets/images/hero-gym.webp" alt="" />
-        </div>
-        <div class="hero-content">
-          <p class="eyebrow">Wellness / rehab / performance</p>
-          <h1 id="hero-title">From pain to performance.</h1>
-          <p class="hero-copy">
-            All members receive strategies to stay strong outside the clinic.
-          </p>
-          <div class="hero-actions">
-            <a class="primary-link" href="#approach">Explore care</a>
-            <a class="secondary-link" href="/about/">Meet Dr. Simi</a>
+    <main>
+      <!-- HERO -->
+      <section class="bx-hero" data-dark aria-labelledby="hero-title">
+        <div class="bx-hero-media" aria-hidden="true"><img src="assets/images/hero-gym.webp" alt="" /></div>
+        <div class="bx-hero-shade" aria-hidden="true"></div>
+        <div class="bx-noise" aria-hidden="true"></div>
+        <div class="bx-hero-content">
+          <span class="bx-eyebrow bx-eyebrow--light bx-eyebrow--plain" data-reveal data-hero style="--d:100ms">Wellness / rehab / performance</span>
+          <h1 class="bx-h1" id="hero-title" data-split="words" data-hero>From pain to performance.</h1>
+          <p class="bx-lede" data-split="chars" data-hero>All members receive strategies to stay strong outside the clinic.</p>
+          <div class="bx-hero-actions" data-reveal data-hero style="--d:900ms">
+            <a class="bx-btn" href="https://movementprescribed.janeapp.com/">Book an appointment</a>
+            <a class="bx-btn bx-btn--ghost" href="/about/">Meet Dr. Simi</a>
           </div>
         </div>
       </section>
 
-      <section class="section approach approach--columns" id="approach" aria-labelledby="approach-title">
-        <div class="section-heading method-heading">
-          <h2 id="approach-title">The MVMNT CULTR method</h2>
+      <!-- METHOD — bento -->
+      <section class="bx-section" id="approach" aria-labelledby="method-title">
+        <div class="bx-wrap">
+          <div class="bx-head bx-head--center">
+            <h2 class="bx-h2" id="method-title" data-split="words">The MVMNT CULTR method</h2>
+            <p class="bx-lede" data-reveal style="--d:150ms">Care for how you move, recover, and perform. Find the support that fits your goals.</p>
+          </div>
+          <div class="bx-bento">
+            <article class="bx-tile bx-tile--big bx-tile--photo" data-reveal>
+              <img src="assets/images/home/method-confidence.webp" alt="" style="object-position: 45% 35%" />
+              <span class="bx-tile-tag">02 — Rehab</span>
+              <h3 class="bx-h3" style="font-size:24px">Build confidence back</h3>
+              <p>One-on-one athletic rehab focused on movement assessments, recovery, performance testing, and a plan that fits the person.</p>
+            </article>
+            <article class="bx-tile bx-tile--gold" data-reveal style="--d:120ms">
+              <svg class="bx-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12h4l2 6 4-13 2.5 7h6.5"/></svg>
+              <h3 class="bx-h3">Wellness — support daily movement</h3>
+              <p>Care for the joints, muscles, and habits that shape how you move through work, training, family, and everyday life.</p>
+              <a class="bx-inline-link" href="#services">See our services <span>→</span></a>
+            </article>
+            <article class="bx-tile bx-tile--photo" data-reveal style="--d:240ms">
+              <img src="assets/images/home/method-performance.webp" alt="" style="object-position: center 60%" />
+              <h3 class="bx-h3">Performance — move from pain to output</h3>
+              <p>A performance-based approach that evolves from the initial plan of care into stronger, more resilient movement.</p>
+            </article>
+          </div>
         </div>
-        <div class="method-columns">
-          <article class="method-column">
-            <span class="method-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2.5 12h4l2 6 4-13 2.5 7h6.5"></path>
-              </svg>
-            </span>
-            <h3>Wellness</h3>
-            <p class="method-copy"><strong class="method-summary">Support daily movement</strong> Care for the joints, muscles, and habits that shape how you move through work, training, family, and everyday life.</p>
-          </article>
-          <article class="method-column">
-            <span class="method-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="6" y1="12" x2="18" y2="12"></line>
-                <line x1="4" y1="8" x2="4" y2="16"></line>
-                <line x1="20" y1="8" x2="20" y2="16"></line>
-                <line x1="7" y1="9" x2="7" y2="15"></line>
-                <line x1="17" y1="9" x2="17" y2="15"></line>
-              </svg>
-            </span>
-            <h3>Rehab</h3>
-            <p class="method-copy"><strong class="method-summary">Build confidence back</strong> One-on-one athletic rehab focused on movement assessments, recovery, performance testing, and a plan that fits the person.</p>
-          </article>
-          <article class="method-column">
-            <span class="method-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="3 17 9 11 13 15 21 7"></polyline>
-                <polyline points="14 7 21 7 21 14"></polyline>
-              </svg>
-            </span>
-            <h3>Performance</h3>
-            <p class="method-copy"><strong class="method-summary">Move from pain to output</strong> A performance-based approach that evolves from the initial plan of care into stronger, more resilient movement.</p>
+      </section>
+
+      <!-- SERVICES — steps with swapping image -->
+      <section class="bx-section" id="services" aria-labelledby="services-title" style="padding-top:0">
+        <div class="bx-wrap">
+          <div class="bx-head">
+            <div>
+              <h2 class="bx-h2" id="services-title" data-split="words">Welcome to MVMNT CULTR</h2>
+            </div>
+            <p class="bx-lede" data-reveal style="--d:150ms">Care for how you move, recover, and perform. Find the support that fits your goals.</p>
+          </div>
+          <div class="bx-steps-grid">
+            <div class="bx-steps-media" data-reveal>
+              <img class="is-active" src="assets/images/home/service-athletic-rehab.webp" alt="" />
+              <img src="assets/images/home/service-chiropractic.webp" alt="" style="object-position: 65% center" />
+              <img src="assets/images/home/service-movement-assessment.webp" alt="" style="object-position: center 40%" />
+              <img src="assets/images/home/service-performance-planning.webp" alt="" style="object-position: center 62%" />
+              <img src="assets/images/home/service-community.webp" alt="" style="object-position: center 72%" />
+            </div>
+            <div data-reveal style="--d:150ms">
+              <div class="bx-steps" role="tablist" aria-label="Services">
+                <button class="bx-step is-active" role="tab" aria-selected="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 6 4-13 2.5 7H21"/></svg>
+                  <span class="bx-h3">Athletic rehab</span>
+                  <span class="bx-step-body"><p>One-on-one rehab for athletes and active people returning from pain, injury, or a frustrating movement limitation.</p></span>
+                </button>
+                <button class="bx-step" role="tab" aria-selected="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="15.6" cy="4.4" r="2.5"/><path d="M13.5 7.5c-2.6-.8-4.5.2-5.3 2.6-.9 2.7-.2 5.4 2 7.2l2 1.6M12.1 18.9H7.3c-1.4 0-2.4 1-2.4 2.3M10.9 11.1c.7 2.2 2 3.3 4.2 3.4l-.7 6.5"/></svg>
+                  <span class="bx-h3">Chiropractic care</span>
+                  <span class="bx-step-body"><p>Hands-on care for joints, muscles, and movement patterns that affect daily comfort, training, and recovery.</p></span>
+                </button>
+                <button class="bx-step" role="tab" aria-selected="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 2v5m0 10v5M2 12h5m10 0h5"/><circle cx="12" cy="12" r="2"/></svg>
+                  <span class="bx-h3">Movement assessment</span>
+                  <span class="bx-step-body"><p>Clinical testing and movement review to understand what is limiting performance and where care should focus first.</p></span>
+                </button>
+                <button class="bx-step" role="tab" aria-selected="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8m-7 0h7v7"/></svg>
+                  <span class="bx-h3">Performance planning</span>
+                  <span class="bx-step-body"><p>A clear progression from early care to stronger, more confident movement in sport, training, work, and everyday life.</p></span>
+                </button>
+                <button class="bx-step" role="tab" aria-selected="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m1-16a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 4v3"/></svg>
+                  <span class="bx-h3">Community programs</span>
+                  <span class="bx-step-body"><p>Future workshops, run-club programming, and special events designed around education, prevention, and sustainable movement.</p></span>
+                </button>
+              </div>
+              <div class="bx-steps-cta"><a class="bx-btn" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book an appointment</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEAM SUPPORT — split carousel -->
+      <section class="bx-section" id="team-support" aria-labelledby="team-title" style="padding-top:0">
+        <div class="bx-wrap bx-split">
+          <div class="bx-split-intro">
+            <span class="bx-eyebrow bx-eyebrow--plain" data-reveal>Team consulting / coverage</span>
+            <h2 class="bx-h2" id="team-title" data-split="words">Better support. All season.</h2>
+            <p class="bx-lede" data-reveal style="--d:150ms">Flexible care for professional and amateur sports organizations, tailored to your athletes and the people supporting them.</p>
+            <div data-reveal style="--d:250ms"><a class="bx-btn" href="/contact/">Let’s talk about your team</a></div>
+            <div class="bx-arrows" data-reveal style="--d:300ms">
+              <button class="bx-arrow" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button>
+              <button class="bx-arrow" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+            </div>
+          </div>
+          <article class="bx-slide-card" data-reveal style="--d:150ms" aria-live="polite">
+            <div class="bx-slide-img bx-swap"><img src="assets/images/home/team-consulting.webp" alt="" style="object-position: center 55%" /></div>
+            <div class="bx-slide-text">
+              <h3 class="bx-h3 bx-swap" data-slide-title>Team consulting</h3>
+              <p class="bx-lede bx-swap" data-slide-body>Collaborative guidance for your organization’s athlete care and performance needs.</p>
+              <div class="bx-slide-foot">
+                <strong>MVMNT CULTR</strong>
+                <span class="bx-small" data-slide-count>1/4</span>
+              </div>
+            </div>
           </article>
         </div>
       </section>
 
-      <section id="team-support" class="sports-support-section" aria-labelledby="sports-support-title">
-        <div class="sports-support-intro">
-          <p class="eyebrow">Team consulting / coverage</p>
-          <h2 id="sports-support-title">Better support.<br />All season.</h2>
-          <p>
-            Flexible care for professional and amateur sports organizations,
-            tailored to your athletes and the people supporting them.
-          </p>
-        </div>
-        <div class="sports-support-services">
-          <article>
-            <h3>Team consulting</h3>
-            <p>Collaborative guidance for your organization’s athlete care and performance needs.</p>
-          </article>
-          <article>
-            <h3>Event coverage</h3>
-            <p>Care and support tailored to your sporting event.</p>
-          </article>
-          <article>
-            <h3>Seasonal medical coverage</h3>
-            <p>Medical support built around your team’s season.</p>
-          </article>
-          <article>
-            <h3>Support for your staff</h3>
-            <p>Work alongside your existing medical and performance team.</p>
-          </article>
-        </div>
-        <a class="primary-link sports-support-action" href="/contact/">Let’s talk about your team</a>
-      </section>
-
-      <section class="logo-carousel-section" id="proof" aria-labelledby="proof-title">
-        <div class="logo-carousel-head">
-          <h2 id="proof-title">Our Partners</h2>
-        </div>
-        <div class="logo-marquee" aria-label="MVMNT CULTR sports experience logos">
-          <div class="logo-track">
+      <!-- PARTNERS -->
+      <section class="bx-partners" aria-labelledby="partners-title">
+        <h2 class="bx-h2" id="partners-title" data-split="words">Our partners</h2>
+        <!-- logo-carousel.js upgrades this strip into the depth carousel -->
+        <div class="bx-wrap">
+          <div class="logo-marquee" aria-label="MVMNT CULTR sports experience logos">
+            <div class="logo-track">
             <span class="logo-item"><img src="assets/team-logos/logo-01.webp" alt="" /></span>
             <span class="logo-item"><img src="assets/team-logos/logo-02.webp" alt="" /></span>
             <span class="logo-item"><img src="assets/team-logos/logo-03.webp" alt="" /></span>
@@ -167,185 +201,109 @@
             <span class="logo-item"><img src="assets/team-logos/logo-11.webp" alt="" /></span>
             <span class="logo-item"><img src="assets/team-logos/logo-12.webp" alt="" /></span>
             <span class="logo-item"><img src="assets/team-logos/logo-13.webp" alt="" /></span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="services-section" id="services" aria-labelledby="services-title">
-        <div class="services-heading">
-          <h2 id="services-title">Welcome to MVMNT CULTR</h2>
-          <p>Care for how you move, recover, and perform. Find the support that fits your goals.</p>
-        </div>
-        <div class="services-list">
-          <article class="service-card is-open">
-            <span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 6 4-13 2.5 7H21"/></svg></span>
-            <div class="service-card-copy">
-              <h3>
-                <span class="service-title">Athletic rehab</span>
-                <button class="service-trigger" type="button" aria-expanded="true" aria-controls="service-panel-1">
-                  Athletic rehab<span class="service-toggle" aria-hidden="true"></span>
-                </button>
-              </h3>
-              <div class="service-body" id="service-panel-1">
-                <p>One-on-one rehab for athletes and active people returning from pain, injury, or a frustrating movement limitation.</p>
-              </div>
+      <!-- MEMBER SUPPORT -->
+      <section class="bx-section" id="member-support" aria-labelledby="member-title" style="padding-top:0">
+        <div class="bx-wrap">
+          <div class="bx-head">
+            <div>
+              <span class="bx-eyebrow bx-eyebrow--plain" data-reveal>Membership</span>
+              <h2 class="bx-h2" id="member-title" data-split="words">Performance insight beyond the treatment room.</h2>
             </div>
-          </article>
-          <article class="service-card">
-            <span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="15.6" cy="4.4" r="2.5"/><path d="M13.5 7.5c-2.6-.8-4.5.2-5.3 2.6-.9 2.7-.2 5.4 2 7.2l2 1.6M12.1 18.9H7.3c-1.4 0-2.4 1-2.4 2.3M10.9 11.1c.7 2.2 2 3.3 4.2 3.4l-.7 6.5"/><path d="m18 12.3 2-1.2m-1.5 3.3h2.7m-3.2 2 2 1.2"/></svg></span>
-            <div class="service-card-copy">
-              <h3>
-                <span class="service-title">Chiropractic care</span>
-                <button class="service-trigger" type="button" aria-expanded="false" aria-controls="service-panel-2">
-                  Chiropractic care<span class="service-toggle" aria-hidden="true"></span>
-                </button>
-              </h3>
-              <div class="service-body" id="service-panel-2">
-                <p>Hands-on care for joints, muscles, and movement patterns that affect daily comfort, training, and recovery.</p>
-              </div>
-            </div>
-          </article>
-          <article class="service-card">
-            <span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 2v5m0 10v5M2 12h5m10 0h5"/><circle cx="12" cy="12" r="2"/></svg></span>
-            <div class="service-card-copy">
-              <h3>
-                <span class="service-title">Movement assessment</span>
-                <button class="service-trigger" type="button" aria-expanded="false" aria-controls="service-panel-3">
-                  Movement assessment<span class="service-toggle" aria-hidden="true"></span>
-                </button>
-              </h3>
-              <div class="service-body" id="service-panel-3">
-                <p>Clinical testing and movement review to understand what is limiting performance and where care should focus first.</p>
-              </div>
-            </div>
-          </article>
-          <article class="service-card">
-            <span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8m-7 0h7v7"/></svg></span>
-            <div class="service-card-copy">
-              <h3>
-                <span class="service-title">Performance planning</span>
-                <button class="service-trigger" type="button" aria-expanded="false" aria-controls="service-panel-4">
-                  Performance planning<span class="service-toggle" aria-hidden="true"></span>
-                </button>
-              </h3>
-              <div class="service-body" id="service-panel-4">
-                <p>A clear progression from early care to stronger, more confident movement in sport, training, work, and everyday life.</p>
-              </div>
-            </div>
-          </article>
-          <article class="service-card">
-            <span class="service-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m1-16a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 4v3"/></svg></span>
-            <div class="service-card-copy">
-              <h3>
-                <span class="service-title">Community programs</span>
-                <button class="service-trigger" type="button" aria-expanded="false" aria-controls="service-panel-5">
-                  Community programs<span class="service-toggle" aria-hidden="true"></span>
-                </button>
-              </h3>
-              <div class="service-body" id="service-panel-5">
-                <p>Future workshops, run-club programming, and special events designed around education, prevention, and sustainable movement.</p>
-              </div>
-            </div>
-          </article>
-        </div>
-        <a class="services-book" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book an appointment <span aria-hidden="true">›</span></a>
-      </section>
-
-      <section id="clinic-hours" class="home-hours-section" aria-labelledby="home-hours-title">
-        <div class="home-hours-intro">
-          <h2 id="home-hours-title">Clinic hours</h2>
-          <p class="home-hours-copy">Make time for better movement. Find a visit that fits your week.</p>
-          <a class="home-hours-book home-hours-book-desktop" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book now</a>
-          <p class="home-hours-location">26 La Porte St, Suite A<br>Arcadia, CA</p>
-        </div>
-        <div class="home-hours-card">
-          <div class="home-hours-card-heading">
-            <h3>This week</h3>
-            <span>Pacific time</span>
+            <p class="bx-lede" data-reveal style="--d:150ms">All members receive strategies to stay strong outside the clinic.</p>
           </div>
-          <dl class="home-hours-list" aria-label="Weekly clinic hours, Pacific time">
-            <div data-clinic-day="Mon"><dt>Monday</dt><dd>9:00 am – 7:00 pm</dd></div>
-            <div data-clinic-day="Tue"><dt>Tuesday</dt><dd>9:00 am – 7:00 pm</dd></div>
-            <div data-clinic-day="Wed"><dt>Wednesday</dt><dd>9:00 am – 7:00 pm</dd></div>
-            <div data-clinic-day="Thu"><dt>Thursday</dt><dd>9:00 am – 7:00 pm</dd></div>
-            <div data-clinic-day="Fri"><dt>Friday</dt><dd>9:00 am – 7:00 pm</dd></div>
-            <div data-clinic-day="Sat"><dt>Saturday</dt><dd>By appointment</dd></div>
-            <div data-clinic-day="Sun" class="home-hours-closed"><dt>Sunday</dt><dd>Closed</dd></div>
-          </dl>
-          <a class="home-hours-book home-hours-book-mobile" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book now</a>
+          <div class="bx-cards">
+            <article class="bx-card" data-reveal>
+              <svg class="bx-card-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15h5l3-9 6 17 3-8h5"/></svg>
+              <h3 class="bx-h3">Stay strong outside the clinic.</h3>
+              <div class="bx-card-foot"><div><b>For every member</b><span class="bx-small">Strategies you take home</span></div><span class="bx-small">1/3</span></div>
+            </article>
+            <article class="bx-card bx-card--gold" data-reveal style="--d:120ms">
+              <svg class="bx-card-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 17a3 3 0 0 1-3 3h-8l-6 4v-5a3 3 0 0 1-2-3V7a3 3 0 0 1 3-3h13a3 3 0 0 1 3 3z"/><path d="M9 10h9M9 14h6"/></svg>
+              <h3 class="bx-h3">Stay connected to Dr. Simi.</h3>
+              <p class="bx-lede">Ongoing access for health and wellness updates.</p>
+              <div class="bx-card-foot"><div><b>With a movement plan</b><span class="bx-small">Ongoing access</span></div><span class="bx-small">2/3</span></div>
+            </article>
+            <article class="bx-card" data-reveal style="--d:240ms">
+              <svg class="bx-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M9 12l2 2 4-4"/></svg>
+              <h3 class="bx-h3">Get a professional second opinion.</h3>
+              <p class="bx-lede">Staying connected can include professional second opinions.</p>
+              <div class="bx-card-foot"><div><b>Second opinions</b><span class="bx-small">When you need them</span></div><span class="bx-small">3/3</span></div>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="consulting-section" id="member-support" aria-labelledby="consulting-title">
-        <div class="consulting-intro">
-          <h2 id="consulting-title">Performance insight beyond the treatment room.</h2>
-          <p>All members receive strategies to stay strong outside the clinic.</p>
+      <!-- CLINIC HOURS — FAQ layout -->
+      <section class="bx-section" id="clinic-hours" aria-labelledby="hours-title" style="padding-top:0">
+        <div class="bx-wrap bx-faq">
+          <div class="bx-faq-intro">
+            <span class="bx-eyebrow bx-eyebrow--plain" data-reveal>Visit</span>
+            <h2 class="bx-h2" id="hours-title" data-split="words">Clinic hours</h2>
+            <p class="bx-lede" data-reveal style="--d:150ms">Make time for better movement. Find a visit that fits your week.</p>
+            <div data-reveal style="--d:250ms"><a class="bx-btn" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book now</a></div>
+            <p class="bx-address" data-reveal style="--d:300ms"><b>26 La Porte St, Suite A</b>Arcadia, CA · Pacific time</p>
+          </div>
+          <div class="bx-rows" data-hours>
+            <div class="bx-row" data-day="1" data-reveal><span>Monday</span><span>9:00 am – 7:00 pm</span></div>
+            <div class="bx-row" data-day="2" data-reveal style="--d:60ms"><span>Tuesday</span><span>9:00 am – 7:00 pm</span></div>
+            <div class="bx-row" data-day="3" data-reveal style="--d:120ms"><span>Wednesday</span><span>9:00 am – 7:00 pm</span></div>
+            <div class="bx-row" data-day="4" data-reveal style="--d:180ms"><span>Thursday</span><span>9:00 am – 7:00 pm</span></div>
+            <div class="bx-row" data-day="5" data-reveal style="--d:240ms"><span>Friday</span><span>9:00 am – 7:00 pm</span></div>
+            <div class="bx-row" data-day="6" data-reveal style="--d:300ms"><span>Saturday</span><span>By appointment</span></div>
+            <div class="bx-row is-closed" data-day="0" data-reveal style="--d:360ms"><span>Sunday</span><span>Closed</span></div>
+          </div>
         </div>
-        <div class="consulting-benefits">
-          <article class="consulting-benefit">
-            <span class="consulting-label">For every member</span>
-            <div class="consulting-benefit-heading">
-              <span class="consulting-icon" aria-hidden="true">
-                <svg viewBox="0 0 28 28"><path d="M3 15h5l3-9 6 17 3-8h5" /></svg>
-              </span>
-              <h3>Stay strong outside the clinic.</h3>
+      </section>
+
+      <!-- CTA BANNER -->
+      <section aria-labelledby="cta-title">
+        <div class="bx-wrap">
+          <div class="bx-banner" data-dark data-reveal>
+            <img src="assets/images/home/banner.webp" alt="" style="object-position: 45% 40%" />
+            <div class="bx-noise" aria-hidden="true"></div>
+            <div class="bx-banner-content">
+              <h2 class="bx-h2" id="cta-title" data-split="words">From pain to performance.</h2>
+              <p class="bx-lede">One-on-one care in Arcadia for athletes, active adults, and people working their way back from pain.</p>
+              <a class="bx-btn" href="https://movementprescribed.janeapp.com/" target="_blank" rel="noopener">Book an appointment</a>
             </div>
-          </article>
-          <article class="consulting-benefit consulting-benefit-dark">
-            <span class="consulting-label">With a movement plan</span>
-            <div class="consulting-benefit-heading">
-              <span class="consulting-icon" aria-hidden="true">
-                <svg viewBox="0 0 28 28">
-                  <path d="M23 17a3 3 0 0 1-3 3h-8l-6 4v-5a3 3 0 0 1-2-3V7a3 3 0 0 1 3-3h13a3 3 0 0 1 3 3z" />
-                  <path d="M9 10h9M9 14h6" />
-                </svg>
-              </span>
-              <h3>Stay connected to Dr. Simi.</h3>
-            </div>
-            <p>Ongoing access for health and wellness updates.</p>
-            <p class="consulting-note">This can include professional second opinions.</p>
-          </article>
+          </div>
         </div>
       </section>
-
-      <section class="about-social-row" aria-labelledby="home-social-title">
-        <div class="about-social-copy">
-          <h2 id="home-social-title">Keep in touch.</h2>
-        </div>
-        <nav class="about-social-links" aria-label="MVMNT CULTR social profiles">
-          <a href="https://www.instagram.com/mvmntcultr/" target="_blank" rel="noopener noreferrer" aria-label="MVMNT CULTR on Instagram (opens in a new tab)">
-            <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="4" y="4" width="16" height="16" rx="5"></rect>
-              <circle cx="12" cy="12" r="3.5"></circle>
-              <circle cx="17" cy="7" r="1"></circle>
-            </svg></span>
-            <span class="social-label">Instagram</span>
-          </a>
-          <a href="https://www.tiktok.com/@thedrsimi" target="_blank" rel="noopener noreferrer" aria-label="MVMNT CULTR on TikTok (opens in a new tab)">
-            <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14 4c.4 3 2.1 4.8 5 5v3.2c-1.7 0-3.2-.5-4.7-1.5v5.7c0 3-2.1 5.2-5.1 5.2A5 5 0 0 1 4 16.7c0-3 2.3-5.1 5.5-5.1.4 0 .8 0 1.2.1V15c-.4-.1-.7-.2-1.1-.2-1.4 0-2.3.8-2.3 2 0 1.1.8 1.9 1.9 1.9 1.3 0 2.1-.8 2.1-2.4V4h2.7Z"></path>
-            </svg></span>
-            <span class="social-label">TikTok</span>
-          </a>
-          <a href="https://www.facebook.com/MVMNTCLTR" target="_blank" rel="noopener noreferrer" aria-label="MVMNT CULTR on Facebook (opens in a new tab)">
-            <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14 8.2h2.5V4.3c-.5-.1-1.9-.3-3.5-.3-3.5 0-5.8 2.1-5.8 6v3.4H4v4.4h3.2V24H12v-6.2h3.8l.6-4.4H12v-3c0-1.3.4-2.2 2-2.2Z"></path>
-            </svg></span>
-            <span class="social-label">Facebook</span>
-          </a>
-        </nav>
-      </section>
-
     </main>
 
-    <footer>
-      <span>MVMNT CULTR Performance Chiropractic</span>
-      <span>26 La Porte St, Arcadia, Suite A</span>
-      <a href="mailto:info@mvmntcultr.com">info@mvmntcultr.com</a>
+    <footer class="bx-footer">
+      <div class="bx-wrap">
+        <div class="bx-footer-top">
+          <div class="bx-footer-brand">
+            <strong>MVMNT CULTR</strong>
+            <p>Performance chiropractic for sports medicine, athletic performance, and individualized recovery.</p>
+            <span>Email: <a href="mailto:info@mvmntcultr.com">info@mvmntcultr.com</a></span>
+          </div>
+          <div class="bx-footer-col">
+            <h4>Navigation</h4>
+            <a href="/">Home</a><a href="/about/">About</a><a href="/contact/">Contact</a>
+          </div>
+          <div class="bx-footer-col">
+            <h4>Visit</h4>
+            <span class="bx-small">26 La Porte St, Suite A</span>
+            <span class="bx-small">Arcadia, CA 91006</span>
+          </div>
+          <div class="bx-footer-col">
+            <h4>Social media</h4>
+            <a href="https://www.instagram.com/mvmntcultr/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.tiktok.com/@thedrsimi" target="_blank" rel="noopener noreferrer">TikTok</a>
+            <a href="https://www.facebook.com/MVMNTCLTR" target="_blank" rel="noopener noreferrer">Facebook</a>
+          </div>
+        </div>
+        <div class="bx-footer-bottom">© 2026 MVMNT CULTR Performance Chiropractic. All rights reserved.</div>
+      </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="script.js?v=method-sweep-1"></script>
+    <script src="assets/site.js?v=blix-4"></script>
     <script src="assets/logo-carousel.js?v=continuous-3"></script>
   </body>
 </html>
