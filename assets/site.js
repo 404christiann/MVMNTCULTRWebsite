@@ -168,10 +168,10 @@
 /* Team support carousel */
 (() => {
   const slides = [
-    ["Team consulting", "Collaborative guidance for your organization’s athlete care and performance needs.", "team-consulting.webp", "center 55%"],
-    ["Event coverage", "Care and support tailored to your sporting event.", "team-event-coverage.webp", "center 60%"],
-    ["Seasonal medical coverage", "Medical support built around your team’s season.", "team-seasonal-coverage.webp", "60% 75%"],
-    ["Support for your staff", "Work alongside your existing medical and performance team.", "team-staff-support.webp", "center 20%"],
+    ["Team consulting", "Collaborative guidance for your organization’s athlete care and performance needs.", "team-consulting.webp?v=2", "center 55%"],
+    ["Event coverage", "Care and support tailored to your sporting event.", "team-event-coverage.webp?v=2", "center 60%"],
+    ["Seasonal medical coverage", "Medical support built around your team’s season.", "team-seasonal-coverage.webp?v=2", "60% 75%"],
+    ["Support for your staff", "Work alongside your existing medical and performance team.", "team-staff-support.webp?v=2", "center 20%"],
   ];
   const card = document.querySelector(".bx-slide-card");
   if (!card) return;
