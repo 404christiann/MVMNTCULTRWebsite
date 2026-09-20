@@ -524,7 +524,25 @@ h1, h2, h3, p { margin: 0; }
   padding-top: 24px;
   border-top: 1px solid var(--bx-line);
   color: var(--bx-muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
 }
+.bx-powered {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--bx-muted);
+  opacity: 0.7;
+  transition: opacity 0.25s;
+}
+.bx-powered:hover { opacity: 1; }
+/* The logo asset carries the dot above the wordmark, so centring the box leaves
+   the wordmark low; the nudge is a share of the logo's own height, so the wordmark
+   stays level with the "Powered by" text at every size. */
+.bx-powered img { width: auto; height: 25px; display: block; transform: translateY(-16%); }
 
 /* ============ MOTION ============ */
 .js [data-reveal] {
